@@ -1,0 +1,48 @@
+{
+  "$id": "https://schema.swlegion.dev/unit.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Unit",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unit's full name as printed on the card."
+    },
+    "faction": {
+      "type": "string",
+      "enum": [
+        "Galactic Empire",
+        "Galactic Republic",
+        "Rebel Alliance",
+        "Separatist Alliance"
+      ]
+    },
+    "rank": {
+      "type": "string",
+      "enum": [
+        "Commander",
+        "Operative",
+        "Corps",
+        "Special Forces",
+        "Support",
+        "Heavy",
+        "Counterpart"
+      ]
+    },
+    "speed": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "required": [
+    "faction",
+    "name",
+    "rank",
+    "speed"
+  ]
+}
