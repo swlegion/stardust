@@ -1,11 +1,15 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "files.insertFinalNewline": true,
   "json.schemas": [
     {
-      "fileMatch": [
-        "/data/units/**.json"
-      ],
+      "fileMatch": ["/data/units/**.json"],
       "url": "./schema/unit.json"
     }
-  ]
+  ],
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
