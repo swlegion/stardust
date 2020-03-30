@@ -1,1 +1,6 @@
-{}
+{
+  "faction": "Galactic Empire",
+  "rank": "Corps",
+  "name": "Missing Speed Property",
+  "size": "Small"
+}

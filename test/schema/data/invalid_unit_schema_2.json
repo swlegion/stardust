@@ -1,4 +1,8 @@
 {
-  "name": "Stormtroopers",
-  "oops": 5
+  "faction": "Galactic Empire",
+  "rank": "Corps",
+  "name": "Has Non-Existent Property",
+  "size": "Small",
+  "speed": 2,
+  "zoom": true
 }

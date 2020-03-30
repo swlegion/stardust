@@ -1,3 +1,7 @@
 {
-  "name": "Stormtroopers"
+  "faction": "Galactic Empire",
+  "rank": "Corps",
+  "name": "Stormtroopers",
+  "size": "Small",
+  "speed": 2
 }
