@@ -1,0 +1,16 @@
+{
+  "$id": "https://schema.swlegion.dev/model.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+
+  "title": "Unit",
+  "type": "object",
+
+  "additionalProperties": false,
+  "properties": {
+    "render": {
+      "type": "string",
+      "pattern": "\\.(obj|unity3d)$",
+      "description": "A relative URL to either a .obj or .unity3d file."
+    }
+  }
+}

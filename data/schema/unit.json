@@ -68,6 +68,11 @@
           "description": "AAT and Saber Tank is this size."
         }
       ]
+    },
+    "models": {
+      "description": "Model information for this unit. Optional.",
+      "type": "array",
+      "$ref": "https://schema.swlegion.dev/model.json"
     }
   },
 
