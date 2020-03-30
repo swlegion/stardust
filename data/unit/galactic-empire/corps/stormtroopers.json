@@ -1,4 +1,5 @@
 {
+  "card": "./stormtroopers/card.png",
   "faction": "Galactic Empire",
   "rank": "Corps",
   "name": "Stormtroopers",
@@ -7,19 +8,19 @@
   "models": [
     {
       "render": "./stormtroopers/1.obj",
-      "texture": "./texture.jpg"
+      "texture": "./stormtroopers/texture.jpg"
     },
     {
       "render": "./stormtroopers/2.obj",
-      "texture": "./texture.jpg"
+      "texture": "./stormtroopers/texture.jpg"
     },
     {
       "render": "./stormtroopers/3.obj",
-      "texture": "./texture.jpg"
+      "texture": "./stormtroopers/texture.jpg"
     },
     {
       "render": "./stormtroopers/4.obj",
-      "texture": "./texture.jpg"
+      "texture": "./stormtroopers/texture.jpg"
     }
   ]
 }
