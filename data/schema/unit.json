@@ -7,11 +7,69 @@
 
   "additionalProperties": false,
   "properties": {
-    "name": {
+    "faction": {
+      "description": "Which faction does this unit belongs to.",
       "type": "string",
-      "description": "The unit's full name as printed on the card."
+      "enum": [
+        "Galactic Empire",
+        "Galactic Republic",
+        "Rebel Alliance",
+        "Separatist Alliance"
+      ]
+    },
+    "name": {
+      "description": "The unit's full name as printed on the card.",
+      "type": "string"
+    },
+    "rank": {
+      "description": "Rank of the unit used for list building and orders.",
+      "type": "string",
+      "enum": [
+        "Commander",
+        "Operative",
+        "Counterpart",
+        "Corps",
+        "Special Forces",
+        "Support",
+        "Heavy"
+      ]
+    },
+    "speed": {
+      "description": "Maximum speed of the unit.",
+      "type": "number",
+      "enum": [0, 1, 2, 3]
+    },
+    "size": {
+      "description": "Size of the base (collider)",
+      "type": "string",
+      "oneOf": [
+        {
+          "const": "Small",
+          "description": "Most standard troopers."
+        },
+        {
+          "const": "Medium",
+          "description": "Tauntauns, Droidekas, Speeder Bikes, and Mortars are this size."
+        },
+        {
+          "const": "Large",
+          "description": "AT-RTs and E-Webs are this size."
+        },
+        {
+          "const": "Huge",
+          "description": "Landspeeders and the AT-ST are this size."
+        },
+        {
+          "const": "Oblong",
+          "description": "Occupier Tank is this size."
+        },
+        {
+          "const": "Massive",
+          "description": "AAT and Saber Tank is this size."
+        }
+      ]
     }
   },
 
-  "required": ["name"]
+  "required": ["faction", "name", "rank", "size", "speed"]
 }
