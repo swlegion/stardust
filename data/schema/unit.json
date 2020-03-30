@@ -1,0 +1,17 @@
+{
+  "$id": "https://schema.swlegion.dev/unit.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+
+  "title": "Unit",
+  "type": "object",
+
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unit's full name as printed on the card."
+    }
+  },
+
+  "required": ["name"]
+}
