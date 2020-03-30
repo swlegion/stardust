@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A new TTS mod.",
   "scripts": {
+    "fix": "./node_modules/.bin/eslint --ignore-path .gitignore \"**.{js,ts,json,jsonc}\" --fix",
     "lint": "npm run lint-es && npm run lint-schema",
     "lint-es": "./node_modules/.bin/eslint --ignore-path .gitignore \"**.{js,ts,json,jsonc}\"",
     "lint-schema": "./node_modules/.bin/ajv -s \"./data/schema/unit.json\" -r \"./data/schema/model.json\" -d \"./data/unit/**.json\"",
