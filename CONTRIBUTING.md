@@ -3,7 +3,7 @@
 1. It is highly recommended to download and install [Visual Studio Code][dl-vsc].
 
    A. Install [Prettier for Visual Studio Code][ext-prettier]
-   B. Isntall [ESLint for Visual Studio Code][ext-es-lint]
+   B. Install [ESLint for Visual Studio Code][ext-es-lint]
    C. Install [Lua Formatter for Visual Studio Code][ext-lua-format]
 
 2. Download and install [NodeJS][dl-node].
