@@ -10,7 +10,9 @@
   "properties": {
     "card": {
       "description": "A relative URI to the card image.",
-      "$ref": "./model.json#definitions/image"
+      "type": "string",
+      "pattern": "(.*?)\\.(png|jpg)$",
+      "format": "uri-reference"
     },
     "faction": {
       "description": "Which faction does this unit belongs to.",
