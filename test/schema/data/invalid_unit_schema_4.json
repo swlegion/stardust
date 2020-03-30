@@ -1,0 +1,13 @@
+{
+  "faction": "Galactic Empire",
+  "rank": "Corps",
+  "name": "Invalid Unit: No Texture",
+  "size": "Small",
+  "speed": 2,
+
+  "models": [
+    {
+      "render": "./foo.obj"
+    }
+  ]
+}

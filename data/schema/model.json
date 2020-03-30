@@ -10,7 +10,7 @@
   "definitions": {
     "image": {
       "type": "string",
-      "pattern": "\\.(png|jpg)$",
+      "pattern": "(.*?)\\.(png|jpg)$",
       "format": "uri-reference"
     }
   },
@@ -18,7 +18,7 @@
   "properties": {
     "render": {
       "type": "string",
-      "pattern": "\\.(obj|unity3d)$",
+      "pattern": "(.*?)\\.(obj|unity3d)$",
       "description": "A relative URL to either a .obj or .unity3d file.",
       "format": "uri-reference"
     },
@@ -42,5 +42,7 @@
         }
       ]
     }
-  }
+  },
+
+  "required": ["render", "texture"]
 }
