@@ -1,10 +1,19 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
     "source.organizeImports": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "eslint.validate": ["javascript", "typescript"],
-  "files.insertFinalNewline": true
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["/data/unit/**.json"],
+      "url": "./data/schema/unit.json"
+    }
+  ],
+  "prettier.ignorePath": ".gitignore"
 }
