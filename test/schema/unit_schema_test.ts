@@ -1,3 +1,5 @@
+// Checks that the schemas defined for units are working properly.
+
 import * as child from 'child_process';
 import path from 'path';
 

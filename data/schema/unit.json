@@ -8,6 +8,10 @@
   "additionalProperties": false,
 
   "properties": {
+    "card": {
+      "description": "A relative URI to the card image.",
+      "$ref": "./model.json#definitions/image"
+    },
     "faction": {
       "description": "Which faction does this unit belongs to.",
       "type": "string",
@@ -72,6 +76,10 @@
       ],
       "default": "small"
     },
+    "title": {
+      "description": "Title of the unit card, if any.",
+      "type": "string"
+    },
     "models": {
       "description": "Model information for this unit. Optional.",
       "type": "array",
@@ -80,5 +88,5 @@
     }
   },
 
-  "required": ["faction", "name", "rank", "size", "speed"]
+  "required": ["card", "faction", "name", "rank", "size", "speed"]
 }
