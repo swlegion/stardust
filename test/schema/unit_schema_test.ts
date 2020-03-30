@@ -35,3 +35,27 @@ test('should fail on invalid properties', () => {
     `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
   );
 });
+
+test('should fail on invalid render URI', () => {
+  const check = path.join(
+    'test',
+    'schema',
+    'data',
+    'invalid_unit_schema_3.json',
+  );
+  child.execSync(
+    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+  );
+});
+
+test('should fail on missing texture URI', () => {
+  const check = path.join(
+    'test',
+    'schema',
+    'data',
+    'invalid_unit_schema_4.json',
+  );
+  child.execSync(
+    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+  );
+});

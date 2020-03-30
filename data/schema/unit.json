@@ -6,6 +6,7 @@
   "type": "object",
 
   "additionalProperties": false,
+
   "properties": {
     "faction": {
       "description": "Which faction does this unit belongs to.",
@@ -36,7 +37,7 @@
     },
     "speed": {
       "description": "Maximum speed of the unit.",
-      "type": "number",
+      "type": "integer",
       "enum": [0, 1, 2, 3],
       "default": 2
     },

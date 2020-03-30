@@ -7,34 +7,42 @@
 
   "additionalProperties": false,
 
+  "definitions": {
+    "image": {
+      "type": "string",
+      "pattern": "(.*?)\\.(png|jpg)$",
+      "format": "uri-reference"
+    }
+  },
+
   "properties": {
     "render": {
       "type": "string",
-      "pattern": "\\.(obj|unity3d)$",
-      "description": "A relative URL to either a .obj or .unity3d file."
+      "pattern": "(.*?)\\.(obj|unity3d)$",
+      "description": "A relative URL to either a .obj or .unity3d file.",
+      "format": "uri-reference"
     },
     "texture": {
       "type": "string",
       "anyOf": [
         {
-          "type": "string",
-          "pattern": "\\.(png|jpg)$"
+          "$ref": "#/definitions/image"
         },
         {
           "type": "object",
           "properties": {
             "red": {
-              "type": "string",
-              "pattern": "\\.(png|jpg)$"
+              "$ref": "#/definitions/image"
             },
             "blue": {
-              "type": "string",
-              "pattern": "\\.(png|jpg)$"
+              "$ref": "#/definitions/image"
             }
           },
           "required": ["red", "blue"]
         }
       ]
     }
-  }
+  },
+
+  "required": ["render", "texture"]
 }

@@ -1,0 +1,14 @@
+{
+  "faction": "Galactic Empire",
+  "rank": "Corps",
+  "name": "Invalid Unit: Bad Render",
+  "size": "Small",
+  "speed": 2,
+
+  "models": [
+    {
+      "render": "./foo.jpg",
+      "texture": "./foo.jpg"
+    }
+  ]
+}
