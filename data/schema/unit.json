@@ -37,7 +37,8 @@
     "speed": {
       "description": "Maximum speed of the unit.",
       "type": "number",
-      "enum": [0, 1, 2, 3]
+      "enum": [0, 1, 2, 3],
+      "default": 2
     },
     "size": {
       "description": "Size of the base (collider)",
@@ -67,7 +68,14 @@
           "const": "Massive",
           "description": "AAT and Saber Tank is this size."
         }
-      ]
+      ],
+      "default": "small"
+    },
+    "models": {
+      "description": "Model information for this unit. Optional.",
+      "type": "array",
+      "items": { "$ref": "./model.json" },
+      "default": []
     }
   },
 
