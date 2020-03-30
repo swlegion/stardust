@@ -6,11 +6,35 @@
   "type": "object",
 
   "additionalProperties": false,
+
   "properties": {
     "render": {
       "type": "string",
       "pattern": "\\.(obj|unity3d)$",
       "description": "A relative URL to either a .obj or .unity3d file."
+    },
+    "texture": {
+      "type": "string",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "\\.(png|jpg)$"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "red": {
+              "type": "string",
+              "pattern": "\\.(png|jpg)$"
+            },
+            "blue": {
+              "type": "string",
+              "pattern": "\\.(png|jpg)$"
+            }
+          },
+          "required": ["red", "blue"]
+        }
+      ]
     }
   }
 }

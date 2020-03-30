@@ -3,5 +3,23 @@
   "rank": "Corps",
   "name": "Stormtroopers",
   "size": "Small",
-  "speed": 2
+  "speed": 2,
+  "models": [
+    {
+      "render": "./stormtroopers/1.obj",
+      "texture": "./texture.jpg"
+    },
+    {
+      "render": "./stormtroopers/2.obj",
+      "texture": "./texture.jpg"
+    },
+    {
+      "render": "./stormtroopers/3.obj",
+      "texture": "./texture.jpg"
+    },
+    {
+      "render": "./stormtroopers/4.obj",
+      "texture": "./texture.jpg"
+    }
+  ]
 }
