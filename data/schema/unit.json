@@ -6,6 +6,7 @@
   "type": "object",
 
   "additionalProperties": false,
+
   "properties": {
     "faction": {
       "description": "Which faction does this unit belongs to.",
