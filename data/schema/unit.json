@@ -37,7 +37,7 @@
     },
     "speed": {
       "description": "Maximum speed of the unit.",
-      "type": "number",
+      "type": "integer",
       "enum": [0, 1, 2, 3],
       "default": 2
     },
