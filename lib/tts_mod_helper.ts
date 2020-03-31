@@ -13,6 +13,7 @@ export function findSavesDir(): string {
     case 'win32':
       dir = path.join(
         process.env.USERPROFILE,
+        'Documents',
         'My Games',
         'Tabletop Simulator',
         'Saves',
@@ -22,8 +23,30 @@ export function findSavesDir(): string {
       // TODO: Implement support for Mac and Linux.
       throw new Error(`Unsupported: ${os.platform()}.`);
   }
-  if (!fs.pathExistsSync(dir)) {
+  if (!fs.existsSync(dir)) {
     throw new Error(`Could not find "Saves" at "${dir}".`);
   }
   return dir;
+}
+
+/**
+ * Creates a symbolic link/shortcut to the saves directory.
+ *
+ * Returns whether it was created.
+ */
+export function createDevLink(savesDir: string): boolean {
+  const from = path.join(savesDir, 'Stardust');
+  const to = path.resolve(path.join('.build', 'stardust'));
+  if (fs.pathExistsSync(from) && fs.readlinkSync(from) === to) {
+    return false;
+  }
+  switch (os.platform()) {
+    case 'win32':
+      fs.symlinkSync(to, from, 'junction');
+      break;
+    default:
+      fs.symlinkSync(to, from, 'dir');
+      break;
+  }
+  return true;
 }
