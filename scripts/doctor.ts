@@ -5,7 +5,7 @@ import * as os from 'os';
 import { createDevLink, findSavesDir } from '../lib/tts_mod_helper';
 
 // Say Hello.
-console.log(chalk.magentaBright('Stardust Doctor: Diagnosing...\n'));
+console.log(chalk.magentaBright('\nStardust Doctor: Diagnosing...\n'));
 
 console.log('  * Platform', chalk.cyanBright(os.platform().toUpperCase()));
 

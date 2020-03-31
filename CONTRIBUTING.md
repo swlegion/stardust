@@ -23,6 +23,18 @@
 The simplest command to use is `npm run presubmit`, which runs all of the
 commands below, ensuring that your code will be able to be submitted upstream.
 
+## `npm run doctor`
+
+Runs common initialization tasks and checks for development.
+
+## `npm run build`
+
+Runs a build, which right now copies and initializes the mod JSON file in the
+ouput directory (`.build/stardust`), which in turn makes it accessible to load
+in Tabletop Simulator in `Saves`.
+
+You may also run `npm run watch` to re-run the build when something changes.
+
 ## `npm run lint`
 
 Checks the source for common style and conformance issues. We use this tool to

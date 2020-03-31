@@ -48,35 +48,7 @@
       "default": 2
     },
     "size": {
-      "description": "Size of the base (collider)",
-      "type": "string",
-      "oneOf": [
-        {
-          "const": "Small",
-          "description": "Most standard troopers."
-        },
-        {
-          "const": "Medium",
-          "description": "Tauntauns, Droidekas, Speeder Bikes, and Mortars are this size."
-        },
-        {
-          "const": "Large",
-          "description": "AT-RTs and E-Webs are this size."
-        },
-        {
-          "const": "Huge",
-          "description": "Landspeeders and the AT-ST are this size."
-        },
-        {
-          "const": "Oblong",
-          "description": "Occupier Tank is this size."
-        },
-        {
-          "const": "Massive",
-          "description": "AAT and Saber Tank is this size."
-        }
-      ],
-      "default": "small"
+      "$ref": "./bases.json#/definitions/size"
     },
     "title": {
       "description": "Title of the unit card, if any.",

@@ -1,0 +1,58 @@
+{
+  "$id": "https://schema.swlegion.dev/bases.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+
+  "title": "Bases",
+  "type": "array",
+
+  "definitions": {
+    "size": {
+      "description": "Size of the base (collider)",
+      "type": "string",
+      "oneOf": [
+        {
+          "const": "Small",
+          "description": "Most standard troopers."
+        },
+        {
+          "const": "Medium",
+          "description": "Tauntauns, Droidekas, Speeder Bikes, and Mortars are this size."
+        },
+        {
+          "const": "Large",
+          "description": "AT-RTs and E-Webs are this size."
+        },
+        {
+          "const": "Huge",
+          "description": "Landspeeders and the AT-ST are this size."
+        },
+        {
+          "const": "Oblong",
+          "description": "Occupier Tank is this size."
+        },
+        {
+          "const": "Massive",
+          "description": "AAT and Saber Tank is this size."
+        }
+      ],
+      "default": "small"
+    }
+  },
+
+  "items": {
+    "properties": {
+      "size": {
+        "$ref": "#/definitions/size"
+      },
+
+      "render": {
+        "type": "string",
+        "pattern": "(.*?)\\.(obj)$",
+        "description": "A relative URL to a .obj file.",
+        "format": "uri-reference"
+      }
+    },
+
+    "required": ["size", "render"]
+  }
+}

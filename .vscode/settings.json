@@ -11,6 +11,10 @@
   "files.insertFinalNewline": true,
   "json.schemas": [
     {
+      "fileMatch": ["/data/bases/bases.json"],
+      "url": "./data/schema/bases.json"
+    },
+    {
       "fileMatch": ["/data/unit/**.json"],
       "url": "./data/schema/unit.json"
     },

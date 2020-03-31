@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "description": "A new TTS mod.",
   "scripts": {
+    "build": "npx ts-node ./scripts/build.ts",
     "doctor": "npx ts-node ./scripts/doctor.ts",
     "fix": "npx ts-node ./scripts/fix.ts",
     "lint": "npx ts-node ./scripts/lint.ts",
     "presubmit": "npm install && npm run lint && npm test",
-    "test": "jest"
+    "test": "jest",
+    "watch": "nodemon ./scripts/build.ts --watch src"
   },
   "repository": {
     "type": "git",

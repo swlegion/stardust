@@ -5,7 +5,7 @@ import path from 'path';
 
 const runAjv = path.join('node_modules', '.bin', 'ajv');
 const schema = path.join('data', 'schema', 'upgrade.json');
-const refers = path.join('data', 'schema', 'model.json');
+const refers = path.join('data', 'schema', '*.json');
 
 test('should pass', () => {
   const check = path.join(

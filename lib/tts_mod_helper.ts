@@ -37,6 +37,7 @@ export function findSavesDir(): string {
 export function createDevLink(savesDir: string): boolean {
   const from = path.join(savesDir, 'Stardust');
   const to = path.resolve(path.join('.build', 'stardust'));
+  fs.mkdirpSync(to);
   if (
     fs.existsSync(from) &&
     path.relative(fs.readlinkSync(from), path.normalize(to)) === ''

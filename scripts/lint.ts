@@ -13,13 +13,20 @@ runTool('eslint', '--ignore-path .gitignore', '"**/*.{js,ts,json}"');
 runTool(
   'ajv',
   '-s "./data/schema/unit.json"',
-  '-r "./data/schema/model.json"',
+  '-r "./data/schema/*.json"',
   '-d "./data/unit/**/*.json"',
 );
 
 runTool(
   'ajv',
   '-s "./data/schema/upgrade.json"',
-  '-r "./data/schema/model.json"',
+  '-r "./data/schema/*.json"',
   '-d "./data/upgrade/**/*.json"',
+);
+
+runTool(
+  'ajv',
+  '-s "./data/schema/bases.json"',
+  '-r "./data/schema/*.json"',
+  '-d "./data/bases/**/*.json"',
 );
