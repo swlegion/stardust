@@ -5,7 +5,7 @@ import path from 'path';
 
 const runAjv = path.join('node_modules', '.bin', 'ajv');
 const schema = path.join('data', 'schema', 'upgrade.json');
-const refers = path.join('data', 'schema', 'model.json');
+const refers = path.join('data', 'schema', '*.json');
 
 test('should pass', () => {
   const check = path.join(
@@ -15,7 +15,7 @@ test('should pass', () => {
     'valid_upgrade_schema.json',
   );
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --valid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --valid`,
   );
 });
 
@@ -27,7 +27,7 @@ test('should fail on missing properties', () => {
     'invalid_upgrade_schema_1.json',
   );
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --invalid`,
   );
 });
 
@@ -39,6 +39,6 @@ test('should fail on invalid properties', () => {
     'invalid_upgrade_schema_2.json',
   );
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --invalid`,
   );
 });
