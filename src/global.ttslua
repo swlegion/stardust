@@ -1,7 +1,6 @@
 #include guids
 
 function onLoad()
-  -- TODO: Implement.
   createStormtrooperMini()
 end
 
