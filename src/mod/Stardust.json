@@ -9,7 +9,7 @@
   "Note": "",
   "Rules": "",
   "XmlUI": "#include global.xml",
-  "LuaScript": "#include global.lua",
+  "LuaScript": "#include global.ttslua",
   "LuaScriptState": "",
   "Grid": {
     "Type": 0,
