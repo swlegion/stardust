@@ -10,7 +10,7 @@ const refers = path.join('data', 'schema', '*.json');
 test('should pass', () => {
   const check = path.join('test', 'schema', 'data', 'valid_unit_schema.json');
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --valid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --valid`,
   );
 });
 
@@ -22,7 +22,7 @@ test('should fail on missing properties', () => {
     'invalid_unit_schema_1.json',
   );
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --invalid`,
   );
 });
 
@@ -34,7 +34,7 @@ test('should fail on invalid properties', () => {
     'invalid_unit_schema_2.json',
   );
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --invalid`,
   );
 });
 
@@ -46,7 +46,7 @@ test('should fail on invalid render URI', () => {
     'invalid_unit_schema_3.json',
   );
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --invalid`,
   );
 });
 
@@ -58,6 +58,6 @@ test('should fail on missing texture URI', () => {
     'invalid_unit_schema_4.json',
   );
   child.execSync(
-    `${runAjv} test -s ${schema} -r ${refers} -d ${check} --invalid`,
+    `${runAjv} test -s "${schema}" -r "${refers}" -d "${check}" --invalid`,
   );
 });
