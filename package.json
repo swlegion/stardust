@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A new TTS mod.",
   "scripts": {
+    "doctor": "npx ts-node ./scripts/doctor.ts",
     "fix": "npx ts-node ./scripts/fix.ts",
     "lint": "npx ts-node ./scripts/lint.ts",
     "presubmit": "npm install && npm run lint && npm test",
