@@ -1,2 +1,5 @@
-#include globals
--- Test
+#include guids
+
+function onLoad()
+  -- TODO: Implement.
+end

@@ -8,8 +8,12 @@ function rewriteInclude(include: string): string {
     const line = lines[i];
     if (line.indexOf('#include ') === 0) {
       const include = line.substring('#include '.length);
-      const relative = path.join('src', include);
-      lines[i] = fs.readFileSync(relative, { encoding: 'UTF-8' });
+      let relative = path.join('src', include);
+      if (path.extname(relative) === '') {
+        relative = `${relative}.ttslua`;
+      }
+      const loaded = fs.readFileSync(relative, { encoding: 'UTF-8' });
+      lines[i] = rewriteInclude(loaded);
     }
   }
   return lines.join('\n');
