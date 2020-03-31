@@ -13,6 +13,10 @@
     {
       "fileMatch": ["/data/unit/**.json"],
       "url": "./data/schema/unit.json"
+    },
+    {
+      "fileMatch": ["/data/upgrade/**.json"],
+      "url": "./data/schema/upgrade.json"
     }
   ],
   "prettier.ignorePath": ".gitignore"

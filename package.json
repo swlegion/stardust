@@ -4,9 +4,10 @@
   "description": "A new TTS mod.",
   "scripts": {
     "fix": "./node_modules/.bin/eslint --ignore-path .gitignore \"**.{js,ts,json,jsonc}\" --fix",
-    "lint": "npm run lint-es && npm run lint-schema",
+    "lint": "npm run lint-es && npm run lint-schema-unit && npm run lint-schema-upgrade",
     "lint-es": "./node_modules/.bin/eslint --ignore-path .gitignore \"**.{js,ts,json,jsonc}\"",
-    "lint-schema": "./node_modules/.bin/ajv -s \"./data/schema/unit.json\" -r \"./data/schema/model.json\" -d \"./data/unit/**/*.json\"",
+    "lint-schema-unit": "./node_modules/.bin/ajv -s \"./data/schema/unit.json\" -r \"./data/schema/model.json\" -d \"./data/unit/**/*.json\"",
+    "lint-schema-upgrade": "./node_modules/.bin/ajv -s \"./data/schema/upgrade.json\" -r \"./data/schema/model.json\" -d \"./data/upgrade/**/*.json\"",
     "presubmit": "npm install && npm run lint && npm test",
     "test": "jest"
   },
@@ -19,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/swlegion/stardust/issues"
   },
-  "homepage": "https://github.com/swlegion/stardust#readme",
+  "homepage": "https://github.com/swlegion/stardust",
   "devDependencies": {
     "@types/fs-extra": "^8.1.0",
     "@types/glob": "^7.1.1",

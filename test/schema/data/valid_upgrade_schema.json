@@ -1,0 +1,9 @@
+{
+  "card": "./card.png",
+  "model": {
+    "render": "./model.obj",
+    "texture": "/texture.jpg"
+  },
+  "name": "Valid Upgrade",
+  "type": "Personnel"
+}
