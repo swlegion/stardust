@@ -1,0 +1,8 @@
+{
+  "card": "./card.png",
+  "model": {
+    "render": "./model.obj",
+    "texture": "/texture.jpg"
+  },
+  "name": "Invalid Upgrade: Missing Property"
+}

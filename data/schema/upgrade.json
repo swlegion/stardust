@@ -1,0 +1,47 @@
+{
+  "$id": "https://schema.swlegion.dev/upgrade.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+
+  "title": "Upgrade",
+  "type": "object",
+
+  "additionalProperties": false,
+
+  "properties": {
+    "card": {
+      "description": "A relative URI to the card image.",
+      "type": "string",
+      "pattern": "(.*?)\\.(png|jpg)$",
+      "format": "uri-reference"
+    },
+    "model": {
+      "description": "Miniature spawned by this card. Optional.",
+      "$ref": "./model.json"
+    },
+    "name": {
+      "description": "The upgrade's full name as printed on the card.",
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of named upgrade.",
+      "type": "string",
+      "enum": [
+        "Armament",
+        "Command",
+        "Comms",
+        "Crew",
+        "Force",
+        "Gear",
+        "Generator",
+        "Grenades",
+        "Hardpoint",
+        "Heavy Weapon",
+        "Personnel",
+        "Pilot",
+        "Training"
+      ]
+    }
+  },
+
+  "required": ["card", "name", "type"]
+}

@@ -14,3 +14,8 @@ export interface TexturePair {
   red: string;
   blue: string;
 }
+
+export interface Upgrade {
+  card: string;
+  model?: Model;
+}

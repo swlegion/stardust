@@ -11,6 +11,7 @@
     "image": {
       "type": "string",
       "pattern": "(.*?)\\.(png|jpg)$",
+      "description": "A relative URL to either a .png or .jpg file.",
       "format": "uri-reference"
     }
   },
@@ -30,6 +31,7 @@
         },
         {
           "type": "object",
+          "description": "Both a 'red' and 'blue' texture image pair.",
           "properties": {
             "red": {
               "$ref": "#/definitions/image"

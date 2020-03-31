@@ -1,0 +1,10 @@
+{
+  "card": "./card.png",
+  "model": {
+    "render": "./model.obj",
+    "texture": "/texture.jpg"
+  },
+  "name": "Invalid Upgrade: Extra Property",
+  "type": "Personnel",
+  "zzzz": "xxxx"
+}

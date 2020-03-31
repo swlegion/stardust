@@ -1,0 +1,9 @@
+{
+  "card": "./stormtrooper/card.png",
+  "model": {
+    "render": "./stormtrooper/model.obj",
+    "texture": "../../unit/galactic-empire/corps/stormtroopers/texture.jpg"
+  },
+  "name": "Stormtrooper",
+  "type": "Personnel"
+}
