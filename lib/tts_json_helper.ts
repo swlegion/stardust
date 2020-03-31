@@ -2,6 +2,11 @@ import fs from 'fs-extra';
 import path from 'path';
 import { TTSBase, TTSMod } from './types/tts_json';
 
+const rewriteBasePath = `file://${path.posix.resolve('.')}/`.replace(
+  /\\/g,
+  '/',
+);
+
 function rewriteInclude(include: string): string {
   const lines = include.split('\n');
   for (let i = 0; i < lines.length; i++) {
@@ -14,6 +19,8 @@ function rewriteInclude(include: string): string {
       }
       const loaded = fs.readFileSync(relative, { encoding: 'UTF-8' });
       lines[i] = rewriteInclude(loaded);
+    } else if (line.indexOf('~#/') !== -1) {
+      lines[i] = line.replace('~#/', rewriteBasePath);
     }
   }
   return lines.join('\n');

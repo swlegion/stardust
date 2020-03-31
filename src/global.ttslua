@@ -2,4 +2,19 @@
 
 function onLoad()
   -- TODO: Implement.
+  createStormtrooperMini()
+end
+
+function createStormtrooperMini()
+  -- A sample function that creates a single Stormtrooper mini (leader).
+  local mini = spawnObject({
+    type = "Custom_Model"
+  })
+  mini.setCustomObject({
+    type = 0,
+    mesh = '~#/data/unit/galactic-empire/corps/stormtroopers/1.obj',
+    diffuse = '~#/data/unit/galactic-empire/corps/stormtroopers/texture.jpg',
+    collider = '~#/data/bases/bases/small.obj',
+    material = 1
+  })
 end
