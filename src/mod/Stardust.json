@@ -8,8 +8,8 @@
   "Sky": "Sky_Forest",
   "Note": "",
   "Rules": "",
-  "XmlUI": "",
-  "LuaScript": "",
+  "XmlUI": "#include global.xml",
+  "LuaScript": "#include global.lua",
   "LuaScriptState": "",
   "Grid": {
     "Type": 0,
