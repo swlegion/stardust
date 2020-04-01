@@ -1,1 +1,24 @@
 <!-- Test -->
+<Button
+  id="uiSpawnMenu"
+  onClick="toggleSpawnMenu"
+  width="60"
+  height="40"
+  text="&#x25B2;"
+  fontSize="12"
+  rectAlignment="UpperLeft"
+  offsetXY="100 -5">
+  Spawn Units
+</Button>
+
+<Panel active="false" id="uiSpawnPanel" width="1000" height="700">
+  <VerticalLayout color="black" childForceExpandWidth="false" childForceExpandHeight="false" preferredWidth="1000" preferredHeight="600" padding="100">
+      <GridLayout 
+        id="uiSpawnGrid"
+        padding="0 0 8 3"
+        spacing="8 8"
+        cellsize="150 190"
+        childAlignment="UpperCenter">
+      </GridLayout>
+  </VerticalLayout>
+</Panel>
