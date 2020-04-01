@@ -1,19 +1,24 @@
-#include guids
-
 function onLoad()
-  createStormtrooperMini()
+  -- This is a hack to avoid having to setup an HTTP server for now.
+  json = [[
+#include ../.build/stardust/data.json
+  ]]
+  onDataLoaded(json)
 end
 
-function createStormtrooperMini()
-  -- A sample function that creates a single Stormtrooper mini (leader).
-  local mini = spawnObject({
-    type = "Custom_Model"
-  })
-  mini.setCustomObject({
-    type = 0,
-    mesh = '~#/data/unit/galactic-empire/corps/stormtroopers/1.obj',
-    diffuse = '~#/data/unit/galactic-empire/corps/stormtroopers/texture.jpg',
-    collider = '~#/data/bases/bases/small.obj',
-    material = 1
-  })
+function onDataLoaded(result)
+  data = JSON.decode(result)
+  for i, u in ipairs(data.units) do
+    
+  end
+end
+
+function toggleSpawnMenu()
+  local current = self.UI.getAttribute("uiSpawnPanel", "active")
+  if current == "true" then
+    current = "false"
+  else
+    current = "true"
+  end
+  self.UI.setAttribute("uiSpawnPanel", "active", current)
 end

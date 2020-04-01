@@ -19,3 +19,8 @@ export interface Upgrade {
   card: string;
   model?: Model;
 }
+
+export interface DataBlob {
+  units: Unit[];
+  upgrades: Upgrade[];
+}

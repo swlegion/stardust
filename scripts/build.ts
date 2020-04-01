@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import fs from 'fs-extra';
 import path from 'path';
 import { exit } from 'shelljs';
-import { loadAndRewriteJson } from '../lib/tts_json_helper';
+import { concatAndMergeData, loadAndRewriteJson } from '../lib/tts_json_helper';
 
 function onCleanup(): void {
   exit(0);
@@ -22,6 +22,11 @@ const modInOutputDir = path.join('.build', 'stardust', 'Stardust.json');
 const modJson = fs.readFileSync(modInSourceTree, { encoding: 'UTF-8' });
 const outputJson = loadAndRewriteJson(modJson);
 fs.writeFileSync(modInOutputDir, outputJson);
+
+console.log('Concatenating and merging JSON...');
+const mergedJson = concatAndMergeData();
+const jsonInOutputDir = path.join('.build', 'stardust', 'data.json');
+fs.writeFileSync(jsonInOutputDir, mergedJson);
 
 console.log(chalk.magentaBright('Done!\n'));
 
