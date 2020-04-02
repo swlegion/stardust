@@ -86,6 +86,9 @@ function extractMetaFromComponent(
     meta: meta,
     xml: component.XmlUI,
   };
+  if (!result.children.length) {
+    delete result.children;
+  }
   return result;
 }
 
@@ -177,6 +180,7 @@ export function readMetaFromSource(
     path.join(source, `${file}.json`),
   ) as MetaComponent;
   const json = {
+    name: file,
     meta: meta,
   } as MetaComponent;
   const lua = path.join(source, `${file}.lua`);
@@ -201,7 +205,9 @@ export function readMetaFromSource(
         return readMetaFromSource(name, children);
       })
       .sort((a, b) => a.__zIndex - b.__zIndex);
-    json.children = files;
+    if (files.length) {
+      json.children = files;
+    }
   }
   return json;
 }
