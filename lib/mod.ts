@@ -146,15 +146,12 @@ export function embedMetaToSave(global: MetaComponent): Save {
  */
 export function writeMetaToSource(meta: MetaComponent, target: string): void {
   const base = path.join(target, meta.name);
-  fs.writeFileSync(
-    `${base}.json`,
-    JSON.stringify(meta.meta, null, '  ') + '\n',
-  );
+  fs.writeFileSync(`${base}.json`, JSON.stringify(meta.meta, null, '  '));
   if (meta.lua) {
-    fs.writeFileSync(`${base}.lua`, meta.lua + '\n');
+    fs.writeFileSync(`${base}.lua`, meta.lua);
   }
   if (meta.xml) {
-    fs.writeFileSync(`${base}.xml`, meta.xml + '\n');
+    fs.writeFileSync(`${base}.xml`, meta.xml);
   }
   if (meta.children && meta.children.length) {
     const childTarget = base;
