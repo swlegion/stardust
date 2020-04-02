@@ -2,11 +2,11 @@
   "Name": "Bag",
   "Transform": {
     "posX": -11.687171,
-    "posY": 0.7749662,
-    "posZ": -2.50267529,
-    "rotX": 0.00000276642663,
-    "rotY": -0.00000647000343,
-    "rotZ": -0.00000426553333,
+    "posY": 0.7749661,
+    "posZ": -2.502675,
+    "rotX": -9.1713855e-7,
+    "rotY": -0.00002875483,
+    "rotZ": 0.000004310557,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
@@ -32,5 +32,6 @@
   "MaterialIndex": -1,
   "MeshIndex": -1,
   "LuaScriptState": "",
-  "GUID": "e02260"
+  "GUID": "e02260",
+  "__zIndex": 1
 }

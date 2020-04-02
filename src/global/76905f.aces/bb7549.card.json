@@ -1,17 +1,17 @@
 {
-  "Name": "Deck",
+  "Name": "Card",
   "Transform": {
-    "posX": -20.9753017,
-    "posY": 1.03991866,
-    "posZ": -1.0435183,
-    "rotX": 1.08941173e-7,
+    "posX": -20.9004326,
+    "posY": 1.19689167,
+    "posZ": -0.8726074,
+    "rotX": 2.07100346e-8,
     "rotY": 180,
     "rotZ": 180,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
   },
-  "Nickname": "Aces",
+  "Nickname": "",
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
@@ -28,16 +28,10 @@
   "Tooltip": true,
   "GridProjection": false,
   "HideWhenFaceDown": true,
-  "Hands": false,
+  "Hands": true,
+  "CardID": 52,
   "SidewaysCard": false,
-  "DeckIDs": [
-    52,
-    8,
-    3,
-    38,
-    33
-  ],
   "LuaScriptState": "",
-  "GUID": "76905f",
+  "GUID": "bb7549",
   "__zIndex": 0
 }

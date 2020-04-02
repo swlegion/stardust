@@ -1,0 +1,378 @@
+diff --git a/src/global.json b/src/global.json
+index 79fd1ea..bded0cf 100644
+--- a/src/global.json
++++ b/src/global.json
+@@ -3,7 +3,7 @@
+   "GameMode": "Stardust",
+   "Gravity": 0.5,
+   "PlayArea": 0.5,
+-  "Date": "4/1/2020 7:24:56 PM",
++  "Date": "4/1/2020 7:35:18 PM",
+   "Table": "Table_RPG",
+   "Sky": "Sky_Forest",
+   "Note": "",
+@@ -67,12 +67,12 @@
+         "Color": "Red",
+         "Transform": {
+           "posX": -15.1108065,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": -20.1076221,
+           "rotX": 0,
+           "rotY": 0,
+           "rotZ": 0,
+-          "scaleX": 11.7725582,
++          "scaleX": 11.77261,
+           "scaleY": 9.174497,
+           "scaleZ": 4.87123871
+         }
+@@ -81,54 +81,54 @@
+         "Color": "Yellow",
+         "Transform": {
+           "posX": -30.2150211,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": 10.17524,
+           "rotX": 0,
+           "rotY": 90,
+           "rotZ": 0,
+-          "scaleX": 11.6593313,
++          "scaleX": 11.6597223,
+           "scaleY": 9.174497,
+-          "scaleZ": 4.922142
++          "scaleZ": 4.922362
+         }
+       },
+       {
+         "Color": "Purple",
+         "Transform": {
+           "posX": 30.25128,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": 9.59069252,
+           "rotX": 0,
+           "rotY": 270,
+           "rotZ": 0,
+-          "scaleX": 11.6593246,
++          "scaleX": 11.6597157,
+           "scaleY": 9.174497,
+-          "scaleZ": 4.922142
++          "scaleZ": 4.922362
+         }
+       },
+       {
+         "Color": "Blue",
+         "Transform": {
+           "posX": 15.4749184,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": 19.8365288,
+           "rotX": 0,
+           "rotY": 179.8,
+           "rotZ": 0,
+-          "scaleX": 11.7763882,
++          "scaleX": 11.7768278,
+           "scaleY": 9.174497,
+-          "scaleZ": 4.87360144
++          "scaleZ": 4.873847
+         }
+       },
+       {
+         "Color": "White",
+         "Transform": {
+           "posX": 15.1961479,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": -20.1400986,
+           "rotX": 0,
+           "rotY": 0,
+           "rotZ": 0,
+-          "scaleX": 11.772543,
++          "scaleX": 11.7726,
+           "scaleY": 9.17449951,
+           "scaleZ": 4.87123871
+         }
+@@ -137,12 +137,12 @@
+         "Color": "Green",
+         "Transform": {
+           "posX": -15.1927767,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": 19.787817,
+           "rotX": 0,
+           "rotY": 180,
+           "rotZ": 0,
+-          "scaleX": 11.772543,
++          "scaleX": 11.7726,
+           "scaleY": 9.174497,
+           "scaleZ": 4.87123871
+         }
+@@ -151,28 +151,28 @@
+         "Color": "Pink",
+         "Transform": {
+           "posX": 30.10358,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": -8.449126,
+           "rotX": 0,
+           "rotY": 270,
+           "rotZ": 0,
+-          "scaleX": 11.6593218,
++          "scaleX": 11.6597128,
+           "scaleY": 9.174497,
+-          "scaleZ": 4.922142
++          "scaleZ": 4.922362
+         }
+       },
+       {
+         "Color": "Orange",
+         "Transform": {
+           "posX": -30.247818,
+-          "posY": 4.82785654,
++          "posY": 4.83661366,
+           "posZ": -8.822588,
+           "rotX": 0,
+           "rotY": 90,
+           "rotZ": 0,
+-          "scaleX": 11.6593351,
++          "scaleX": 11.6597261,
+           "scaleY": 9.174497,
+-          "scaleZ": 4.922142
++          "scaleZ": 4.922362
+         }
+       }
+     ]
+diff --git a/src/global/76905f.aces.json b/src/global/76905f.aces.json
+index b052089..a1e6f13 100644
+--- a/src/global/76905f.aces.json
++++ b/src/global/76905f.aces.json
+@@ -2,9 +2,9 @@
+   "Name": "Deck",
+   "Transform": {
+     "posX": -20.9753017,
+-    "posY": 1.03808928,
++    "posY": 1.03991866,
+     "posZ": -1.0435183,
+-    "rotX": 1.06101588e-7,
++    "rotX": 1.08941173e-7,
+     "rotY": 180,
+     "rotZ": 180,
+     "scaleX": 1,
+@@ -31,165 +31,12 @@
+   "Hands": false,
+   "SidewaysCard": false,
+   "DeckIDs": [
++    52,
+     8,
+     3,
+     38,
+     33
+   ],
+   "LuaScriptState": "",
+-  "ContainedObjects": [
+-    {
+-      "Name": "Card",
+-      "Transform": {
+-        "posX": -25.2836552,
+-        "posY": 1.03453636,
+-        "posZ": 5.410427,
+-        "rotX": 8.23160349e-8,
+-        "rotY": 180,
+-        "rotZ": 180,
+-        "scaleX": 1,
+-        "scaleY": 1,
+-        "scaleZ": 1
+-      },
+-      "Nickname": "",
+-      "Description": "",
+-      "GMNotes": "",
+-      "ColorDiffuse": {
+-        "r": 0.713235259,
+-        "g": 0.713235259,
+-        "b": 0.713235259
+-      },
+-      "Locked": false,
+-      "Grid": true,
+-      "Snap": true,
+-      "IgnoreFoW": false,
+-      "Autoraise": true,
+-      "Sticky": true,
+-      "Tooltip": true,
+-      "GridProjection": false,
+-      "HideWhenFaceDown": true,
+-      "Hands": true,
+-      "CardID": 8,
+-      "SidewaysCard": false,
+-      "XmlUI": "",
+-      "LuaScript": "",
+-      "LuaScriptState": "",
+-      "GUID": ""
+-    },
+-    {
+-      "Name": "Card",
+-      "Transform": {
+-        "posX": -23.83839,
+-        "posY": 1.03453636,
+-        "posZ": 10.5811129,
+-        "rotX": -3.768503e-9,
+-        "rotY": 180,
+-        "rotZ": 180,
+-        "scaleX": 1,
+-        "scaleY": 1,
+-        "scaleZ": 1
+-      },
+-      "Nickname": "",
+-      "Description": "",
+-      "GMNotes": "",
+-      "ColorDiffuse": {
+-        "r": 0.713235259,
+-        "g": 0.713235259,
+-        "b": 0.713235259
+-      },
+-      "Locked": false,
+-      "Grid": true,
+-      "Snap": true,
+-      "IgnoreFoW": false,
+-      "Autoraise": true,
+-      "Sticky": true,
+-      "Tooltip": true,
+-      "GridProjection": false,
+-      "HideWhenFaceDown": true,
+-      "Hands": true,
+-      "CardID": 3,
+-      "SidewaysCard": false,
+-      "XmlUI": "",
+-      "LuaScript": "",
+-      "LuaScriptState": "",
+-      "GUID": ""
+-    },
+-    {
+-      "Name": "Card",
+-      "Transform": {
+-        "posX": -17.9759426,
+-        "posY": 1.03453636,
+-        "posZ": 9.364995,
+-        "rotX": -4.940345e-8,
+-        "rotY": 180,
+-        "rotZ": 180,
+-        "scaleX": 1,
+-        "scaleY": 1,
+-        "scaleZ": 1
+-      },
+-      "Nickname": "",
+-      "Description": "",
+-      "GMNotes": "",
+-      "ColorDiffuse": {
+-        "r": 0.713235259,
+-        "g": 0.713235259,
+-        "b": 0.713235259
+-      },
+-      "Locked": false,
+-      "Grid": true,
+-      "Snap": true,
+-      "IgnoreFoW": false,
+-      "Autoraise": true,
+-      "Sticky": true,
+-      "Tooltip": true,
+-      "GridProjection": false,
+-      "HideWhenFaceDown": true,
+-      "Hands": true,
+-      "CardID": 38,
+-      "SidewaysCard": false,
+-      "XmlUI": "",
+-      "LuaScript": "",
+-      "LuaScriptState": "",
+-      "GUID": ""
+-    },
+-    {
+-      "Name": "Card",
+-      "Transform": {
+-        "posX": -21.0476151,
+-        "posY": 1.03453636,
+-        "posZ": 3.55571938,
+-        "rotX": -3.30584768e-8,
+-        "rotY": 180,
+-        "rotZ": 180,
+-        "scaleX": 1,
+-        "scaleY": 1,
+-        "scaleZ": 1
+-      },
+-      "Nickname": "",
+-      "Description": "",
+-      "GMNotes": "",
+-      "ColorDiffuse": {
+-        "r": 0.713235259,
+-        "g": 0.713235259,
+-        "b": 0.713235259
+-      },
+-      "Locked": false,
+-      "Grid": true,
+-      "Snap": true,
+-      "IgnoreFoW": false,
+-      "Autoraise": true,
+-      "Sticky": true,
+-      "Tooltip": true,
+-      "GridProjection": false,
+-      "HideWhenFaceDown": true,
+-      "Hands": true,
+-      "CardID": 33,
+-      "SidewaysCard": false,
+-      "XmlUI": "",
+-      "LuaScript": "",
+-      "LuaScriptState": "",
+-      "GUID": ""
+-    }
+-  ],
+   "GUID": "76905f"
+ }
+diff --git a/src/global/e02260.a_bag_of_cards.json b/src/global/e02260.a_bag_of_cards.json
+index f97f40a..01c5b17 100644
+--- a/src/global/e02260.a_bag_of_cards.json
++++ b/src/global/e02260.a_bag_of_cards.json
+@@ -2,11 +2,11 @@
+   "Name": "Bag",
+   "Transform": {
+     "posX": -11.687171,
+-    "posY": 0.7749662,
+-    "posZ": -2.50267529,
+-    "rotX": 0.00000276642663,
+-    "rotY": -0.00000647000343,
+-    "rotZ": -0.00000426553333,
++    "posY": 0.7749661,
++    "posZ": -2.502675,
++    "rotX": -9.1713855e-7,
++    "rotY": -0.00002875483,
++    "rotZ": 0.000004310557,
+     "scaleX": 1,
+     "scaleY": 1,
+     "scaleZ": 1
+diff --git a/src/global/e28613.sample_red_square.json b/src/global/e28613.sample_red_square.json
+index dab5e27..dbb42fa 100644
+--- a/src/global/e28613.sample_red_square.json
++++ b/src/global/e28613.sample_red_square.json
+@@ -4,9 +4,9 @@
+     "posX": -15.2183952,
+     "posY": 1.45999992,
+     "posZ": 2.90877151,
+-    "rotX": -8.647808e-7,
+-    "rotY": 1.39818837e-7,
+-    "rotZ": 8.177796e-7,
++    "rotX": -0.00000102553,
++    "rotY": 2.25317777e-7,
++    "rotZ": 9.55638e-7,
+     "scaleX": 1,
+     "scaleY": 1,
+     "scaleZ": 1
+@@ -15,9 +15,9 @@
+   "Description": "",
+   "GMNotes": "",
+   "ColorDiffuse": {
+-    "r": 0.854901969,
+-    "g": 0.09803919,
+-    "b": 0.0941176042
++    "r": 0.192156821,
++    "g": 0.7019608,
++    "b": 0.168627411
+   },
+   "Locked": false,
+   "Grid": true,

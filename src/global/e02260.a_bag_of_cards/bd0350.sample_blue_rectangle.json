@@ -30,5 +30,6 @@
   "HideWhenFaceDown": false,
   "Hands": false,
   "LuaScriptState": "",
-  "GUID": "bd0350"
+  "GUID": "bd0350",
+  "__zIndex": 1
 }

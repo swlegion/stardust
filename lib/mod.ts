@@ -39,7 +39,7 @@ interface MetaComponent {
   /**
    * Position.
    */
-  $zIndex?: number;
+  __zIndex?: number;
 }
 
 function normalize(identifier: string): string {
@@ -51,8 +51,8 @@ function normalize(identifier: string): string {
  *
  * @param component
  */
-function canonicalize(component: Component): string {
-  const name = [component.GUID];
+function canonicalize(component: Component, index: number): string {
+  const name = [component.GUID || `$index.${index}`];
   if (component.Nickname) {
     name.push(normalize(component.Nickname));
   } else if (component.Name) {
@@ -66,27 +66,25 @@ function extractMetaFromComponent(
   index: number,
 ): MetaComponent {
   const meta = { ...component };
-  const hasChildGUIDS =
-    meta.ContainedObjects &&
-    meta.ContainedObjects.length &&
-    meta.ContainedObjects[0].GUID;
-  if (hasChildGUIDS) {
+  const hasChildrenWithGUIDS =
+    meta.ContainedObjects && meta.ContainedObjects.some((c) => c.GUID);
+  if (hasChildrenWithGUIDS) {
     delete meta.ContainedObjects;
   }
   delete meta.LuaScript;
   delete meta.States;
   delete meta.XmlUI;
+  meta['__zIndex'] = index;
   const result: MetaComponent = {
-    children: hasChildGUIDS
+    children: hasChildrenWithGUIDS
       ? (component.ContainedObjects || []).map((v, c) => {
           return extractMetaFromComponent(v, c);
         })
       : [],
-    name: canonicalize(component),
+    name: canonicalize(component, index),
     lua: component.LuaScript,
     meta: meta,
     xml: component.XmlUI,
-    $zIndex: index,
   };
   return result;
 }
@@ -114,7 +112,7 @@ export function extractMetaFromSave(save: Save): MetaComponent {
 
 function embedMetaToComponent(component: MetaComponent): Component {
   const copy = { ...component.meta };
-  delete copy['$zIndex'];
+  delete copy['__zIndex'];
   const result = {
     ...copy,
     LuaScript: component.lua || '',
@@ -206,7 +204,7 @@ export function readMetaFromSource(
         const name = file.split('.').slice(0, -1).join('.');
         return readMetaFromSource(name, children);
       })
-      .sort((a, b) => a.$zIndex - b.$zIndex);
+      .sort((a, b) => a.__zIndex - b.__zIndex);
     json.children = files;
   }
   return json;
