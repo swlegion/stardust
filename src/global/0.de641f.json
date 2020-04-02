@@ -1,0 +1,33 @@
+{
+  "Name": "BlockSquare",
+  "Transform": {
+    "posX": -15.2183952,
+    "posY": 1.45999992,
+    "posZ": 2.90877151,
+    "rotX": -4.571309e-7,
+    "rotY": 5.84094941e-8,
+    "rotZ": 4.295446e-7,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Nickname": "Sample Red Square",
+  "Description": "",
+  "GMNotes": "",
+  "ColorDiffuse": {
+    "r": 0.9264706,
+    "g": 0,
+    "b": 0
+  },
+  "Locked": false,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "LuaScriptState": ""
+}
