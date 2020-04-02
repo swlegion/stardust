@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
+import sanitize from 'sanitize-filename';
 import { Component, Save } from './mod/json';
 
 /**
@@ -34,6 +35,30 @@ interface MetaComponent {
    * XML UI.
    */
   xml: string;
+
+  /**
+   * Position.
+   */
+  $zIndex?: number;
+}
+
+function normalize(identifier: string): string {
+  return sanitize(identifier.toLowerCase()).trim().replace(/ /g, '_');
+}
+
+/**
+ * Returns a unique identifier for the provided component.
+ *
+ * @param component
+ */
+function canonicalize(component: Component): string {
+  const name = [component.GUID];
+  if (component.Nickname) {
+    name.push(normalize(component.Nickname));
+  } else if (component.Name) {
+    name.push(normalize(component.Name));
+  }
+  return name.join('.');
 }
 
 function extractMetaFromComponent(
@@ -41,19 +66,27 @@ function extractMetaFromComponent(
   index: number,
 ): MetaComponent {
   const meta = { ...component };
-  delete meta.ContainedObjects;
-  delete meta.GUID;
+  const hasChildGUIDS =
+    meta.ContainedObjects &&
+    meta.ContainedObjects.length &&
+    meta.ContainedObjects[0].GUID;
+  if (hasChildGUIDS) {
+    delete meta.ContainedObjects;
+  }
   delete meta.LuaScript;
   delete meta.States;
   delete meta.XmlUI;
   const result: MetaComponent = {
-    children: (component.ContainedObjects || []).map((v, c) => {
-      return extractMetaFromComponent(v, c);
-    }),
-    name: `${index}.${component.GUID}`,
+    children: hasChildGUIDS
+      ? (component.ContainedObjects || []).map((v, c) => {
+          return extractMetaFromComponent(v, c);
+        })
+      : [],
+    name: canonicalize(component),
     lua: component.LuaScript,
     meta: meta,
     xml: component.XmlUI,
+    $zIndex: index,
   };
   return result;
 }
@@ -80,8 +113,10 @@ export function extractMetaFromSave(save: Save): MetaComponent {
 }
 
 function embedMetaToComponent(component: MetaComponent): Component {
+  const copy = { ...component.meta };
+  delete copy['$zIndex'];
   const result = {
-    ...component.meta,
+    ...copy,
     LuaScript: component.lua || '',
     XmlUI: component.xml || '',
   } as Component;
@@ -113,6 +148,7 @@ export function embedMetaToSave(global: MetaComponent): Save {
  */
 export function writeMetaToSource(meta: MetaComponent, target: string): void {
   const base = path.join(target, meta.name);
+  console.log(base, target);
   fs.writeFileSync(
     `${base}.json`,
     JSON.stringify(meta.meta, null, '  ') + '\n',
@@ -163,16 +199,15 @@ export function readMetaFromSource(
   }
   const children = path.join(source, file);
   if (fs.existsSync(children)) {
-    const collect: MetaComponent[] = [];
     const files = fs
       .readdirSync(children)
       .filter((v) => path.extname(v) === '.json')
-      .sort();
-    for (const file of files) {
-      const name = file.split('.').slice(0, -1).join('.');
-      collect.push(readMetaFromSource(name, children));
-    }
-    json.children = collect;
+      .map((file) => {
+        const name = file.split('.').slice(0, -1).join('.');
+        return readMetaFromSource(name, children);
+      })
+      .sort((a, b) => a.$zIndex - b.$zIndex);
+    json.children = files;
   }
   return json;
 }

@@ -1,12 +1,12 @@
 {
   "Name": "BlockRectangle",
   "Transform": {
-    "posX": -6.921986,
-    "posY": 1.45999992,
-    "posZ": -1.94932747,
-    "rotX": -9.911327e-8,
-    "rotY": -1.57618647e-8,
-    "rotZ": 2.69255025e-7,
+    "posX": -10.6742544,
+    "posY": 3.51583743,
+    "posZ": -9.093908,
+    "rotX": 1.53441906,
+    "rotY": 0.0113894092,
+    "rotZ": 0.850356936,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
@@ -29,5 +29,6 @@
   "GridProjection": false,
   "HideWhenFaceDown": false,
   "Hands": false,
-  "LuaScriptState": ""
+  "LuaScriptState": "",
+  "GUID": "bd0350"
 }

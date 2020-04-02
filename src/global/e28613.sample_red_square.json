@@ -4,9 +4,9 @@
     "posX": -15.2183952,
     "posY": 1.45999992,
     "posZ": 2.90877151,
-    "rotX": -4.571309e-7,
-    "rotY": 5.84094941e-8,
-    "rotZ": 4.295446e-7,
+    "rotX": -8.647808e-7,
+    "rotY": 1.39818837e-7,
+    "rotZ": 8.177796e-7,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
@@ -15,9 +15,9 @@
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
-    "r": 0.9264706,
-    "g": 0,
-    "b": 0
+    "r": 0.854901969,
+    "g": 0.09803919,
+    "b": 0.0941176042
   },
   "Locked": false,
   "Grid": true,
@@ -29,5 +29,6 @@
   "GridProjection": false,
   "HideWhenFaceDown": false,
   "Hands": false,
-  "LuaScriptState": ""
+  "LuaScriptState": "",
+  "GUID": "e28613"
 }

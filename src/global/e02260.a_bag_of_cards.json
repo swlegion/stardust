@@ -1,0 +1,36 @@
+{
+  "Name": "Bag",
+  "Transform": {
+    "posX": -11.687171,
+    "posY": 0.7749662,
+    "posZ": -2.50267529,
+    "rotX": 0.00000276642663,
+    "rotY": -0.00000647000343,
+    "rotZ": -0.00000426553333,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Nickname": "A bag of cards",
+  "Description": "",
+  "GMNotes": "",
+  "ColorDiffuse": {
+    "r": 0.7058823,
+    "g": 0.366520882,
+    "b": 0
+  },
+  "Locked": false,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "MaterialIndex": -1,
+  "MeshIndex": -1,
+  "LuaScriptState": "",
+  "GUID": "e02260"
+}
