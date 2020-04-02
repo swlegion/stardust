@@ -1,0 +1,35 @@
+{
+  "Name": "BlockSquare",
+  "Transform": {
+    "posX": 10.7887774,
+    "posY": 1.46,
+    "posZ": -6.13435268,
+    "rotX": -0.00000241401335,
+    "rotY": 2.23817523e-7,
+    "rotZ": 0.000004388221,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Nickname": "Sample Yellow Square",
+  "Description": "",
+  "GMNotes": "",
+  "ColorDiffuse": {
+    "r": 0.905,
+    "g": 0.898,
+    "b": 0.171999961
+  },
+  "Locked": false,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "LuaScriptState": "",
+  "GUID": "e28613",
+  "__zIndex": 2
+}
