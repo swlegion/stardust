@@ -79,6 +79,32 @@ export function extractMetaFromSave(save: Save): MetaComponent {
   };
 }
 
+function embedMetaToComponent(component: MetaComponent): Component {
+  const result = {
+    ...component.meta,
+    LuaScript: component.lua || '',
+    XmlUI: component.xml || '',
+  } as Component;
+  if (component.children && component.children.length) {
+    result.ContainedObjects = component.children.map(embedMetaToComponent);
+  }
+  return result;
+}
+
+/**
+ * Writes a meta tree as a save file.
+ *
+ * @param global
+ */
+export function embedMetaToSave(global: MetaComponent): Save {
+  return {
+    ...global.meta,
+    ObjectStates: global.children.map(embedMetaToComponent),
+    LuaScript: global.lua || '',
+    XmlUI: global.xml || '',
+  } as Save;
+}
+
 /**
  * Writes the meta tree to the provided directory.
  *
