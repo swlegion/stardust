@@ -143,9 +143,12 @@ export function readMetaFromSource(
   file: string,
   source: string,
 ): MetaComponent {
-  const json = fs.readJsonSync(
+  const meta = fs.readJsonSync(
     path.join(source, `${file}.json`),
   ) as MetaComponent;
+  const json = {
+    meta: meta,
+  } as MetaComponent;
   const lua = path.join(source, `${file}.lua`);
   if (fs.existsSync(lua)) {
     json.lua = fs.readFileSync(lua, { encoding: 'UTF-8' });
@@ -163,10 +166,11 @@ export function readMetaFromSource(
     const collect: MetaComponent[] = [];
     const files = fs
       .readdirSync(children)
-      .filter((v) => path.extname(v) === 'json')
+      .filter((v) => path.extname(v) === '.json')
       .sort();
     for (const file of files) {
-      collect.push(readMetaFromSource(path.basename(file), children));
+      const name = file.split('.').slice(0, -1).join('.');
+      collect.push(readMetaFromSource(name, children));
     }
     json.children = collect;
   }
