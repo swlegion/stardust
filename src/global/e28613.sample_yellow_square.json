@@ -1,23 +1,23 @@
 {
-  "Name": "BlockRectangle",
+  "Name": "BlockSquare",
   "Transform": {
-    "posX": -6.921986,
-    "posY": 1.45999992,
-    "posZ": -1.94932747,
-    "rotX": -9.911327e-8,
-    "rotY": -1.57618647e-8,
-    "rotZ": 2.69255025e-7,
+    "posX": 10.7887774,
+    "posY": 1.46,
+    "posZ": -6.13435268,
+    "rotX": -0.00000241401335,
+    "rotY": 2.23817523e-7,
+    "rotZ": 0.000004388221,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
   },
-  "Nickname": "Sample Blue Rectangle",
+  "Nickname": "Sample Yellow Square",
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
-    "r": 0,
-    "g": 0.201567829,
-    "b": 0.8235294
+    "r": 0.905,
+    "g": 0.898,
+    "b": 0.171999961
   },
   "Locked": false,
   "Grid": true,
@@ -29,5 +29,7 @@
   "GridProjection": false,
   "HideWhenFaceDown": false,
   "Hands": false,
-  "LuaScriptState": ""
+  "LuaScriptState": "",
+  "GUID": "e28613",
+  "__zIndex": 2
 }

@@ -31,5 +31,7 @@
   "Hands": true,
   "CardID": 3,
   "SidewaysCard": false,
-  "LuaScriptState": ""
+  "LuaScriptState": "",
+  "GUID": "",
+  "__zIndex": 1
 }

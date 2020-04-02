@@ -1,10 +1,10 @@
 {
   "Name": "Card",
   "Transform": {
-    "posX": -25.2836552,
+    "posX": -17.9759426,
     "posY": 1.03453636,
-    "posZ": 5.410427,
-    "rotX": 8.23160349e-8,
+    "posZ": 9.364995,
+    "rotX": -4.940345e-8,
     "rotY": 180,
     "rotZ": 180,
     "scaleX": 1,
@@ -29,7 +29,9 @@
   "GridProjection": false,
   "HideWhenFaceDown": true,
   "Hands": true,
-  "CardID": 8,
+  "CardID": 38,
   "SidewaysCard": false,
-  "LuaScriptState": ""
+  "LuaScriptState": "",
+  "GUID": "",
+  "__zIndex": 2
 }

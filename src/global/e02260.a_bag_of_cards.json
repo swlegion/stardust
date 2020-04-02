@@ -1,22 +1,22 @@
 {
-  "Name": "BlockSquare",
+  "Name": "Bag",
   "Transform": {
-    "posX": -15.2183952,
-    "posY": 1.45999992,
-    "posZ": 2.90877151,
-    "rotX": -4.571309e-7,
-    "rotY": 5.84094941e-8,
-    "rotZ": 4.295446e-7,
+    "posX": -11.68717,
+    "posY": 0.7749666,
+    "posZ": -2.50267458,
+    "rotX": 9.15467638e-7,
+    "rotY": -0.0000613849843,
+    "rotZ": -0.000008120855,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
   },
-  "Nickname": "Sample Red Square",
+  "Nickname": "A bag of cards",
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
-    "r": 0.9264706,
-    "g": 0,
+    "r": 0.7058823,
+    "g": 0.366520882,
     "b": 0
   },
   "Locked": false,
@@ -29,5 +29,9 @@
   "GridProjection": false,
   "HideWhenFaceDown": false,
   "Hands": false,
-  "LuaScriptState": ""
+  "MaterialIndex": -1,
+  "MeshIndex": -1,
+  "LuaScriptState": "",
+  "GUID": "e02260",
+  "__zIndex": 1
 }

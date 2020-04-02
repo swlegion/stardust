@@ -1,12 +1,12 @@
 {
   "Name": "Card",
   "Transform": {
-    "posX": -17.9759426,
-    "posY": 1.03453636,
-    "posZ": 9.364995,
-    "rotX": -4.940345e-8,
-    "rotY": 180,
-    "rotZ": 180,
+    "posX": -10.9577866,
+    "posY": 3.10861,
+    "posZ": -2.974661,
+    "rotX": 0.242777213,
+    "rotY": 180.001724,
+    "rotZ": 180.814819,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
@@ -29,7 +29,9 @@
   "GridProjection": false,
   "HideWhenFaceDown": true,
   "Hands": true,
-  "CardID": 38,
+  "CardID": 52,
   "SidewaysCard": false,
-  "LuaScriptState": ""
+  "LuaScriptState": "",
+  "GUID": "bb7549",
+  "__zIndex": 1
 }
