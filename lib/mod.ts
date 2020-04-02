@@ -146,7 +146,6 @@ export function embedMetaToSave(global: MetaComponent): Save {
  */
 export function writeMetaToSource(meta: MetaComponent, target: string): void {
   const base = path.join(target, meta.name);
-  console.log(base, target);
   fs.writeFileSync(
     `${base}.json`,
     JSON.stringify(meta.meta, null, '  ') + '\n',
