@@ -173,12 +173,11 @@ export function readMetaFromSource(
   file: string,
   source: string,
 ): MetaComponent {
-  const meta = fs.readJsonSync(
-    path.join(source, `${file}.json`),
-  ) as MetaComponent;
+  const meta = fs.readJsonSync(path.join(source, `${file}.json`)) as object;
   const json = {
     name: file,
     meta: meta,
+    __zIndex: meta['__zIndex'],
   } as MetaComponent;
   const lua = path.join(source, `${file}.lua`);
   if (fs.existsSync(lua)) {
