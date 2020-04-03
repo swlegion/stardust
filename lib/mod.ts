@@ -197,6 +197,7 @@ export function readMetaFromSource(
     const files = fs
       .readdirSync(children)
       .filter((v) => path.extname(v) === '.json')
+      .sort()
       .map((file) => {
         const name = file.split('.').slice(0, -1).join('.');
         return readMetaFromSource(name, children);
