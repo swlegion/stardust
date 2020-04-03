@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import sanitize from 'sanitize-filename';
+import { normalizeName } from './mod/file';
 import { Component, Save } from './mod/json';
 
 /**
@@ -42,22 +42,19 @@ interface MetaComponent {
   __zIndex?: number;
 }
 
-function normalize(identifier: string): string {
-  return sanitize(identifier.toLowerCase()).trim().replace(/ /g, '_');
-}
-
 /**
  * Returns a unique identifier for the provided component.
  *
  * @param component
  */
 function canonicalize(component: Component, index: number): string {
-  const name = [component.GUID || `$index.${index}`];
+  const name = [];
   if (component.Nickname) {
-    name.push(normalize(component.Nickname));
+    name.push(normalizeName(component.Nickname));
   } else if (component.Name) {
-    name.push(normalize(component.Name));
+    name.push(normalizeName(component.Name));
   }
+  name.push(component.GUID || `$index.${index}`);
   return name.join('.');
 }
 

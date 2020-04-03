@@ -4,7 +4,8 @@
 
    A. Install [Prettier for Visual Studio Code][ext-prettier]
    B. Install [ESLint for Visual Studio Code][ext-es-lint]
-   C. Install [Lua Formatter for Visual Studio Code][ext-lua-format]
+   C. Install [Jest for Visual Studio Code][ext-jest]
+   D. Install [Lua Formatter for Visual Studio Code][ext-lua-format]
 
 2. Download and install [NodeJS][dl-node].
 
@@ -16,6 +17,7 @@
 [dl-node]: https://nodejs.org/en/download/
 [ext-prettier]: vscode:extension/esbenp.prettier-vscode
 [ext-es-lint]: vscode:extension/dbaeumer.vscode-eslint
+[ext-jest]: vscode:extension/Orta.vscode-jest
 [ext-lua-format]: vscode:extension/Koihik.vscode-lua-format
 
 # Commands
