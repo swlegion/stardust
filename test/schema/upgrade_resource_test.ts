@@ -3,7 +3,7 @@
 import fs from 'fs-extra';
 import glob from 'glob';
 import path from 'path';
-import { Upgrade } from '../../lib/types/schema';
+import { Upgrade } from '../../lib/schema';
 
 const files = glob.sync(path.join('data', 'upgrade', '**', '*.json'));
 
