@@ -232,7 +232,7 @@ test('should save a simple tree to disk', () => {
 
   expect(global).toMatchInlineSnapshot(`
     Object {
-      "$children": Array [
+      "$Children": Array [
         "red_block.A12345",
         "blue_block.B12345",
       ],
@@ -242,7 +242,7 @@ test('should save a simple tree to disk', () => {
 
   expect(red).toMatchInlineSnapshot(`
     Object {
-      "$children": Array [],
+      "$Children": Array [],
       "GUID": "A12345",
       "Name": "Block",
       "Nickname": "Red Block",
@@ -251,7 +251,7 @@ test('should save a simple tree to disk', () => {
 
   expect(blue).toMatchInlineSnapshot(`
     Object {
-      "$children": Array [],
+      "$Children": Array [],
       "GUID": "B12345",
       "Name": "Block",
       "Nickname": "Blue Block",
