@@ -2,10 +2,9 @@
 
 import fs from 'fs-extra';
 import path from 'path';
-import { extractMetaFromSave, writeMetaToSource } from '../lib/mod';
-import { Save } from '../lib/mod/json';
+import { ModRepoMapper } from '../lib/mod/mapper';
 
 const file = path.join('.build', 'stardust', 'Stardust.json');
-const json = fs.readJsonSync(file) as Save;
-const meta = extractMetaFromSave(json);
-writeMetaToSource(meta, path.join('src'));
+const mapper = new ModRepoMapper();
+const json = mapper.mapSave(fs.readJsonSync(file));
+mapper.writeMapSync(path.join('src'), json);

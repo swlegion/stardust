@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import fs from 'fs-extra';
 import path from 'path';
 import { exit } from 'shelljs';
-import { embedMetaToSave, readMetaFromSource } from '../lib/mod';
+import { ModRepoMapper } from '../lib/mod/mapper';
 import { concatAndMergeData } from '../lib/tts_json_helper';
 
 function onCleanup(): void {
@@ -19,9 +19,9 @@ console.log('Starting up build process...');
 console.log('Copying and re-building mod...');
 const modInSourceTree = path.join('src');
 const modInOutputDir = path.join('.build', 'stardust', 'Stardust.json');
-const modMetaTree = readMetaFromSource('global', modInSourceTree);
-const metaToSave = embedMetaToSave(modMetaTree);
-fs.writeFileSync(modInOutputDir, JSON.stringify(metaToSave, null, '  '));
+const mapper = new ModRepoMapper();
+const modMetaTree = mapper.readMapSync(modInSourceTree, 'global');
+mapper.writeMapSync(modInOutputDir, modMetaTree);
 
 console.log('Concatenating and merging JSON...');
 const mergedJson = concatAndMergeData();

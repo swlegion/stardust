@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import glob from 'glob';
 import path from 'path';
-import { DataBlob, Unit } from './types/schema';
+import { DataBlob, Unit } from './schema';
 
 const rewriteBasePath = `file://${path.posix.resolve('.')}/`.replace(
   /\\/g,
