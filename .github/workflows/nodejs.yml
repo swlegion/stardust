@@ -34,13 +34,19 @@ jobs:
 
       - name: Save
         uses: actions/upload-artifact@v1
+        with:
+          name: build-files
+          path: .build
 
   deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Download
-        uses: actions/upload-artifact@v1
+        uses: actions/download-artifact@v1
+        with:
+          name: build-files
+          path: .build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.4.6
