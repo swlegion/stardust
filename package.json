@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "description": "A new TTS mod.",
   "scripts": {
-    "build": "npx ts-node ./scripts/build.ts --skip-linking",
-    "deploy": "gh-pages -d .build",
-    "doctor": "npx ts-node ./scripts/doctor.ts",
-    "extract": "npx ts-node ./scripts/extract.ts",
-    "fix": "npx ts-node ./scripts/fix.ts",
-    "lint": "npx ts-node ./scripts/lint.ts",
+    "build": "node_modules/.bin/ts-node ./scripts/build.ts --skip-linking",
+    "doctor": "node_modules/.bin/ts-node ./scripts/doctor.ts",
+    "extract": "node_modules/.bin/ts-node ./scripts/extract.ts",
+    "fix": "node_modules/.bin/ts-node ./scripts/fix.ts",
+    "lint": "node_modules/.bin/ts-node ./scripts/lint.ts",
     "presubmit": "npm install && npm run lint && npm test",
     "test": "jest",
     "watch": "nodemon ./scripts/build.ts --watch src --watch lib --ext js,ts,xml,json,ttslua"
@@ -48,7 +47,7 @@
     "sanitize-filename": "^1.6.3",
     "shelljs": "^0.8.3",
     "ts-jest": "^25.2.1",
-    "ts-node": "^8.8.1",
+    "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   }
 }
