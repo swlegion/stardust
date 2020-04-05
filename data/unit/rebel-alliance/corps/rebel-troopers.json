@@ -1,0 +1,26 @@
+{
+  "card": "./rebel-troopers/card.png",
+  "faction": "Rebel Alliance",
+  "rank": "Corps",
+  "name": "Rebel Troopers",
+  "size": "Small",
+  "speed": 2,
+  "models": [
+    {
+      "render": "./rebel-troopers/1.obj",
+      "texture": "./rebel-troopers/leader.jpg"
+    },
+    {
+      "render": "./rebel-troopers/2.obj",
+      "texture": "./rebel-troopers/generic.jpg"
+    },
+    {
+      "render": "./rebel-troopers/3.obj",
+      "texture": "./rebel-troopers/generic.jpg"
+    },
+    {
+      "render": "./rebel-troopers/4.obj",
+      "texture": "./rebel-troopers/generic.jpg"
+    }
+  ]
+}

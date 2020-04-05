@@ -1,0 +1,9 @@
+{
+  "card": "./rebel-trooper/card.png",
+  "model": {
+    "render": "./rebel-trooper/model.obj",
+    "texture": "../../unit/rebel-alliance/corps/rebel-troopers/generic.jpg"
+  },
+  "name": "Rebel Trooper",
+  "type": "Personnel"
+}
