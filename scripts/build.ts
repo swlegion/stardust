@@ -5,6 +5,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { exit } from 'shelljs';
 import { ModRepoMapper } from '../lib/mod/mapper';
+import { createDevLink, findSavesDir } from '../lib/mod/tools';
 import { concatAndMergeData } from '../lib/tts_json_helper';
 
 function onCleanup(): void {
@@ -16,12 +17,20 @@ process.on('SIGINT', onCleanup);
 console.log(chalk.magentaBright('\nStardust Development Tool\n'));
 console.log('Starting up build process...');
 
-console.log('Copying and re-building mod...');
+const savesDir = findSavesDir();
+console.log('Found TTS installation', savesDir);
+createDevLink(savesDir);
+
 const modInSourceTree = path.join('src');
+console.log('Copying and re-building mod from', modInSourceTree);
+
 const modInOutputDir = path.join('.build', 'stardust', 'Stardust.json');
 const mapper = new ModRepoMapper();
 const modMetaTree = mapper.readMapSync(modInSourceTree, 'global');
-mapper.writeMapSync(modInOutputDir, modMetaTree);
+
+console.log('Saving mod to', modInOutputDir);
+const save = mapper.buildSave(modMetaTree);
+fs.writeFileSync(modInOutputDir, JSON.stringify(save, null, '  '));
 
 console.log('Concatenating and merging JSON...');
 const mergedJson = concatAndMergeData();
