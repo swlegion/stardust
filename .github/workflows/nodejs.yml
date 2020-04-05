@@ -53,10 +53,12 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: build-files
+          path: publish
 
       - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v1
+        uses: JamesIves/github-pages-deploy-action@3.4.6
         with:
-          build_dir: .build
-        env:
-          GITHUB_PAT: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: publish
+          SINGLE_COMMIT: true
