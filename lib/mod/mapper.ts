@@ -84,8 +84,10 @@ export class ModRepoMapper {
    * @param global
    */
   public buildSave(global: MappedComponent): Save {
+    const meta = { ...global.meta };
+    delete meta[internalChildrenField];
     return {
-      ...global.meta,
+      ...meta,
       ObjectStates: global.children.map(this.buildComponent.bind(this)),
       LuaScript: global.lua,
       XmlUI: global.xml,
@@ -156,7 +158,6 @@ export class ModRepoMapper {
       xml = fs.readFileSync(`${base}.xml`, { encoding: 'UTF-8' });
     }
     const children: string[] = meta[internalChildrenField] || [];
-    meta.children = children.map((c) => this.readMapSync(base, c));
     delete meta[internalChildrenField];
     return {
       children: children.map((c) => this.readMapSync(base, c)),
