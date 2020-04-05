@@ -1,12 +1,12 @@
 {
-  "Name": "Card",
+  "Name": "BlockRectangle",
   "Transform": {
-    "posX": -25.2836552,
-    "posY": 1.03453636,
-    "posZ": 5.410427,
-    "rotX": 8.23160349e-8,
-    "rotY": 180,
-    "rotZ": 180,
+    "posX": -11.3804674,
+    "posY": 3.54467678,
+    "posZ": 3.70477486,
+    "rotX": 0.373311281,
+    "rotY": -0.0009935839,
+    "rotZ": 359.695,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
@@ -15,9 +15,9 @@
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
-    "r": 0.713235259,
-    "g": 0.713235259,
-    "b": 0.713235259
+    "r": 0,
+    "g": 0.201567829,
+    "b": 0.8235294
   },
   "Locked": false,
   "Grid": true,
@@ -27,11 +27,9 @@
   "Sticky": true,
   "Tooltip": true,
   "GridProjection": false,
-  "HideWhenFaceDown": true,
-  "Hands": true,
-  "CardID": 8,
-  "SidewaysCard": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
   "LuaScriptState": "",
-  "GUID": "",
-  "__zIndex": 0
+  "GUID": "b60aa6",
+  "$Children": []
 }

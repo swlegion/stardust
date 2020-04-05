@@ -1,23 +1,23 @@
 {
   "Name": "BlockSquare",
   "Transform": {
-    "posX": 10.7887774,
-    "posY": 1.46,
-    "posZ": -6.13435268,
-    "rotX": -0.00000241401335,
-    "rotY": 2.23817523e-7,
-    "rotZ": 0.000004388221,
+    "posX": -17.1639633,
+    "posY": 1.45999992,
+    "posZ": 7.31388664,
+    "rotX": -8.647808e-7,
+    "rotY": 1.39818837e-7,
+    "rotZ": 8.177796e-7,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
   },
-  "Nickname": "Sample Yellow Square",
+  "Nickname": "Red Block",
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
-    "r": 0.905,
-    "g": 0.898,
-    "b": 0.171999961
+    "r": 0.9264706,
+    "g": 0,
+    "b": 0
   },
   "Locked": false,
   "Grid": true,
@@ -30,6 +30,6 @@
   "HideWhenFaceDown": false,
   "Hands": false,
   "LuaScriptState": "",
-  "GUID": "e28613",
-  "__zIndex": 2
+  "GUID": "f3c00b",
+  "$Children": []
 }

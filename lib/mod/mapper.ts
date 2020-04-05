@@ -7,17 +7,21 @@ const replaceWithUnderscores = /\-|\s|\:|\./g;
 const collapseUnderscores = /\_\_+/g;
 const removeCharacters = /\(|\)|\[|\]|\{|\}|\<|\>|\!|\'|\"|\`/g;
 
+function camelToSnake(name: string): string {
+  return name.replace(/[\w]([A-Z])/g, (m) => `${m[0]}_${m[1]}`).toLowerCase();
+}
+
 /**
  * Returns the provided filename normalized.
  *
  * @param {String} name
  */
 function normalizeName(name: string): string {
-  const result = name
+  const result = camelToSnake(name.trim())
     .replace(replaceWithUnderscores, '_')
     .replace(removeCharacters, '')
     .replace(collapseUnderscores, '_');
-  return sanitize(result).toLowerCase();
+  return sanitize(result);
 }
 
 /**
