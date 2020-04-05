@@ -7,7 +7,7 @@ let mapper: ModRepoMapper;
 
 beforeEach(() => (mapper = new ModRepoMapper()));
 
-test('should load a trivial [empty] save', () => {
+test('should extract a trivial [empty] save', () => {
   const actual = mapper.mapSave({
     LuaScript: '-- Lua',
     ObjectStates: [],
@@ -27,7 +27,7 @@ test('should load a trivial [empty] save', () => {
   `);
 });
 
-test('should load a save with a few children', () => {
+test('should extract a save with a few children', () => {
   const actual = mapper.mapSave({
     LuaScript: '-- Lua',
     ObjectStates: [
@@ -85,7 +85,7 @@ test('should load a save with a few children', () => {
   `);
 });
 
-test('should load a save with a few un-GUID-ed children', () => {
+test('should extract a save with a few un-GUID-ed children', () => {
   const actual = mapper.mapSave({
     LuaScript: '-- Lua',
     ObjectStates: [

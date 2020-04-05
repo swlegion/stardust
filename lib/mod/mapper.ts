@@ -67,6 +67,29 @@ export interface MappedComponent {
  * ```
  */
 export class ModRepoMapper {
+  private buildComponent(component: MappedComponent): Component {
+    return {
+      ...component.meta,
+      ContainedObjects: component.children.map(this.buildComponent.bind(this)),
+      LuaScript: component.lua,
+      XmlUI: component.xml,
+    } as Component;
+  }
+
+  /**
+   * Returns a {Save} file from a tree of mapped components.
+   *
+   * @param global
+   */
+  public buildSave(global: MappedComponent): Save {
+    return {
+      ...global.meta,
+      ObjectStates: global.children.map(this.buildComponent.bind(this)),
+      LuaScript: global.lua,
+      XmlUI: global.xml,
+    } as Save;
+  }
+
   private mapComponent(component: Component, index: number): MappedComponent {
     const meta = { ...component };
     delete meta.ContainedObjects;
@@ -114,6 +137,35 @@ export class ModRepoMapper {
   }
 
   /**
+   * Reads a mapped component tree from disk.
+   *
+   * @param {String} target
+   * @param {String} name
+   */
+  public readMapSync(target: string, name: string): MappedComponent {
+    const base = path.join(target, name);
+    const meta = fs.readJsonSync(`${base}.json`);
+    let lua = '';
+    let xml = '';
+    if (fs.existsSync(`${base}.lua`)) {
+      lua = fs.readFileSync(`${base}.lua`, { encoding: 'UTF-8' });
+    }
+    if (fs.existsSync(`${base}.xml`)) {
+      xml = fs.readFileSync(`${base}.xml`, { encoding: 'UTF-8' });
+    }
+    const children: string[] = meta['$children'] || [];
+    meta.children = children.map((c) => this.readMapSync(base, c));
+    delete meta['$children'];
+    return {
+      children: children.map((c) => this.readMapSync(base, c)),
+      name: name,
+      meta: meta,
+      lua: lua,
+      xml: xml,
+    };
+  }
+
+  /**
    * Write the provided mapped component tree to disk.
    *
    * Returns an array of strings of child files written to disk.
@@ -130,7 +182,7 @@ export class ModRepoMapper {
     if (component.xml) {
       fs.writeFileSync(`${base}.xml`, component.xml);
     }
-    let results: string[];
+    let results: string[] = [];
     if (component.children && component.children.length) {
       if (fs.existsSync(base)) {
         fs.removeSync(base);
@@ -140,8 +192,6 @@ export class ModRepoMapper {
         this.writeMapSync(base, c);
         return c.name;
       });
-    } else {
-      results = [];
     }
     meta['$children'] = results;
     fs.writeFileSync(`${base}.json`, JSON.stringify(meta));
