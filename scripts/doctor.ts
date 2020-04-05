@@ -2,7 +2,7 @@
 
 import chalk from 'chalk';
 import * as os from 'os';
-import { createDevLink, findSavesDir } from '../lib/tts_mod_helper';
+import { createDevLink, findSavesDir } from '../lib/mod/tools';
 
 // Say Hello.
 console.log(chalk.magentaBright('\nStardust Doctor: Diagnosing...\n'));

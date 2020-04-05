@@ -52,6 +52,8 @@ export interface MappedComponent {
   xml: string;
 }
 
+const internalChildrenField = '$Children';
+
 /**
  * Provides mapping functionality to store/restore a save JSON as a source tree.
  *
@@ -82,8 +84,10 @@ export class ModRepoMapper {
    * @param global
    */
   public buildSave(global: MappedComponent): Save {
+    const meta = { ...global.meta };
+    delete meta[internalChildrenField];
     return {
-      ...global.meta,
+      ...meta,
       ObjectStates: global.children.map(this.buildComponent.bind(this)),
       LuaScript: global.lua,
       XmlUI: global.xml,
@@ -153,9 +157,8 @@ export class ModRepoMapper {
     if (fs.existsSync(`${base}.xml`)) {
       xml = fs.readFileSync(`${base}.xml`, { encoding: 'UTF-8' });
     }
-    const children: string[] = meta['$children'] || [];
-    meta.children = children.map((c) => this.readMapSync(base, c));
-    delete meta['$children'];
+    const children: string[] = meta[internalChildrenField] || [];
+    delete meta[internalChildrenField];
     return {
       children: children.map((c) => this.readMapSync(base, c)),
       name: name,
@@ -193,8 +196,8 @@ export class ModRepoMapper {
         return c.name;
       });
     }
-    meta['$children'] = results;
-    fs.writeFileSync(`${base}.json`, JSON.stringify(meta));
+    meta[internalChildrenField] = results;
+    fs.writeFileSync(`${base}.json`, JSON.stringify(meta, null, '  '));
     return results;
   }
 }
