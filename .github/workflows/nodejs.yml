@@ -14,13 +14,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-      - run: npm install
-      - run: npm run lint
-      - run: npm test
-      - run: npm run build
-      - run: npm run deploy
-        env:
-          CI: true
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install
+        runs: npm install
+
+      - name: Lint
+        runs: npm run lint
+
+      - name: Test
+        runs: npm run test
+
+      - name: Build
+        runs: npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        on:
+          push:
+            branches:
+              - master
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: .build # The folder the action should deploy.
