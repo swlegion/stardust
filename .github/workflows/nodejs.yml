@@ -20,16 +20,16 @@ jobs:
           persist-credentials: false
 
       - name: Install
-        runs: npm install
+        run: npm install
 
       - name: Lint
-        runs: npm run lint
+        run: npm run lint
 
       - name: Test
-        runs: npm run test
+        run: npm run test
 
       - name: Build
-        runs: npm run build
+        run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
