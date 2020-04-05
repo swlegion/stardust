@@ -1,17 +1,17 @@
 {
   "Name": "Bag",
   "Transform": {
-    "posX": -11.68717,
-    "posY": 0.7749666,
-    "posZ": -2.50267458,
-    "rotX": 9.15467638e-7,
-    "rotY": -0.0000613849843,
-    "rotZ": -0.000008120855,
+    "posX": -11.4274111,
+    "posY": 0.7749659,
+    "posZ": 3.57388115,
+    "rotX": 0.000004265533,
+    "rotY": -4.93587663e-7,
+    "rotZ": 0.00000431555873,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
   },
-  "Nickname": "A bag of cards",
+  "Nickname": "Bag of Stuff",
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
@@ -32,6 +32,9 @@
   "MaterialIndex": -1,
   "MeshIndex": -1,
   "LuaScriptState": "",
-  "GUID": "e02260",
-  "__zIndex": 1
+  "GUID": "4dccf2",
+  "$Children": [
+    "block_triangle.3f4a4f",
+    "block_rectangle.b60aa6"
+  ]
 }

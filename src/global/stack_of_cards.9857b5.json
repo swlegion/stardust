@@ -1,17 +1,17 @@
 {
-  "Name": "Card",
+  "Name": "Deck",
   "Transform": {
-    "posX": -20.9004326,
-    "posY": 1.19689167,
-    "posZ": -0.8726074,
-    "rotX": 2.07100346e-8,
+    "posX": -19.4273148,
+    "posY": 1.038593,
+    "posZ": 2.233927,
+    "rotX": 3.55534246e-9,
     "rotY": 180,
     "rotZ": 180,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1
   },
-  "Nickname": "",
+  "Nickname": "Stack of Cards",
   "Description": "",
   "GMNotes": "",
   "ColorDiffuse": {
@@ -28,10 +28,18 @@
   "Tooltip": true,
   "GridProjection": false,
   "HideWhenFaceDown": true,
-  "Hands": true,
-  "CardID": 52,
+  "Hands": false,
   "SidewaysCard": false,
+  "DeckIDs": [
+    18,
+    41,
+    35
+  ],
   "LuaScriptState": "",
-  "GUID": "bb7549",
-  "__zIndex": 4
+  "GUID": "9857b5",
+  "$Children": [
+    "card.6bc658",
+    "card.283bb4",
+    "card.479ba1"
+  ]
 }
