@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A new TTS mod.",
   "scripts": {
-    "build": "npx ts-node ./scripts/build.ts",
+    "build": "npx ts-node ./scripts/build.ts --skip-linking",
     "deploy": "gh-pages -d .build",
     "doctor": "npx ts-node ./scripts/doctor.ts",
     "extract": "npx ts-node ./scripts/extract.ts",

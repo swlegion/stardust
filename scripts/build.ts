@@ -17,9 +17,13 @@ process.on('SIGINT', onCleanup);
 console.log(chalk.magentaBright('\nStardust Development Tool\n'));
 console.log('Starting up build process...');
 
-const savesDir = findSavesDir();
-console.log('Found TTS installation', savesDir);
-createDevLink(savesDir);
+const skipLinking = process.argv.some((a) => a === '--skip-linking');
+
+if (!skipLinking) {
+  const savesDir = findSavesDir();
+  console.log('Found TTS installation', savesDir);
+  createDevLink(savesDir);
+}
 
 const modInSourceTree = path.join('src');
 console.log('Copying and re-building mod from', modInSourceTree);
