@@ -34,6 +34,7 @@ const modMetaTree = mapper.readMapSync(modInSourceTree, 'global');
 
 console.log('Saving mod to', modInOutputDir);
 const save = mapper.buildSave(modMetaTree);
+fs.mkdirpSync(modInOutputDir);
 fs.writeFileSync(modInOutputDir, JSON.stringify(save, null, '  '));
 
 console.log('Concatenating and merging JSON...');
