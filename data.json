@@ -1,0 +1,57 @@
+{
+  "units": [
+    {
+      "card": "file:///home/runner/work/stardust/stardust/stormtroopers/card.png",
+      "faction": "Galactic Empire",
+      "rank": "Corps",
+      "name": "Stormtroopers",
+      "size": "Small",
+      "speed": 2,
+      "models": [
+        {
+          "render": "file:///home/runner/work/stardust/stardust/stormtroopers/1.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/stormtroopers/texture.jpg"
+        },
+        {
+          "render": "file:///home/runner/work/stardust/stardust/stormtroopers/2.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/stormtroopers/texture.jpg"
+        },
+        {
+          "render": "file:///home/runner/work/stardust/stardust/stormtroopers/3.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/stormtroopers/texture.jpg"
+        },
+        {
+          "render": "file:///home/runner/work/stardust/stardust/stormtroopers/4.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/stormtroopers/texture.jpg"
+        }
+      ]
+    },
+    {
+      "card": "file:///home/runner/work/stardust/stardust/rebel-troopers/card.png",
+      "faction": "Rebel Alliance",
+      "rank": "Corps",
+      "name": "Rebel Troopers",
+      "size": "Small",
+      "speed": 2,
+      "models": [
+        {
+          "render": "file:///home/runner/work/stardust/stardust/rebel-troopers/1.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/rebel-troopers/leader.jpg"
+        },
+        {
+          "render": "file:///home/runner/work/stardust/stardust/rebel-troopers/2.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/rebel-troopers/generic.jpg"
+        },
+        {
+          "render": "file:///home/runner/work/stardust/stardust/rebel-troopers/3.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/rebel-troopers/generic.jpg"
+        },
+        {
+          "render": "file:///home/runner/work/stardust/stardust/rebel-troopers/4.obj",
+          "texture": "file:///home/runner/work/stardust/stardust/rebel-troopers/generic.jpg"
+        }
+      ]
+    }
+  ],
+  "upgrades": []
+}
