@@ -63,4 +63,4 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'Deploy commit: ${{ github.event.head_commit.message }}'
-          deploy_key: abcd
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
