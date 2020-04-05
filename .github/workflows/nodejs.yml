@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+    # TODO: Run on all platforms.
     runs-on: ubuntu-latest
 
     steps:
@@ -30,6 +31,14 @@ jobs:
 
       - name: Build
         run: npm run build --skip-linking
+        uses: actions/upload-artifact@v1
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download
+        uses: actions/upload-artifact@v1
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.4.6
