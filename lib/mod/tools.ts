@@ -36,14 +36,19 @@ export function findSavesDir(): string {
  */
 export function createDevLink(savesDir: string): boolean {
   const from = path.join(savesDir, 'Stardust');
-  const to = path.resolve(path.join('.build', 'stardust'));
+  const to = path.resolve(path.join('.build', 'mod'));
+  // Create .build/mod if missing.
   fs.mkdirpSync(to);
-  if (
-    fs.existsSync(from) &&
-    path.relative(fs.readlinkSync(from), path.normalize(to)) === ''
-  ) {
-    return false;
+
+  // Check to see if Saves/Stardust exists. Create it if necessary.
+  if (fs.existsSync(from)) {
+    if (path.relative(fs.readlinkSync(from), path.normalize(to)) === '') {
+      return false;
+    } else {
+      fs.removeSync(from);
+    }
   }
+
   switch (os.platform()) {
     case 'win32':
       fs.symlinkSync(to, from, 'junction');
