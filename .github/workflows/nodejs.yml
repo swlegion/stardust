@@ -55,10 +55,8 @@ jobs:
           name: build-files
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.4.6
+        uses: crazy-max/ghaction-github-pages@v1
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          DEBUG: true
-          FOLDER: .build
-          SINGLE_COMMIT: true
+          build_dir: .build
+        env:
+          GITHUB_PAT: ${{ secrets.ACCESS_TOKEN }}
