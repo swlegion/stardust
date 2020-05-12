@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "description": "A demo mod for Tabletop Simulator",
   "scripts": {
+    "build": "ts-node ./tool/build.ts",
     "extract": "ts-node ./tool/extract.ts",
-    "fix": "prettier --write . --ignore-path .prettierignore && eslint --fix src test --ext .ts",
-    "lint": "prettier --ignore-path .prettierignore --list-different src && eslint src test --ext .ts",
-    "start": "ts-node ./src/index.ts",
+    "fix": "prettier --write . --ignore-path .prettierignore && eslint --fix src tool --ext .ts",
+    "link": "ts-node ./tool/link.ts",
+    "lint": "prettier --ignore-path .prettierignore --list-different src && eslint src tool --ext .ts",
+    "start": "ts-node ./tool/start.ts",
     "test": "jest"
   },
   "repository": {
