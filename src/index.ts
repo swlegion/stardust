@@ -18,6 +18,17 @@ async function buildToDist(): Promise<expander.SplitSaveState> {
   return expander.splitSave(saveFile);
 }
 
+/**
+ * Builds the source tree from `dist/` to `mod`/.
+ */
+async function extractToMod(): Promise<void> {
+  const source = path.join('dist', 'Sandbox.json');
+  const target = 'mod';
+  const splitter = new expander.SplitIO();
+  const modTree = await splitter.readSaveAndSplit(source);
+  await splitter.writeSplit(target, modTree);
+}
+
 async function createSymlink(): Promise<void> {
   // TODO: Add non-win32 support.
   const from = path.join(
@@ -83,6 +94,7 @@ async function deleteAutoExec(): Promise<void> {
     console.log('Closing...');
     deleteAutoExec()
       .then(() => destroySymlink())
+      .then(() => extractToMod())
       .then(() => {
         fs.removeSync(path.join('dist', 'edit'));
         console.log('Bye!');
