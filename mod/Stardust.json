@@ -4,7 +4,7 @@
     "GameMode": "Stardust",
     "Gravity": 0.5,
     "PlayArea": 0.5,
-    "Date": "5/12/2020 12:57:38 PM",
+    "Date": "5/12/2020 3:53:11 PM",
     "Table": "Table_None",
     "Sky": "Sky_Sunset",
     "SkyURL": "http://cloud-3.steamusercontent.com/ugc/861734447427622808/DB9EEA3B7977B0D4912A0C4C3A76E36FC3A6062E/",
@@ -164,6 +164,8 @@
     "Silouhette.767062.json",
     "Target_Controller.4205cc.json",
     "Unused.d15e58.json",
-    "Miniature.b34d79.json"
+    "Miniature.b34d79.json",
+    "ScriptingTrigger.a5851c.json",
+    "Movement_Template.d7256f.json"
   ]
 }
