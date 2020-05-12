@@ -1,0 +1,59 @@
+{
+  "Object": {
+    "Name": "Custom_Model",
+    "Transform": {
+      "posX": 41.75,
+      "posY": 0.1,
+      "posZ": 16.5020256,
+      "rotX": 3.65458469e-10,
+      "rotY": 269.9878,
+      "rotZ": -4.070565e-7,
+      "scaleX": 0.25,
+      "scaleY": 0.25,
+      "scaleZ": 0.25
+    },
+    "Nickname": "Barricade",
+    "Description": "This is used as a placeholder in order to copy basic terrain to the map for a demo game.",
+    "GMNotes": "",
+    "ColorDiffuse": {
+      "r": 0.883425,
+      "g": 0.883425,
+      "b": 0.883425
+    },
+    "Locked": true,
+    "Grid": false,
+    "Snap": false,
+    "IgnoreFoW": false,
+    "Autoraise": false,
+    "Sticky": false,
+    "Tooltip": true,
+    "GridProjection": false,
+    "HideWhenFaceDown": false,
+    "Hands": false,
+    "CustomMesh": {
+      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/785234540542429589/F10F499F8D061EFA2C4C696641235D706E4C0974/",
+      "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/785234540542379040/149A4BEBD1F20D82737DB21773B93C52BC30DF78/",
+      "NormalURL": "",
+      "ColliderURL": "",
+      "Convex": true,
+      "MaterialIndex": 3,
+      "TypeIndex": 0,
+      "CustomShader": {
+        "SpecularColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "SpecularIntensity": 0,
+        "SpecularSharpness": 2,
+        "FresnelStrength": 0
+      },
+      "CastShadows": true
+    },
+    "XmlUI": "",
+    "LuaScript": "",
+    "LuaScriptState": "",
+    "GUID": "96cf71"
+  },
+  "StatesPaths": {}
+}

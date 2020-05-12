@@ -1,0 +1,39 @@
+{
+  "Object": {
+    "Name": "BlockSquare",
+    "Transform": {
+      "posX": 40.5,
+      "posY": 0,
+      "posZ": 16.5,
+      "rotX": 0,
+      "rotY": 0.00009422849,
+      "rotZ": -3.31896644e-8,
+      "scaleX": 0.400000453,
+      "scaleY": 0.400000453,
+      "scaleZ": 0.400000453
+    },
+    "Nickname": "Target Controller",
+    "Description": "",
+    "GMNotes": "",
+    "ColorDiffuse": {
+      "r": 0.11043074,
+      "g": 0.6901961,
+      "b": 0.4969411
+    },
+    "Locked": true,
+    "Grid": false,
+    "Snap": false,
+    "IgnoreFoW": false,
+    "Autoraise": true,
+    "Sticky": true,
+    "Tooltip": true,
+    "GridProjection": false,
+    "HideWhenFaceDown": false,
+    "Hands": false,
+    "XmlUI": "",
+    "LuaScript": "#include ./Target_Controller.4205cc.lua",
+    "LuaScriptState": "",
+    "GUID": "4205cc"
+  },
+  "StatesPaths": {}
+}

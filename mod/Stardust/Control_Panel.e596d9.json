@@ -1,0 +1,50 @@
+{
+  "Object": {
+    "Name": "Custom_Token",
+    "Transform": {
+      "posX": 42.06,
+      "posY": 0,
+      "posZ": 0,
+      "rotX": 0,
+      "rotY": 180,
+      "rotZ": -6.579901e-8,
+      "scaleX": 2,
+      "scaleY": 1,
+      "scaleZ": 11.8
+    },
+    "Nickname": "Control Panel",
+    "Description": "",
+    "GMNotes": "",
+    "ColorDiffuse": {
+      "r": 0.249997973,
+      "g": 0.249997973,
+      "b": 0.249997973
+    },
+    "Locked": true,
+    "Grid": false,
+    "Snap": false,
+    "IgnoreFoW": false,
+    "Autoraise": false,
+    "Sticky": false,
+    "Tooltip": false,
+    "GridProjection": false,
+    "HideWhenFaceDown": false,
+    "Hands": false,
+    "CustomImage": {
+      "ImageURL": "http://cloud-3.steamusercontent.com/ugc/930433772025605177/DACE2F546514344E9AB0069079EFC72D1E04FE49/",
+      "ImageSecondaryURL": "",
+      "ImageScalar": 1,
+      "WidthScale": 0,
+      "CustomToken": {
+        "Thickness": 0.2,
+        "MergeDistancePixels": 15,
+        "Stackable": false
+      }
+    },
+    "XmlUI": "",
+    "LuaScript": "#include ./Control_Panel.e596d9.lua",
+    "LuaScriptState": "",
+    "GUID": "e596d9"
+  },
+  "StatesPaths": {}
+}

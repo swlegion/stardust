@@ -1,0 +1,61 @@
+<Defaults>
+  <Text color="white" />
+  <Button color="black" textColor="white" />
+  <Button class="loadTable" onClick="Global/loadTable" />
+  <Button class="loadList" onClick="Global/loadList" />
+</Defaults>
+
+<VerticalLayout
+  height="320"
+  width="80"
+  rectAlignment="UpperRight"
+  offsetXY="-10 -50"
+>
+  <VerticalLayout
+    height="100"
+    width="80"
+  >
+    <Text>Table</Text>
+    <!--
+    <Button text="Clear" class="loadTable" id="t0x0"></Button>
+    -->
+    <Button class="loadTable" id="t0x0">
+      Clear
+    </Button>
+    <Button class="loadTable" id="t3x3">
+      3x3
+    </Button>
+    <Button class="loadTable" id="t6x3">
+      6x3
+    </Button>
+    <Button class="loadTable" id="t6x4">
+      6x4
+    </Button>
+  </VerticalLayout>
+  <VerticalLayout
+    id="loadLists"
+    height="100"
+    width="80"
+  >
+    <Text>Lists</Text>
+    <Button class="loadList" id="lDemo">
+      Demo
+    </Button>
+    <Button class="loadList" id="lBuild" interactable="false">
+      Build
+    </Button>
+    <Button class="loadList" id="lLoad" interactable="false">
+      Load
+    </Button>
+  </VerticalLayout>
+</VerticalLayout>
+
+<Panel
+  height="36"
+  width="200"
+  rectAlignment="UpperLeft"
+  offsetXy="55 -8"
+  color="black"
+>
+  <Text>Stardust Alpha</Text>
+</Panel>

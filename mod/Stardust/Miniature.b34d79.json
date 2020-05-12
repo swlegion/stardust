@@ -1,0 +1,59 @@
+{
+  "Object": {
+    "Name": "Custom_Model",
+    "Transform": {
+      "posX": 42.5,
+      "posY": 0.1,
+      "posZ": 16.5,
+      "rotX": -8.014046e-8,
+      "rotY": 1.81441109e-7,
+      "rotZ": 9.157829e-7,
+      "scaleX": 0.4500005,
+      "scaleY": 0.4500005,
+      "scaleZ": 0.4500005
+    },
+    "Nickname": "Miniature",
+    "Description": "",
+    "GMNotes": "This unit is used as the base for any miniature that is a unit leader.",
+    "ColorDiffuse": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    },
+    "Locked": true,
+    "Grid": false,
+    "Snap": false,
+    "IgnoreFoW": false,
+    "Autoraise": false,
+    "Sticky": false,
+    "Tooltip": true,
+    "GridProjection": false,
+    "HideWhenFaceDown": false,
+    "Hands": false,
+    "CustomMesh": {
+      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/785234540541711094/1DF94C3CDF022814179AFBA6D7521E6196760949/",
+      "DiffuseURL": "",
+      "NormalURL": "",
+      "ColliderURL": "http://cloud-3.steamusercontent.com/ugc/785234540537095586/C31C1C750AB535B6816C9216B20609C554578249/",
+      "Convex": true,
+      "MaterialIndex": 3,
+      "TypeIndex": 1,
+      "CustomShader": {
+        "SpecularColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "SpecularIntensity": 0,
+        "SpecularSharpness": 2,
+        "FresnelStrength": 0
+      },
+      "CastShadows": true
+    },
+    "XmlUI": "",
+    "LuaScript": "#include ./Miniature.b34d79.lua",
+    "LuaScriptState": "",
+    "GUID": "b34d79"
+  },
+  "StatesPaths": {}
+}

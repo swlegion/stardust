@@ -1,0 +1,39 @@
+{
+  "Object": {
+    "Name": "BlockSquare",
+    "Transform": {
+      "posX": 38.5,
+      "posY": 0,
+      "posZ": 16.5,
+      "rotX": -7.3045e-7,
+      "rotY": -0.00126989174,
+      "rotZ": 1.66131088e-7,
+      "scaleX": 0.400000453,
+      "scaleY": 0.400000453,
+      "scaleZ": 0.400000453
+    },
+    "Nickname": "Spawn Controller",
+    "Description": "",
+    "GMNotes": "",
+    "ColorDiffuse": {
+      "r": 0.121566735,
+      "g": 0.311109215,
+      "b": 0.6901961
+    },
+    "Locked": true,
+    "Grid": false,
+    "Snap": false,
+    "IgnoreFoW": false,
+    "Autoraise": true,
+    "Sticky": true,
+    "Tooltip": true,
+    "GridProjection": false,
+    "HideWhenFaceDown": false,
+    "Hands": false,
+    "XmlUI": "",
+    "LuaScript": "#include ./Spawn_Controller.525d68.lua",
+    "LuaScriptState": "",
+    "GUID": "525d68"
+  },
+  "StatesPaths": {}
+}

@@ -1,0 +1,169 @@
+{
+  "Save": {
+    "SaveName": "Stardust",
+    "GameMode": "Stardust",
+    "Gravity": 0.5,
+    "PlayArea": 0.5,
+    "Date": "5/12/2020 12:57:38 PM",
+    "Table": "Table_None",
+    "Sky": "Sky_Sunset",
+    "SkyURL": "http://cloud-3.steamusercontent.com/ugc/861734447427622808/DB9EEA3B7977B0D4912A0C4C3A76E36FC3A6062E/",
+    "Note": "",
+    "Rules": "",
+    "XmlUI": "#include ./Stardust.xml",
+    "LuaScript": "#include ./Stardust.lua",
+    "LuaScriptState": "",
+    "MusicPlayer": {
+      "RepeatSong": false,
+      "PlaylistEntry": -1,
+      "CurrentAudioTitle": "Typhons Children - Mission Briefing",
+      "CurrentAudioURL": "http://cloud-3.steamusercontent.com/ugc/781859262304608199/3E220047A4B3A0CE8ED3435C5D9FDDE1133CBCC8/",
+      "AudioLibrary": []
+    },
+    "Grid": {
+      "Type": 0,
+      "Lines": true,
+      "Color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "Opacity": 0.75,
+      "ThickLines": true,
+      "Snapping": false,
+      "Offset": false,
+      "BothSnapping": true,
+      "xSize": 6,
+      "ySize": 6,
+      "PosOffset": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      }
+    },
+    "Lighting": {
+      "LightIntensity": 0.54,
+      "LightColor": {
+        "r": 1,
+        "g": 0.9804,
+        "b": 0.8902
+      },
+      "AmbientIntensity": 1.3,
+      "AmbientType": 0,
+      "AmbientSkyColor": {
+        "r": 0.5,
+        "g": 0.5,
+        "b": 0.5
+      },
+      "AmbientEquatorColor": {
+        "r": 0.5,
+        "g": 0.5,
+        "b": 0.5
+      },
+      "AmbientGroundColor": {
+        "r": 0.5,
+        "g": 0.5,
+        "b": 0.5
+      },
+      "ReflectionIntensity": 1,
+      "LutIndex": 0,
+      "LutContribution": 1
+    },
+    "Hands": {
+      "Enable": true,
+      "DisableUnused": false,
+      "Hiding": 0,
+      "HandTransforms": []
+    },
+    "Turns": {
+      "Enable": false,
+      "Type": 0,
+      "TurnOrder": [],
+      "Reverse": false,
+      "SkipEmpty": false,
+      "DisableInteractions": false,
+      "PassTurns": true,
+      "TurnColor": ""
+    },
+    "ObjectStates": [],
+    "DecalPallet": [],
+    "TabStates": {
+      "0": {
+        "title": "Notes",
+        "body": "The game table should be 4x6. This allows:\n\"Grand Army\" 4x6 Games\n\"Standard\"      4x3 Games\n\"Skrimish\"       3x3 Games\n\nEach \"side\" (red and bue) receives another 1x6 play area?\n\nWe need to implement:\n* Spawn miniatures with Unit Leader\n* Interact with unit leader\n* Order tokens\n* List spawner\n* Dice roller\n",
+        "color": "Grey",
+        "visibleColor": {
+          "r": 0.5,
+          "g": 0.5,
+          "b": 0.5
+        },
+        "id": 0
+      }
+    },
+    "CameraStates": [
+      {
+        "Position": {
+          "x": 0.107262976,
+          "y": -2.5,
+          "z": 1.67516088
+        },
+        "Rotation": {
+          "x": 85.13675,
+          "y": 0.249900669,
+          "z": 0
+        },
+        "Distance": 39.18901,
+        "Zoomed": false,
+        "AbsolutePosition": {
+          "x": 0.0927721038,
+          "y": 36.547924,
+          "z": -1.64719963
+        }
+      },
+      null,
+      {
+        "Position": {
+          "x": 39.72686,
+          "y": 0.9611349,
+          "z": 14.5799017
+        },
+        "Rotation": {
+          "x": 65.977684,
+          "y": 1.0829004,
+          "z": 0
+        },
+        "Distance": 8.179968,
+        "Zoomed": true,
+        "AbsolutePosition": {
+          "x": 39.6639328,
+          "y": 8.432609,
+          "z": 11.2504959
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VersionNumber": "v12.3.5"
+  },
+  "ObjectPaths": [
+    "Play_Area.9be545.json",
+    "Control_Panel.e596d9.json",
+    "3DText.90e171.json",
+    "Data_Controller.093685.json",
+    "Spawn_Controller.525d68.json",
+    "Barricade.96cf71.json",
+    "Order_Token.8049a1.json",
+    "Demo_Controller.7fedf3.json",
+    "Movement_Controller.0d6e64.json",
+    "Formation_Controller.53afc7.json",
+    "Silouhette.767062.json",
+    "Target_Controller.4205cc.json",
+    "Unused.d15e58.json",
+    "Miniature.b34d79.json"
+  ]
+}
