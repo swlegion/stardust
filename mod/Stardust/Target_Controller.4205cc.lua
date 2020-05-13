@@ -50,7 +50,7 @@ end
 function findLOS(_, color)
   local selected = Player[color].getSelectedObjects()
   for _, object in ipairs(selected) do
-    if object.getVar('_IS_UNIT_LEADER') then
+    if object.getVar('IS_UNIT_LEADER') then
       Player[color].lookAt({
         position = object.getPosition(),
       })

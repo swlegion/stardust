@@ -1,0 +1,49 @@
+{
+  "Object": {
+    "Name": "Custom_Model",
+    "Transform": {
+      "posX": 40,
+      "posY": 0.1,
+      "posZ": 17,
+      "rotX": 0,
+      "rotY": 359.99353,
+      "rotZ": -0.00000158049875,
+      "scaleX": 0.4500005,
+      "scaleY": 0.4500005,
+      "scaleZ": 0.4500005
+    },
+    "Nickname": "Move Unit Here",
+    "Description": "",
+    "GMNotes": "This unit is used as the base for any miniature that is a unit leader.",
+    "ColorDiffuse": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    },
+    "Locked": true,
+    "Grid": false,
+    "Snap": false,
+    "IgnoreFoW": false,
+    "Autoraise": false,
+    "Sticky": false,
+    "Tooltip": true,
+    "GridProjection": false,
+    "HideWhenFaceDown": false,
+    "Hands": false,
+    "CustomMesh": {
+      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/785234540541711094/1DF94C3CDF022814179AFBA6D7521E6196760949/",
+      "DiffuseURL": "",
+      "NormalURL": "",
+      "ColliderURL": "",
+      "Convex": true,
+      "MaterialIndex": 4,
+      "TypeIndex": 1,
+      "CastShadows": true
+    },
+    "XmlUI": "#include ./Move_Unit_Here.592e2c.xml",
+    "LuaScript": "#include ./Move_Unit_Here.592e2c.lua",
+    "LuaScriptState": "",
+    "GUID": "592e2c"
+  },
+  "StatesPaths": {}
+}

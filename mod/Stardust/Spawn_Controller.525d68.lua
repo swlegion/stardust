@@ -80,8 +80,10 @@ function _spawnUnitModel(
     mesh = mesh,
     diffuse = texture,
   })
-  clone.setVar('is_unit_leader', isLeader)
-  clone.setTable('data', data)
+  clone.setTable('spawnWithData', {
+    data = data,
+    isUnitLeader = isLeader,
+  })
 end
 
 function callSpawnSilouhette(args)
