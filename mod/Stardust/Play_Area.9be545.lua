@@ -105,7 +105,7 @@ function callGetAllUnitLeaders()
   local zoneCheck = getObjectFromGUID(PERSIST.zoneGuid)
   if zoneCheck != nil then
     for _, object in ipairs(zoneCheck.getObjects()) do
-      if object.getVar('_IS_UNIT_LEADER') then
+      if object.getVar('IS_UNIT_LEADER') then
         table.insert(results, object)
       end
     end
@@ -118,7 +118,7 @@ function callGetAllTargets()
   local zoneCheck = getObjectFromGUID(PERSIST.zoneGuid)
   if zoneCheck != nil then
     for _, object in ipairs(zoneCheck.getObjects()) do
-      if object.getVar('_IS_TARGETABLE') then
+      if object.getVar('IS_TARGETABLE') then
         table.insert(results, object)
       end
     end

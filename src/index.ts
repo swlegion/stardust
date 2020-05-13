@@ -24,6 +24,8 @@ export async function buildToDist(): Promise<expander.SplitSaveState> {
 export async function extractToMod(): Promise<void> {
   const source = path.join('dist', 'Stardust.json');
   const target = 'mod';
+  await fs.remove(target);
+  await fs.mkdirp(target);
   const splitter = new expander.SplitIO();
   const modTree = await splitter.readSaveAndSplit(source);
   await splitter.writeSplit(target, modTree);

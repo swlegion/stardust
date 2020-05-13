@@ -4,9 +4,9 @@
     "GameMode": "Stardust",
     "Gravity": 0.5,
     "PlayArea": 0.5,
-    "Date": "5/12/2020 4:28:15 PM",
+    "Date": "5/12/2020 8:39:15 PM",
     "Table": "Table_None",
-    "Sky": "Sky_Tunnel",
+    "Sky": "Sky_Forest",
     "SkyURL": "http://cloud-3.steamusercontent.com/ugc/861734447427622808/DB9EEA3B7977B0D4912A0C4C3A76E36FC3A6062E/",
     "Note": "",
     "Rules": "",
@@ -165,8 +165,8 @@
     "Target_Controller.4205cc.json",
     "Unused.d15e58.json",
     "Miniature.b34d79.json",
-    "ScriptingTrigger.a5851c.json",
     "Movement_Speed_2_A.d7256f.json",
-    "Movement_Speed_2_B.b02b7f.json"
+    "Move_Unit_Here.592e2c.json",
+    "ScriptingTrigger.4bc7df.json"
   ]
 }

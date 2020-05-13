@@ -16,7 +16,7 @@
     "Description": "",
     "GMNotes": "",
     "ColorDiffuse": {
-      "r": 0.11733181,
+      "r": 0.117331214,
       "g": 0.6901961,
       "b": 0.6901961
     },
@@ -31,7 +31,7 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "XmlUI": "",
-    "LuaScript": "",
+    "LuaScript": "#include ./Movement_Controller.0d6e64.lua",
     "LuaScriptState": "",
     "GUID": "0d6e64"
   },

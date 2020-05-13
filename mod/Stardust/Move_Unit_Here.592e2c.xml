@@ -1,0 +1,10 @@
+<Defaults>
+  <Button onClick="onClick" fontSize="80" fontStyle="Bold" textColor="#FFFFFF" color="#00000000"/>
+  <Text fontSize="80" fontStyle="Bold" color="#FFFFFF"/>
+</Defaults>
+
+<Panel id="panel" position="0 0 -220" rotation="270 0 0" scale="0.2 0.2">
+  <Button id="Button" height="100" width="600" onClick="onClick">
+    Cancel
+  </Button>
+</Panel>

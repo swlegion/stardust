@@ -2,22 +2,41 @@ _GUIDS = {
   SPAWN_CONTROLLER = '525d68',
 }
 
-_DATA = nil
-_CONNECTED_MINIS = {}
-_IS_TARGETABLE = true
-_IS_UNIT_LEADER = false
-_HAS_ATTACHED_SILOUHETTE = false
+_PERSIST = {
+  DATA = nil,
+  CONNECTED_MINIS = {},
+  IS_UNIT_LEADER = false,
+  HAS_ATTACHED_SILOUHETTE = false,
+  HAS_ATTACHED_MOVEMENT_TOOL = false,
+}
 
-function onLoad()
-  -- Load the data provided to the model, if any. Otherwise bail out.
-  _DATA = self.getTable('data')
-  if _DATA == nil then
+-- Used by the targeting sub-system.
+IS_TARGETABLE = true
+
+function onLoad(state)
+  -- Keep the previously configured state.
+  if state != '' then
+    _PERSIST = JSON.decode(state)
+    IS_UNIT_LEADER = _PERSIST.IS_UNIT_LEADER
     return
   end
 
+  -- Load the data provided to the model, if any. Otherwise bail out.
+  local spawnWithData = self.getTable('spawnWithData')
+  if spawnWithData == nil then
+    return
+  end
+
+  _PERSIST = {
+    DATA = spawnWithData.data,
+    CONNECTED_MINIS = {},
+    IS_UNIT_LEADER = spawnWithData.isUnitLeader,
+    HAS_ATTACHED_SILOUHETTE = false,
+    HAS_ATTACHED_MOVEMENT_TOOL = false,
+  }
+
   -- Are we a unit leader?
-  _IS_UNIT_LEADER = self.getVar('is_unit_leader')
-  if _IS_UNIT_LEADER then
+  if _PERSIST.IS_UNIT_LEADER then
     initializeAsLeader()
   else
     initializeAsFollower()
@@ -28,14 +47,21 @@ function onLoad()
   self.setScale({1, 1, 1})
 end
 
+function onSave()
+  if _PERSIST.DATA != nil then
+    return JSON.encode(_PERSIST)
+  end
+end
+
 -- Initialize as a Unit Leader.
 function initializeAsLeader()
-  self.setName(_DATA.name .. ' (Unit Leader)')
+  self.setName(_PERSIST.DATA.name .. ' (Unit Leader)')
+  IS_UNIT_LEADER = true
 end
 
 -- Initialize as a "Follower" (not a Unit Leader).
 function initializeAsFollower()
-  self.setName(_DATA.name)
+  self.setName(_PERSIST.DATA.name)
 end
 
 function callIsPartOfUnit(args)
@@ -46,8 +72,8 @@ function _isPartOfUnit(guid)
   if self.guid == guid then
     return true
   end
-  for _, mini in ipairs(_CONNECTED_MINIS) do
-    if mini.guid == guid then
+  for _, miniGuid in ipairs(_PERSIST.CONNECTED_MINIS) do
+    if miniGuid == guid then
       return true
     end
   end
@@ -94,7 +120,7 @@ function connectTo(otherMini)
   if otherMini.guid == self.guid then
     return
   end
-  table.insert(_CONNECTED_MINIS, otherMini)
+  table.insert(_PERSIST.CONNECTED_MINIS, otherMini.guid)
 end
 
 function callConnectTo(args)
