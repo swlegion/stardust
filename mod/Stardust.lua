@@ -1,3 +1,6 @@
+-- # Stardust, An experimental Tabletop Simulator mod for a popular miniatures game.
+
+
 _GUIDS = {
   PLAY_AREA = '9be545',
   DEMO_GAME = '7fedf3',
