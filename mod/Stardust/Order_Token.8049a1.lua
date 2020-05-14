@@ -18,11 +18,11 @@ end
 function _setObjectDetails()
   if PERSIST.color == 'Blue' then
     self.setCustomObject({
-      diffuse = 'http://localhost:8080/tools/orders/empire.corps.jpg'
+      diffuse = 'https://assets.swlegion.dev/tools/orders/empire.corps.jpg'
     })
   else
     self.setCustomObject({
-      diffuse = 'http://localhost:8080/tools/orders/rebels.corps.jpg'
+      diffuse = 'https://assets.swlegion.dev/tools/orders/rebels.corps.jpg'
     })
   end
   self.setName(PERSIST.color .. ' ' .. PERSIST.rank)

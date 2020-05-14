@@ -31,7 +31,7 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://localhost:8080/units/empire/stormtrooper.1.obj",
+      "MeshURL": "https://assets.swlegion.dev/units/empire/stormtrooper.1.obj",
       "DiffuseURL": "",
       "NormalURL": "",
       "ColliderURL": "",

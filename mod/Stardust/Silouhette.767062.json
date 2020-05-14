@@ -32,8 +32,8 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://localhost:8080/tools/silouhette.obj",
-      "DiffuseURL": "http://localhost:8080/tools/silouhette.jpg",
+      "MeshURL": "https://assets.swlegion.dev/tools/silouhette.obj",
+      "DiffuseURL": "https://assets.swlegion.dev/tools/silouhette.jpg",
       "NormalURL": "",
       "ColliderURL": "",
       "Convex": true,

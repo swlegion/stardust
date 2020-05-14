@@ -31,10 +31,10 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://localhost:8080/tools/speed.2.obj",
-      "DiffuseURL": "http://localhost:8080/tools/speed.2.jpg",
+      "MeshURL": "https://assets.swlegion.dev/tools/speed.2.obj",
+      "DiffuseURL": "https://assets.swlegion.dev/tools/speed.2.jpg",
       "NormalURL": "",
-      "ColliderURL": "http://localhost:8080/tools/speed.2.collider.obj",
+      "ColliderURL": "https://assets.swlegion.dev/tools/speed.2.collider.obj",
       "Convex": true,
       "MaterialIndex": 3,
       "TypeIndex": 0,

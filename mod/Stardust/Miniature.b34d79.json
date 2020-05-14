@@ -31,10 +31,10 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://localhost:8080/units/empire/stormtrooper.1.obj",
+      "MeshURL": "https://assets.swlegion.dev/units/empire/stormtrooper.1.obj",
       "DiffuseURL": "",
       "NormalURL": "",
-      "ColliderURL": "http://localhost:8080/collider/small-base.obj",
+      "ColliderURL": "https://assets.swlegion.dev/collider/small-base.obj",
       "Convex": true,
       "MaterialIndex": 3,
       "TypeIndex": 1,

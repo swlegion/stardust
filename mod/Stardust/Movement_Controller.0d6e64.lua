@@ -3,26 +3,26 @@ _GUIDS = {
   TOOL = 'd7256f',
 }
 
-_NULL_COLLIDER = 'http://localhost:8080/collider/null.obj'
+_NULL_COLLIDER = 'https://assets.swlegion.dev/collider/null.obj'
 
 _TOOLS = {
   -- Speed 1
   {
-    mesh = 'http://localhost:8080/tools/speed.1.obj',
-    diffuse = 'http://localhost:8080/tools/speed.1.jpg',
+    mesh = 'https://assets.swlegion.dev/tools/speed.1.obj',
+    diffuse = 'https://assets.swlegion.dev/tools/speed.1.jpg',
     tint = {1.0, 1.0, 1.0},
   },
   -- Speed 2
   {
-    mesh = 'http://localhost:8080/tools/speed.2.obj',
-    diffuse = 'http://localhost:8080/tools/speed.2.jpg',
+    mesh = 'https://assets.swlegion.dev/tools/speed.2.obj',
+    diffuse = 'https://assets.swlegion.dev/tools/speed.2.jpg',
     tint = {0.5, 0.5, 0.5}
   },
 
   -- Speed 3
   {
-    mesh = 'http://localhost:8080/tools/speed.3.obj',
-    diffuse = 'http://localhost:8080/tools/speed.3.jpg',
+    mesh = 'https://assets.swlegion.dev/tools/speed.3.obj',
+    diffuse = 'https://assets.swlegion.dev/tools/speed.3.jpg',
     tint = {1.0, 0.2, 0.2}
   },
 }

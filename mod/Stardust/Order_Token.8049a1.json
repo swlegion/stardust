@@ -31,10 +31,10 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://localhost:8080/tools/orders/token.obj",
-      "DiffuseURL": "http://localhost:8080/tools/orders/rebels.corps.jpg",
+      "MeshURL": "https://assets.swlegion.dev/tools/orders/token.obj",
+      "DiffuseURL": "https://assets.swlegion.dev/tools/orders/rebels.corps.jpg",
       "NormalURL": "",
-      "ColliderURL": "http://localhost:8080/tools/orders/collider.obj",
+      "ColliderURL": "https://assets.swlegion.dev/tools/orders/collider.obj",
       "Convex": true,
       "MaterialIndex": 3,
       "TypeIndex": 0,

@@ -15,20 +15,20 @@ _DATA = {
         name = 'Stormtroopers',
         models = {
           {
-            mesh = "http://localhost:8080/units/empire/stormtrooper-1.obj",
-            texture = "http://localhost:8080/units/empire/stormtrooper.jpg"
+            mesh = "https://assets.swlegion.dev/units/empire/stormtrooper-1.obj",
+            texture = "https://assets.swlegion.dev/units/empire/stormtrooper.jpg"
           },
 
           {
-            mesh = "http://localhost:8080/units/empire/stormtrooper.2.obj"
+            mesh = "https://assets.swlegion.dev/units/empire/stormtrooper.2.obj"
           },
 
           {
-            mesh = "http://localhost:8080/units/empire/stormtrooper.3.obj"
+            mesh = "https://assets.swlegion.dev/units/empire/stormtrooper.3.obj"
           },
 
           {
-            mesh = "http://localhost:8080/units/empire/stormtrooper.4.obj"
+            mesh = "https://assets.swlegion.dev/units/empire/stormtrooper.4.obj"
           }
           }
         }
@@ -41,20 +41,20 @@ _DATA = {
           name = 'Rebel Troopers',
           models = {
             {
-              mesh = "http://localhost:8080/units/rebels/rebel_trooper.1.obj",
-              texture = "http://localhost:8080/units/rebels/rebel_trooper.jpg"
+              mesh = "https://assets.swlegion.dev/units/rebels/rebel_trooper.1.obj",
+              texture = "https://assets.swlegion.dev/units/rebels/rebel_trooper.jpg"
             },
 
             {
-              mesh = "http://localhost:8080/units/rebels/rebel_trooper.2.obj"
+              mesh = "https://assets.swlegion.dev/units/rebels/rebel_trooper.2.obj"
             },
 
             {
-              mesh = "http://localhost:8080/units/rebels/rebel_trooper.3.obj"
+              mesh = "https://assets.swlegion.dev/units/rebels/rebel_trooper.3.obj"
             },
 
             {
-              mesh = "http://localhost:8080/units/rebels/rebel_trooper.4.obj"
+              mesh = "https://assets.swlegion.dev/units/rebels/rebel_trooper.4.obj"
             }
           }
         }
