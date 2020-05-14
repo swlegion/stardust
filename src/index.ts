@@ -9,11 +9,11 @@ require('make-promises-safe');
 
 const outputFile = 'Stardust.json';
 const rewriteRules: {
-  // ban: string | RegExp;
+  ban: string | RegExp;
   from: string;
   to: string;
 } = {
-  // ban: /http\:\/\/.*\.steamusercontent.com/,
+  ban: /http\:\/\/.*\.steamusercontent.com/g,
   from: 'https://assets.swlegion.dev/',
   to: 'http://localhost:8080/',
 };
