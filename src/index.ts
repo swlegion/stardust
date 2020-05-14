@@ -42,7 +42,6 @@ export async function extractToMod(): Promise<void> {
   await fs.mkdirp(target);
   const splitter = new expander.SplitIO(rewriteRules);
   const modTree = await splitter.readSaveAndSplit(source);
-  console.warn(modTree.metadata.contents.SkyURL);
   await splitter.writeSplit(target, modTree);
 }
 
