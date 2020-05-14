@@ -3,26 +3,26 @@ _GUIDS = {
   TOOL = 'd7256f',
 }
 
-_NULL_COLLIDER = 'http://cloud-3.steamusercontent.com/ugc/1008188722681990449/1EC41678BBC8A1138273F916DE4DDDEFC0289849/'
+_NULL_COLLIDER = 'http://localhost:8080/collider/null.obj'
 
 _TOOLS = {
   -- Speed 1
   {
-    mesh = 'http://cloud-3.steamusercontent.com/ugc/785234780854759842/01D41C421A255FA3851BD89F18C85B5B294545EB/',
-    diffuse = 'http://cloud-3.steamusercontent.com/ugc/785234780854759947/54081B46AD51B4601980DE9C7AC85FA76DDB09EA/',
+    mesh = 'http://localhost:8080/tools/speed.1.obj',
+    diffuse = 'http://localhost:8080/tools/speed.1.jpg',
     tint = {1.0, 1.0, 1.0},
   },
   -- Speed 2
   {
-    mesh = 'http://cloud-3.steamusercontent.com/ugc/785234780854723671/BBF8FA3F838F18A0A774CB6F275A69922A829BDE/',
-    diffuse = 'http://cloud-3.steamusercontent.com/ugc/785234780854724909/C072D675F67ED9DE36A6ECBC57399DB0497034C5/',
+    mesh = 'http://localhost:8080/tools/speed.2.obj',
+    diffuse = 'http://localhost:8080/tools/speed.2.jpg',
     tint = {0.5, 0.5, 0.5}
   },
 
   -- Speed 3
   {
-    mesh = 'http://cloud-3.steamusercontent.com/ugc/785234780854760704/CE714393A691700C653EAD87BF876BA9194CDE9C/',
-    diffuse = 'http://cloud-3.steamusercontent.com/ugc/785234780854771943/3C734C233CD0ECF47797501CBFBE21E0AB8A84F0/',
+    mesh = 'http://localhost:8080/tools/speed.3.obj',
+    diffuse = 'http://localhost:8080/tools/speed.3.jpg',
     tint = {1.0, 0.2, 0.2}
   },
 }

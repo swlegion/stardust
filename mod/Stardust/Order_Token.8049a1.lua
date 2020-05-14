@@ -18,11 +18,11 @@ end
 function _setObjectDetails()
   if PERSIST.color == 'Blue' then
     self.setCustomObject({
-      diffuse = 'http://cloud-3.steamusercontent.com/ugc/1018319581181469578/56191D081421C02B875AC944DCEFE2063F1D7FC1/'
+      diffuse = 'http://localhost:8080/tools/orders/empire.corps.jpg'
     })
   else
     self.setCustomObject({
-      diffuse = 'http://cloud-3.steamusercontent.com/ugc/1018319581181607230/299FF1E61697FFCBB40A74AAC189D11B4EAFBA3B/'
+      diffuse = 'http://localhost:8080/tools/orders/rebels.corps.jpg'
     })
   end
   self.setName(PERSIST.color .. ' ' .. PERSIST.rank)
