@@ -32,8 +32,8 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/1002556771691273590/F435C238FB9E1E49963B2AA00E09DF9C711DA4A0/",
-      "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/1003681898505462981/13937CB26573918BDCBDE2A13CCDEF3C966172D7/",
+      "MeshURL": "http://localhost:8080/tools/silouhette.obj",
+      "DiffuseURL": "http://localhost:8080/tools/silouhette.jpg",
       "NormalURL": "",
       "ColliderURL": "",
       "Convex": true,

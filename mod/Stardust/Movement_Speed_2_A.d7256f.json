@@ -31,10 +31,10 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/785234780854723671/BBF8FA3F838F18A0A774CB6F275A69922A829BDE/",
-      "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/785234780854724909/C072D675F67ED9DE36A6ECBC57399DB0497034C5/",
+      "MeshURL": "http://localhost:8080/tools/speed.2.obj",
+      "DiffuseURL": "http://localhost:8080/tools/speed.2.jpg",
       "NormalURL": "",
-      "ColliderURL": "http://cloud-3.steamusercontent.com/ugc/785234780854760528/0F20A46474850AA384B713829775CEDA580618A9/",
+      "ColliderURL": "http://localhost:8080/tools/speed.2.collider.obj",
       "Convex": true,
       "MaterialIndex": 3,
       "TypeIndex": 0,

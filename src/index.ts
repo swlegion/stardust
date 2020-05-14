@@ -4,15 +4,29 @@ import * as fs from 'fs-extra';
 import os from 'os';
 import path from 'path';
 
+// Changes the default behavior of unhandled promises.
+require('make-promises-safe');
+
 const outputFile = 'Stardust.json';
+const rewriteRules: {
+  // ban: string | RegExp;
+  from: string;
+  to: string;
+} = {
+  // ban: /http\:\/\/.*\.steamusercontent.com/,
+  from: 'https://assets.swlegion.dev/',
+  to: 'http://localhost:8080/',
+};
 
 /**
  * Builds the mod from `mod/` to `dist/`, returning the tree.
  */
 export async function buildToDist(): Promise<expander.SplitSaveState> {
+  await fs.remove('dist');
+  await fs.mkdirp('dist');
   const source = path.join('mod', outputFile);
   const target = path.join('dist', outputFile);
-  const splitter = new expander.SplitIO();
+  const splitter = new expander.SplitIO(rewriteRules);
   const saveFile = await splitter.readAndCollapse(source);
   await fs.writeFile(target, JSON.stringify(saveFile, undefined, '  '));
   return expander.splitSave(saveFile);
@@ -26,7 +40,7 @@ export async function extractToMod(): Promise<void> {
   const target = 'mod';
   await fs.remove(target);
   await fs.mkdirp(target);
-  const splitter = new expander.SplitIO();
+  const splitter = new expander.SplitIO(rewriteRules);
   const modTree = await splitter.readSaveAndSplit(source);
   await splitter.writeSplit(target, modTree);
 }

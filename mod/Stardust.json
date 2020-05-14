@@ -7,7 +7,7 @@
     "Date": "5/12/2020 8:39:15 PM",
     "Table": "Table_None",
     "Sky": "Sky_Forest",
-    "SkyURL": "http://cloud-3.steamusercontent.com/ugc/861734447427622808/DB9EEA3B7977B0D4912A0C4C3A76E36FC3A6062E/",
+    "SkyURL": "http://localhost:8080/sky.png",
     "Note": "",
     "Rules": "",
     "XmlUI": "#include ./Stardust.xml",
@@ -16,8 +16,8 @@
     "MusicPlayer": {
       "RepeatSong": false,
       "PlaylistEntry": -1,
-      "CurrentAudioTitle": "Typhons Children - Mission Briefing",
-      "CurrentAudioURL": "http://cloud-3.steamusercontent.com/ugc/781859262304608199/3E220047A4B3A0CE8ED3435C5D9FDDE1133CBCC8/",
+      "CurrentAudioTitle": "",
+      "CurrentAudioURL": "http://assets.swlegion.dev/sound/1-second-of-silence.mp3",
       "AudioLibrary": []
     },
     "Grid": {

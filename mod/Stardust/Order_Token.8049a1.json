@@ -31,10 +31,10 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/786359883314446513/4DBBAC00ABA5EABE88C2A86C3311C3FB6645FF25/",
-      "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/1018319581181607230/299FF1E61697FFCBB40A74AAC189D11B4EAFBA3B/",
+      "MeshURL": "http://localhost:8080/tools/orders/token.obj",
+      "DiffuseURL": "http://localhost:8080/tools/orders/rebels.corps.jpg",
       "NormalURL": "",
-      "ColliderURL": "http://cloud-3.steamusercontent.com/ugc/785234780866339915/85F7E717B9EFBE0396126CA673DF17EAFEC7D451/",
+      "ColliderURL": "http://localhost:8080/tools/orders/collider.obj",
       "Convex": true,
       "MaterialIndex": 3,
       "TypeIndex": 0,

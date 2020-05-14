@@ -31,7 +31,7 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomImage": {
-      "ImageURL": "http://cloud-3.steamusercontent.com/ugc/930433772025605177/DACE2F546514344E9AB0069079EFC72D1E04FE49/",
+      "ImageURL": "http://localhost:8080/table.jpg",
       "ImageSecondaryURL": "",
       "ImageScalar": 1,
       "WidthScale": 0,

@@ -1,6 +1,7 @@
 import * as runner from '@matanlurey/tts-runner';
 import * as fs from 'fs-extra';
 import path from 'path';
+import shelljs from 'shelljs';
 import {
   buildToDist,
   createAutoExec,
@@ -23,6 +24,9 @@ import {
   console.log('Configuring...');
   await createAutoExec();
 
+  console.log('Listening...');
+  const server = shelljs.exec('http-server ./assets -s', { async: true });
+
   console.log('Launching...');
   const tts = await runner.launch();
 
@@ -32,6 +36,7 @@ import {
       .then(() => destroySymlink())
       .then(() => extractToMod())
       .then(() => {
+        process.kill(server.pid);
         fs.removeSync(path.join('dist', 'edit'));
         console.log('Bye!');
         process.exit(0);

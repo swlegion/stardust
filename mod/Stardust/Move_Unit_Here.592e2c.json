@@ -31,7 +31,7 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/785234540541711094/1DF94C3CDF022814179AFBA6D7521E6196760949/",
+      "MeshURL": "http://localhost:8080/units/empire/stormtrooper.1.obj",
       "DiffuseURL": "",
       "NormalURL": "",
       "ColliderURL": "",
