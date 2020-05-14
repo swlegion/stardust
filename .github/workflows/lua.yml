@@ -18,7 +18,6 @@ jobs:
       - name: build
         run: |
           luarocks install ldoc
-          luarocks make https://luarocks.org/manifests/luarocks/ldoc-1.4.2-1.rockspec
 
       - name: ldoc
         run: |
