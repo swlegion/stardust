@@ -7,8 +7,10 @@ _GUIDS = {
 
 --- Loads an army list based on the parameter passed by the UI.
 --
+-- @param player Player that clicked the button.
+-- @param _ Unused (value).
 -- @param type Name of the button that invoked this function.
-function loadList(_, _, type)
+function loadList(player, _, id)
   if type == 'lDemo' then
     loadTable(nil, nil, 't3x3')
     getObjectFromGUID(_GUIDS.DEMO_GAME).call('callLoadDemo')
@@ -21,8 +23,10 @@ end
 
 --- Loads a new table based on the parameter passed by the UI.
 --
+-- @param player Player that clicked the button.
+-- @param _ Unused (value).
 -- @param size Size of the table (e.g. `t3x3`) to load.
-function loadTable(_, _, size)
+function loadTable(player, _, id)
   local sizeToScale = {
     t0x0 = {0, 0},
     t3x3 = {36, 36},
