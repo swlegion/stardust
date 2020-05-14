@@ -7,7 +7,7 @@
     "Date": "5/12/2020 8:39:15 PM",
     "Table": "Table_None",
     "Sky": "Sky_Forest",
-    "SkyURL": "http://localhost:8080/sky.png",
+    "SkyURL": "https://assets.swlegion.dev/sky.png",
     "Note": "",
     "Rules": "",
     "XmlUI": "#include ./Stardust.xml",
