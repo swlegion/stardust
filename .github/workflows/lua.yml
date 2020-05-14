@@ -18,8 +18,18 @@ jobs:
       - name: build
         run: |
           luarocks install ldoc
-          luarocks make
+          luarocks make https://luarocks.org/manifests/luarocks/ldoc-1.4.2-1.rockspec
 
       - name: ldoc
         run: |
           ldoc -d ldoc mod
+
+  deploy:
+    if: github.event_name == 'push'
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v2
