@@ -21,7 +21,7 @@ jobs:
 
       - name: ldoc
         run: |
-          ldoc --ignore --all --dir ldoc mod
+          ldoc --all --fatalwarnings --dir ldoc mod
 
       - name: Upload LDoc
         uses: actions/upload-artifact@v1

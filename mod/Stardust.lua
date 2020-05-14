@@ -1,11 +1,13 @@
--- # Stardust, An experimental Tabletop Simulator mod for a popular miniatures game.
-
+--- # Stardust, An experimental Tabletop Simulator mod for a popular miniatures game.
 
 _GUIDS = {
   PLAY_AREA = '9be545',
   DEMO_GAME = '7fedf3',
 }
 
+--- Loads an army list based on the parameter passed by the UI.
+--
+-- @param type Name of the button that invoked this function.
 function loadList(_, _, type)
   if type == 'lDemo' then
     loadTable(nil, nil, 't3x3')
@@ -17,6 +19,9 @@ function loadList(_, _, type)
   end
 end
 
+--- Loads a new table based on the parameter passed by the UI.
+--
+-- @param size Size of the table (e.g. `t3x3`) to load.
 function loadTable(_, _, size)
   local sizeToScale = {
     t0x0 = {0, 0},
