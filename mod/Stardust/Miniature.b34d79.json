@@ -50,7 +50,6 @@
       },
       "CastShadows": true
     },
-    "XmlUI": "",
     "LuaScript": "#include ./Miniature.b34d79.lua",
     "LuaScriptState": "",
     "GUID": "b34d79"

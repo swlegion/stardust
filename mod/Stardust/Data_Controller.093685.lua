@@ -1,13 +1,14 @@
--- This disk represents all of the "data" in the game (e.g. giant JSON).
---
+--- This disk represents all of the "data" in the game (e.g. giant JSON).
 -- In future versions of the prototype, this will be downloaded asynchronously
 -- and cached in onSave instead of requiring everything to be inlined here.
-
+--
+-- ```
 -- FACTION > RANK > units[]
 --   name
 --   models[]
 --     mesh
 --     texture
+-- ```
 _DATA = {
   GalacticEmpire = {
     Corps = {
@@ -62,12 +63,39 @@ _DATA = {
     },
 }
 
--- Returns the unit data for the provided table of arguments.
---   [1]: Faction
---   [2]: Rank
---   [3]: Name
-function callFindUnit(args)
-  return _findUnit(args[1], args[2], args[3])
+--- Returns the unit data for the provided arguments.
+--
+-- @param args A table with the fields `faction`, `rank`, and `name`.
+--
+-- @return A table with the `name` and `models` used to refer to the minis:
+-- ```
+-- {
+--   name = 'Stormtroopers',
+--   models = {
+--     -- Index 1 is always the Unit Leader.
+--     {
+--       mesh = '/link/to/mesh.obj',
+--       texture = '/link/to/texture.jpg',
+--     },
+--
+--     -- For non-leaders, `texture` can be omitted to use the leader's texture.
+--     {
+--       mesh = '/link/to/another-mesh.obj',
+--     }
+--   }
+-- }
+-- ```
+--
+-- @usage
+-- ```
+-- findUnit({
+--   faction = 'GalacticEmpire',
+--   rank    = 'Corps',
+--   name    = 'Stormtroopers',
+-- })
+-- ```
+function findUnit(args)
+  return _findUnit(args.faction, args.rank, args.name)
 end
 
 function _findUnit(faction, rank, name)

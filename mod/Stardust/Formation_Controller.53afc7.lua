@@ -1,5 +1,35 @@
-function callComputeFormation(args)
-  local name = args[1]
+--- Computes a formation for a unit.
+--
+-- @param args The `name`, `bounds`, `count`, and `position` to compute.
+--
+-- @usage
+-- ```
+-- computeFormation({
+--   -- Optional. Defaults to `2-line`.
+--   name = '2-line',
+--   bounds = {1, 1, 1},
+--   count = 4,
+--   position = {0, 0, 0},
+-- })
+-- ```
+--
+-- @return A list of positions/rotations to use per mini index:
+-- ```
+--  {
+--    -- 1: Identity location (e.g. where the unit leader is)
+--    { x, y, z },
+--
+--    -- 2: Where to place mini 2 of N
+--    { x, y, z }
+--
+--    -- ...
+--  }
+-- ```
+--
+-- @see _createDerpyBattleLineFormation
+-- @see _create2LineFormation
+function computeFormation(args)
+  local name = args.name
   local func = _create2LineFormation
   if name == '2-line' then
     func = _create2LineFormation
@@ -7,11 +37,18 @@ function callComputeFormation(args)
   if name == 'derpy' then
     func = _createDerpyBattleLineFormation
   end
-  return func(args[2], args[3], args[4])
+  return func(args.bounds, args.count, args.position)
 end
 
--- Computes a list of positions to achieve a formation.
+--- Computes a list of positions to achieve a basic formation.
 --
+-- @local
+--
+-- @param bounds {x, y, z} size of the unit leader model.
+-- @param count Number of miniatures total in the unit.
+-- @param position {x, y, z} position of the unit leader model.
+--
+-- ```
 -- For example for 2 miniatures:
 --     [U]
 --   [L]
@@ -26,27 +63,14 @@ end
 --       [U]
 --     [U]
 --   [L]
+-- ```
 --
--- Returns a list of positions/rotations to use per mini index. For example:
---  {
---    -- 1: Identity location (e.g. where the unit leader is)
---    { x, y, z },
+-- @return A list of positions/rotations to use per mini index.
 --
---    -- 2: Where to place mini 2 of N
---    { x, y, z }
---
---    -- ...
---  }
---
--- TODO: Make this much better and/or customizable.
+-- @see computeFormation
 function _createDerpyBattleLineFormation(
-  -- {x, y, z} size of the unit leader model.
   bounds,
-
-  -- Number of miniatures total in the unit.
   count,
-
-  -- Position {x, y, z} of the unit leader mini.
   position
 )
   local results = {}
@@ -60,7 +84,17 @@ function _createDerpyBattleLineFormation(
   return results
 end
 
--- See _createDerpyBattleLineFormation.
+--- Computes a list of positions to achieve a 2-by-2 formation.
+--
+-- @local
+--
+-- @param bounds {x, y, z} size of the unit leader model.
+-- @param count Number of miniatures total in the unit.
+-- @param position {x, y, z} position of the unit leader model.
+--
+-- @return A list of positions/rotations to use per mini index.
+--
+-- @see computeFormation
 function _create2LineFormation(
   bounds,
   count,
