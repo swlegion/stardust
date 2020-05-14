@@ -1,4 +1,4 @@
-name: Lua CI
+name: Site Generator
 
 on:
   push:
