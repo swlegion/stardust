@@ -29,15 +29,11 @@ _PERSIST = {
 --- Used by the targeting sub-system to determine what models are targetable.
 --
 -- Defaults to true.
---
--- @field
 IS_TARGETABLE = true
 
 --- Used by various sub-systems to determine what models represent unit leaders.
 --
 -- Defaults to false.
---
--- @field
 IS_UNIT_LEADER = false
 
 function onLoad(state)
