@@ -1,8 +1,20 @@
+--- Order Tokens.
+--
+-- @module Order_Token
+--
+-- Expects a table of properties to provided via the field 'setupOrderToken`:
+--
+-- @usage
+--   token.setTable('setupOrderToken', {
+--     color = 'Blue',
+--     rank  = 'Corps',
+--   })
+
 function onLoad(state)
   if state != '' then
     PERSIST = JSON.decode(state)
   else
-    PERSIST = self.getTable('PERSIST')
+    PERSIST = self.getTable('setupOrderToken')
   end
   if PERSIST != nil then
     _setObjectDetails()
@@ -22,7 +34,7 @@ function _setObjectDetails()
     })
   else
     self.setCustomObject({
-      diffuse = 'https://assets.swlegion.dev/tools/orders/rebels.corps.jpg'
+      diffuse = 'http://localhost:8080/tools/orders/rebels.corps.jpg'
     })
   end
   self.setName(PERSIST.color .. ' ' .. PERSIST.rank)

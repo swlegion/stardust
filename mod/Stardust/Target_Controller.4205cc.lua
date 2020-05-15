@@ -1,3 +1,7 @@
+--- Targeting/LOS sub-system
+--
+-- @module Target_Controller
+
 _GUIDS = {
   PLAY_AREA = '9be545'
 }

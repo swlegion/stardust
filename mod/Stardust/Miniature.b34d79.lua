@@ -1,3 +1,7 @@
+--- Represnts a miniature of a unit.
+--
+-- @module Miniature
+
 _GUIDS = {
   SPAWN_CONTROLLER = '525d68',
 }

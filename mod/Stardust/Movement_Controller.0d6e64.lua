@@ -1,3 +1,7 @@
+--- Logic for moving units.
+--
+-- @module Movement_Controller
+
 _GUIDS = {
   PLACE_MINI_HERE = '592e2c',
   TOOL = 'd7256f',
@@ -8,21 +12,21 @@ _NULL_COLLIDER = 'https://assets.swlegion.dev/collider/null.obj'
 _TOOLS = {
   -- Speed 1
   {
-    mesh = 'https://assets.swlegion.dev/tools/speed.1.obj',
-    diffuse = 'https://assets.swlegion.dev/tools/speed.1.jpg',
+    mesh = 'http://localhost:8080/tools/speed.1.obj',
+    diffuse = 'http://localhost:8080/tools/speed.1.jpg',
     tint = {1.0, 1.0, 1.0},
   },
   -- Speed 2
   {
-    mesh = 'https://assets.swlegion.dev/tools/speed.2.obj',
-    diffuse = 'https://assets.swlegion.dev/tools/speed.2.jpg',
+    mesh = 'http://localhost:8080/tools/speed.2.obj',
+    diffuse = 'http://localhost:8080/tools/speed.2.jpg',
     tint = {0.5, 0.5, 0.5}
   },
 
   -- Speed 3
   {
-    mesh = 'https://assets.swlegion.dev/tools/speed.3.obj',
-    diffuse = 'https://assets.swlegion.dev/tools/speed.3.jpg',
+    mesh = 'http://localhost:8080/tools/speed.3.obj',
+    diffuse = 'http://localhost:8080/tools/speed.3.jpg',
     tint = {1.0, 0.2, 0.2}
   },
 }
@@ -47,6 +51,12 @@ function drawTemporaryUI()
   })
 end
 
+--- Spawns movement options for the selected unit leaders.
+--
+-- @local
+--
+-- @param _ Unused.
+-- @param color Player color that clicks the button.
 function spawnMOV(_, color)
   local selected = Player[color].getSelectedObjects()
   for _, object in ipairs(selected) do
@@ -79,7 +89,7 @@ function _copyMiniAsGhost(mini, position, rotation)
     mesh = custom.mesh,
     collider = _NULL_COLLIDER,
   })
-  ghost.setVar('moveGuid', mini.guid)
+  ghost.setVar('setupUnitProxy', mini.guid)
   ghost.setScale({1, 1, 1})
   ghost.setLock(false)
   return ghost

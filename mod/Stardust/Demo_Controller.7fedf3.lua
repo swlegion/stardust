@@ -1,3 +1,7 @@
+--- Logic for loading the demo game.
+--
+-- @module Demo_Controller
+
 _GUIDS = {
   DATA_DISK = '093685',
   SPAWN_CONTROLLER = '525d68',
@@ -103,7 +107,7 @@ function loadDemo()
     object.setLock(false)
     object.setScale({1, 1, 1})
     object.setLuaScript(orderToken.getLuaScript())
-    object.setTable('PERSIST', {
+    object.setTable('setupOrderToken', {
       rank = 'Corps',
       color = color,
     })

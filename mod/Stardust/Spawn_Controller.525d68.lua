@@ -1,3 +1,7 @@
+--- Funtions for spawning miniatures.
+--
+-- @module Spawn_Controller
+
 _GUIDS = {
   MINIATURE = 'b34d79',
   FORMATIONS = '53afc7',
@@ -9,7 +13,6 @@ _GUIDS = {
 -- @param args A table referring to the unit to spawn.
 --
 -- @usage
--- ```
 -- spawnUnit({
 --   -- Unit data retrieved from the data controller.
 --   data = { },
@@ -23,7 +26,6 @@ _GUIDS = {
 --   -- Formation. Optional, defaults to '2-line'.
 --   formation = '2-line',
 -- })
--- ```
 --
 -- @return Handle to the spawned unit leader
 function spawnUnit(args)
@@ -35,7 +37,6 @@ function spawnUnit(args)
   )
 end
 
--- @local
 function _spawnUnit(
   unit,
   position,
@@ -89,7 +90,6 @@ function _spawnUnit(
   )
 end
 
--- @local
 function _spawnUnitModel(
   isLeader,
   data,
@@ -120,12 +120,10 @@ end
 -- @param args The `position` and `rotation` to use.
 --
 -- @usage
--- ```
 -- spawnSilouhette({
 --   position = {0, 0, 0},
 --   rotation = {0, 0, 0},
 -- })
--- ```
 --
 -- @return Handle to the spawned silouhette.
 function spawnSilouhette(args)

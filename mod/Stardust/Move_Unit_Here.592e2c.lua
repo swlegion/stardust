@@ -1,3 +1,14 @@
+--- A model that projects a ghost miniature to move another miniature to.
+--
+-- @module Move_Unit_here
+--
+-- Expects a GUID to be provided via the field 'setupUnitProxy`:
+--
+-- @usage
+--   token.setTable('setupUnitProxy', 'abc123')
+--
+-- Projects UI that, when interacted with, moves the provided model (by GUID).
+
 _PERSIST = {
   MOVE_GUID = nil,
 }
@@ -6,7 +17,7 @@ function onLoad(state)
   if state != '' then
     _PERSIST = JSON.decode(state)
   else
-    local moveGuid = self.getVar('moveGuid')
+    local moveGuid = self.getVar('setupUnitProxy')
     if moveGuid == nil then
       self.UI.hide('Button')
       return

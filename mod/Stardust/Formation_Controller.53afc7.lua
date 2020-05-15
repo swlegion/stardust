@@ -15,21 +15,7 @@
 --   position = {0, 0, 0},
 -- })
 --
--- @return A list of positions/rotations to use per mini index:
---
--- @usage
---  {
---    -- 1: Identity location (e.g. where the unit leader is)
---    { x, y, z },
---
---    -- 2: Where to place mini 2 of N
---    { x, y, z }
---
---    -- ...
---  }
---
--- @see _createDerpyBattleLineFormation
--- @see _create2LineFormation
+-- @return A list of positions to use per mini-index.
 function computeFormation(args)
   local name = args.name
   local func = _create2LineFormation
@@ -68,7 +54,7 @@ end
 --
 -- @return A list of positions/rotations to use per mini index.
 --
--- @see computeFormation
+-- @see Formation_Controller:computeFormation
 function _createDerpyBattleLineFormation(
   bounds,
   count,
@@ -95,7 +81,7 @@ end
 --
 -- @return A list of positions/rotations to use per mini index.
 --
--- @see computeFormation
+-- @see Formation_Controller:computeFormation
 function _create2LineFormation(
   bounds,
   count,
