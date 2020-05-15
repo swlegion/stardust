@@ -15,7 +15,7 @@ const rewriteRules: {
 } = {
   ban: /http\:\/\/.*\.steamusercontent.com/g,
   from: 'https://assets.swlegion.dev/',
-  to: 'http://localhost:8080/',
+  to: `http://localhost:8080/`,
 };
 
 /**
