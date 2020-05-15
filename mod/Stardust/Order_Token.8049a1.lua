@@ -1,14 +1,14 @@
 --- Order Tokens.
 --
--- @module Order_Token
---
 -- Expects a table of properties to provided via the field 'setupOrderToken`:
 --
 -- @usage
---   token.setTable('setupOrderToken', {
---     color = 'Blue',
---     rank  = 'Corps',
---   })
+-- token.setTable('setupOrderToken', {
+--   color = 'Blue',
+--   rank  = 'Corps',
+-- })
+--
+-- @module Order_Token
 
 function onLoad(state)
   if state != '' then

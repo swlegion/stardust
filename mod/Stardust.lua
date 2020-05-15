@@ -1,4 +1,4 @@
---- Stardust, An experimental Tabletop Simulator mod for a popular miniatures game.
+--- Global module.
 
 _GUIDS = {
   PLAY_AREA = '9be545',

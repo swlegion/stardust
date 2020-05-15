@@ -1,9 +1,9 @@
 --- This disk represents all of the "data" in the game (e.g. giant JSON).
 --
--- @module Data_Controller
---
 -- In future versions of the prototype, this will be downloaded asynchronously
 -- and cached in onSave instead of requiring everything to be inlined here.
+--
+-- @module Data_Controller
 
 _DATA = {
   GalacticEmpire = {
@@ -61,8 +61,8 @@ _DATA = {
 
 --- Data table for a unit.
 --
--- @field name
--- @field models
+-- @field name Name of the unit (such as "Stormtroopers").
+-- @field models A list of tables of the mesh/texture for individual minis.
 -- @table data
 
 --- Returns the unit data for the provided arguments.
