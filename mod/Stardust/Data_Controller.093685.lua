@@ -1,4 +1,7 @@
 --- This disk represents all of the "data" in the game (e.g. giant JSON).
+--
+-- @module Data_Controller
+--
 -- In future versions of the prototype, this will be downloaded asynchronously
 -- and cached in onSave instead of requiring everything to be inlined here.
 --
@@ -67,8 +70,17 @@ _DATA = {
 --
 -- @param args A table with the fields `faction`, `rank`, and `name`.
 --
--- @return A table with the `name` and `models` used to refer to the minis:
+-- @usage
 -- ```
+-- findUnit({
+--   faction = 'GalacticEmpire',
+--   rank    = 'Corps',
+--   name    = 'Stormtroopers',
+-- })
+-- ```
+--
+-- @return A table with the `name` and `models` used to refer to the minis:
+-- @usage
 -- {
 --   name = 'Stormtroopers',
 --   models = {
@@ -84,15 +96,6 @@ _DATA = {
 --     }
 --   }
 -- }
--- ```
---
--- @usage
--- ```
--- findUnit({
---   faction = 'GalacticEmpire',
---   rank    = 'Corps',
---   name    = 'Stormtroopers',
--- })
 -- ```
 function findUnit(args)
   return _findUnit(args.faction, args.rank, args.name)

@@ -1,9 +1,12 @@
+--- Functions for computing formations.
+--
+-- @module Formation_Controller
+
 --- Computes a formation for a unit.
 --
 -- @param args The `name`, `bounds`, `count`, and `position` to compute.
 --
 -- @usage
--- ```
 -- computeFormation({
 --   -- Optional. Defaults to `2-line`.
 --   name = '2-line',
@@ -11,10 +14,10 @@
 --   count = 4,
 --   position = {0, 0, 0},
 -- })
--- ```
 --
 -- @return A list of positions/rotations to use per mini index:
--- ```
+--
+-- @usage
 --  {
 --    -- 1: Identity location (e.g. where the unit leader is)
 --    { x, y, z },
@@ -24,7 +27,6 @@
 --
 --    -- ...
 --  }
--- ```
 --
 -- @see _createDerpyBattleLineFormation
 -- @see _create2LineFormation
@@ -48,7 +50,7 @@ end
 -- @param count Number of miniatures total in the unit.
 -- @param position {x, y, z} position of the unit leader model.
 --
--- ```
+-- @usage
 -- For example for 2 miniatures:
 --     [U]
 --   [L]
@@ -63,7 +65,6 @@ end
 --       [U]
 --     [U]
 --   [L]
--- ```
 --
 -- @return A list of positions/rotations to use per mini index.
 --
