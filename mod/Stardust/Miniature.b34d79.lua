@@ -20,12 +20,13 @@
 
 _GUIDS = {
   SPAWN_CONTROLLER = '525d68',
+  TARGET_CONTROLLER = '4205cc',
 }
 
 _PERSIST = {
   CONNECTED_MINIS = {},
-  HAS_ATTACHED_SILOUHETTE = false,
-  HAS_ATTACHED_MOVEMENT_TOOL = false,
+  ACTIVE_SILOUHETTE = false,
+  ACTIVE_RANGE_FINDER = false,
   SETUP = nil,
 }
 
@@ -39,24 +40,34 @@ IS_TARGETABLE = true
 -- Defaults to false.
 IS_UNIT_LEADER = false
 
+--- Whether this unit is currently selected by a player (color).
+--
+-- This value should always be `nil` for a non-leader miniature.
+--
+-- @local
+_SELECTED_BY_COLOR = nil
+
 function onLoad(state)
   -- Keep the previously configured state.
   if state != '' then
     _PERSIST = JSON.decode(state)
-    IS_UNIT_LEADER = _PERSIST.LEADER != nil
+    if _PERSIST.SETUP.leader then
+      initializeAsLeader()
+    end
     return
   end
 
   -- Load the data provided to the model, if any. Otherwise bail out.
   local spawnSetup = self.getTable('spawnSetup')
   if spawnSetup == nil then
+    _disableSelectable()
     return
   end
 
   _PERSIST = {
     CONNECTED_MINIS = {},
-    HAS_ATTACHED_SILOUHETTE = false,
-    HAS_ATTACHED_MOVEMENT_TOOL = false,
+    ACTIVE_SILOUHETTE = false,
+    ACTIVE_RANGE_FINDER = false,
     SETUP = {
       name = spawnSetup.name,
     }
@@ -66,8 +77,10 @@ function onLoad(state)
   if spawnSetup.leader then
     _PERSIST.SETUP.leader = spawnSetup.leader
     initializeAsLeader()
+    self.setName(_PERSIST.SETUP.name .. ' (Unit Leader)')
   else
     initializeAsFollower()
+    self.setName(_PERSIST.SETUP.name)
   end
 
   -- Override defaults.
@@ -81,15 +94,106 @@ function onSave()
   end
 end
 
--- Initialize as a Unit Leader.
+--- Initialize as a Unit Leader.
+--
+-- Assigns @see Miniature:IS_UNIT_LEADER and sets up UI.
+--
+-- @local
 function initializeAsLeader()
-  self.setName(_PERSIST.SETUP.name .. ' (Unit Leader)')
+  -- Expose to other objects we are a unit leader.
   IS_UNIT_LEADER = true
+end
+
+--- Select button (i.e. the base) is clicked.
+--
+-- @param player Player that selected the miniature.
+--
+-- @see Miniature:_selectUnit
+-- @local
+function _onSelect(player)
+  assert(IS_UNIT_LEADER == true)
+  local color = player.color
+  if color != 'Red' and color != 'Blue' then
+    color = _PERSIST.SETUP.leader.color
+  end
+  _selectUnit(color)
 end
 
 -- Initialize as a "Follower" (not a Unit Leader).
 function initializeAsFollower()
-  self.setName(_PERSIST.SETUP.name)
+  _disableSelectable()
+end
+
+--- Disables the ability to select this model.
+--
+-- @local
+function _disableSelectable()
+  Wait.frames(function()
+    self.UI.hide('baseButton')
+  end, 1)
+end
+
+--- Toggles selection of the unit.
+--
+-- @param color Player color.
+--
+-- @local
+function _selectUnit(color)
+  assert(color != nil)
+
+  -- Toggle on.
+  if _SELECTED_BY_COLOR == nil then
+    _SELECTED_BY_COLOR = color
+    self.highlightOn(color)
+    self.UI.show('unitActions')
+    return;
+  end
+
+  -- Toggle off.
+  if _SELECTED_BY_COLOR == color then
+    _SELECTED_BY_COLOR = nil
+    self.highlightOff()
+    self.UI.hide('unitActions')
+    return
+  end
+end
+
+--- Destroys any attachments that pass `.getVar(checkVar)`.
+--
+-- @local
+-- @usage
+-- _destroyAttachment('IS_RANGE_FINDER')
+function _destroyAttachment(checkVar)
+  -- TODO: Implement. Right now it destroys _all_ attachments.
+  -- Probably we need to clone another asset bundle for range finders?
+  self.destroyAttachments()
+end
+
+--- Toggle range finder for the unit leader.
+--
+-- @usage
+-- unitLeaderMini.call('toggleRange')
+function toggleRange()
+  assert(IS_UNIT_LEADER)
+  if _PERSIST.ACTIVE_RANGE_FINDER then
+    _hideRange()
+  else
+    _showRange()
+  end
+  _PERSIST.ACTIVE_RANGE_FINDER = not _PERSIST.ACTIVE_RANGE_FINDER
+end
+
+function _hideRange()
+  _destroyAttachment('IS_RANGE_FINDER')
+end
+
+function _showRange()
+  local controller = getObjectFromGUID(_GUIDS.TARGET_CONTROLLER)
+  local object = controller.call('spawnRangeFinder', {
+    position = self.getPosition(),
+    rotation = self.getRotation(),
+  })
+  self.addAttachment(object)
 end
 
 --- Returns whether the `guid` of the provided table is part of the unit.
@@ -126,32 +230,31 @@ end
 -- @usage
 -- unitLeaderMini.call('toggleSilouhettes')
 function toggleSilouhettes()
-  if _HAS_ATTACHED_SILOUHETTE then
+  if _PERSIST.ACTIVE_SILOUHETTE then
     _hideSilouhette()
   else
     _showSilouhette()
   end
-  if _IS_UNIT_LEADER and #_CONNECTED_MINIS then
-    for _, mini in ipairs(_CONNECTED_MINIS) do
+  if _IS_UNIT_LEADER and #_PERSIST.CONNECTED_MINIS then
+    for _, mini in ipairs(_PERSIST.CONNECTED_MINIS) do
       mini.call('toggleSilouhettes')
     end
   end
 end
 
 function _hideSilouhette()
-  local silouhette = self.removeAttachment()[1]
-  silouhette.destruct()
-  _HAS_ATTACHED_SILOUHETTE = false
+  _destroyAttachment('IS_SILOUHETTE')
+  _PERSIST.ACTIVE_SILOUHETTE = false
 end
 
 function _showSilouhette()
   local controller = getObjectFromGUID(_GUIDS.SPAWN_CONTROLLER)
-  local silouhette = controller.call('callSpawnSilouhette', {
-    self.getPosition(),
-    self.getRotation(),
+  local silouhette = controller.call('spawnSilouhette', {
+    position = self.getPosition(),
+    rotation = self.getRotation(),
   })
   self.addAttachment(silouhette)
-  _HAS_ATTACHED_SILOUHETTE = true
+  _PERSIST.ACTIVE_SILOUHETTE = true
 end
 
 --- Associate this model with another minis.
