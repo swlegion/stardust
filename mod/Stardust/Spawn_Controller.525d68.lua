@@ -1,11 +1,40 @@
+--- Funtions for spawning miniatures.
+--
+-- @module Spawn_Controller
+
 _GUIDS = {
   MINIATURE = 'b34d79',
   FORMATIONS = '53afc7',
   SILOUHETTE = '767062',
 }
 
-function callSpawnUnit(args)
-  _spawnUnit(args[1], args[2], args[3] or {0, 0, 0})
+--- Creates a unit using the provided table.
+--
+-- @param args A table referring to the unit to spawn.
+--
+-- @usage
+-- spawnUnit({
+--   -- Unit data retrieved from the data controller.
+--   data = { },
+--
+--   -- Vector.
+--   position = {0, 0, 0},
+--
+--   -- Vector. Optional, defaults to {0, 0, 0}.
+--   rotation = {0, 0, 0},
+--
+--   -- Formation. Optional, defaults to '2-line'.
+--   formation = '2-line',
+-- })
+--
+-- @return Handle to the spawned unit leader
+function spawnUnit(args)
+  return _spawnUnit(
+    args.data,
+    args.position,
+    args.rotation or {0, 0, 0},
+    args.formation
+  )
 end
 
 function _spawnUnit(
@@ -15,7 +44,7 @@ function _spawnUnit(
   formation
 )
   -- Spawn unit leader immediately.
-  _spawnUnitModel(
+  return _spawnUnitModel(
     true,
     unit,
     unit.models[1].mesh,
@@ -31,12 +60,12 @@ function _spawnUnit(
         local formations = getObjectFromGUID(_GUIDS.FORMATIONS)
         local miniSize = miniLeader.getBounds().size
         local formation = formations.call(
-          'callComputeFormation',
+          'computeFormation',
           {
-            formation,
-            miniLeader.getBounds().size,
-            count,
-            position,
+            name = formation,
+            bounds = miniLeader.getBounds().size,
+            position = position,
+            count = count,
           }
         )
         for i = 2, count, 1 do
@@ -50,8 +79,8 @@ function _spawnUnit(
             rotation,
             function (spawnedMini)
               Wait.frames(function()
-                miniLeader.call('callConnectTo', {spawnedMini})
-                spawnedMini.call('callConnectTo', {miniLeader})
+                miniLeader.call('connectTo', {spawnedMini})
+                spawnedMini.call('connectTo', {miniLeader})
               end, 1)
             end
           )
@@ -86,10 +115,22 @@ function _spawnUnitModel(
   })
 end
 
-function callSpawnSilouhette(args)
-  return _spawnSilouhette(args[1], args[2], args[3])
+--- Spawns a silouhette at the provided position and rotation.
+--
+-- @param args The `position` and `rotation` to use.
+--
+-- @usage
+-- spawnSilouhette({
+--   position = {0, 0, 0},
+--   rotation = {0, 0, 0},
+-- })
+--
+-- @return Handle to the spawned silouhette.
+function spawnSilouhette(args)
+  return _spawnSilouhette(args.position, args.rotation)
 end
 
+-- @local
 function _spawnSilouhette(position, rotation)
   local clone = getObjectFromGUID(_GUIDS.SILOUHETTE).clone({
     position = position,

@@ -1,3 +1,19 @@
+--- Represnts a miniature of a unit.
+--
+-- Expects the table "spawnWithData" to be set to initialize the miniature.
+-- @usage
+-- someMini.setTable('spawnWithData', {
+--   -- Data table.
+--   data: { ... },
+--
+--   -- Whether to be considered a unit leader.
+--   isUnitLeader: true,
+-- })
+--
+-- @module Miniature
+--
+-- @see Data_Controller
+
 _GUIDS = {
   SPAWN_CONTROLLER = '525d68',
 }
@@ -10,8 +26,15 @@ _PERSIST = {
   HAS_ATTACHED_MOVEMENT_TOOL = false,
 }
 
--- Used by the targeting sub-system.
+--- Used by the targeting sub-system to determine what models are targetable.
+--
+-- Defaults to true.
 IS_TARGETABLE = true
+
+--- Used by various sub-systems to determine what models represent unit leaders.
+--
+-- Defaults to false.
+IS_UNIT_LEADER = false
 
 function onLoad(state)
   -- Keep the previously configured state.
@@ -64,8 +87,18 @@ function initializeAsFollower()
   self.setName(_PERSIST.DATA.name)
 end
 
-function callIsPartOfUnit(args)
-  _isPartOfUnit(args[1])
+--- Returns whether the `guid` of the provided table is part of the unit.
+--
+-- @param args A table with a 'guid' property.
+--
+-- @usage
+-- unitLeaderMini.call('isPartOfUnit', {
+--   guid: 'abc123',
+-- })
+--
+-- @return True if the mini is part of the unit.
+function isPartOfUnit(args)
+  return _isPartOfUnit(args.guid)
 end
 
 function _isPartOfUnit(guid)
@@ -80,7 +113,13 @@ function _isPartOfUnit(guid)
   return false
 end
 
--- Toggle silouhettes showing up.
+--- Toggle silouhettes showing up for the miniature.
+--
+-- If this unit is a unit leader, then this automatically calls the
+-- `toggleSilouhettes` method for all miniatures attached to the unit.
+--
+-- @usage
+-- unitLeaderMini.call('toggleSilouhettes')
 function toggleSilouhettes()
   if _HAS_ATTACHED_SILOUHETTE then
     _hideSilouhette()
@@ -110,19 +149,26 @@ function _showSilouhette()
   _HAS_ATTACHED_SILOUHETTE = true
 end
 
--- Associate this model with another models.
+--- Associate this model with another minis.
+--
+-- @param minis A list of other model objects.
 --
 -- If you are a unit leader, this method associates itself with miniatures
 -- that are considered "part" of your unit (including things like counterparts).
 --
 -- If you are a non-leader, this method links to your unit leader.
-function connectTo(otherMini)
+--
+-- @usage
+-- unitLeaderMini.call('connectTo', {mini1, mini2, mini3})
+function connectTo(minis)
+  for _, mini in ipairs(minis) do
+    _connectTo(mini)
+  end
+end
+
+function _connectTo(otherMini)
   if otherMini.guid == self.guid then
     return
   end
   table.insert(_PERSIST.CONNECTED_MINIS, otherMini.guid)
-end
-
-function callConnectTo(args)
-  connectTo(args[1])
 end

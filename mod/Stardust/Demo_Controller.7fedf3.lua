@@ -1,3 +1,7 @@
+--- Logic for loading the demo game.
+--
+-- @module Demo_Controller
+
 _GUIDS = {
   DATA_DISK = '093685',
   SPAWN_CONTROLLER = '525d68',
@@ -42,7 +46,8 @@ _DEMO = {
   },
 }
 
-function callLoadDemo()
+--- Loads all of the units and terrain for the demo scenario.
+function loadDemo()
   -- Spawn terrain.
   local barricade = getObjectFromGUID(_GUIDS.DEMO_BARRICADE)
   local halfWay = #_DEMO.BARRICADES / 2
@@ -61,15 +66,15 @@ function callLoadDemo()
   -- Spawn units.
   local data = getObjectFromGUID(_GUIDS.DATA_DISK)
   local spawner = getObjectFromGUID(_GUIDS.SPAWN_CONTROLLER)
-  local stormTroopers = data.call('callFindUnit', {
-    'GalacticEmpire',
-    'Corps',
-    'Stormtroopers'
+  local stormTroopers = data.call('findUnit', {
+    faction = 'GalacticEmpire',
+    rank = 'Corps',
+    name = 'Stormtroopers'
   })
-  local rebelTroopers = data.call('callFindUnit', {
-    'RebelAlliance',
-    'Corps',
-    'Rebel Troopers'
+  local rebelTroopers = data.call('findUnit', {
+    faction = 'RebelAlliance',
+    rank = 'Corps',
+    name = 'Rebel Troopers'
   })
   local halfWay = #_DEMO.UNITS / 2
   for i, position in ipairs(_DEMO.UNITS) do
@@ -79,10 +84,10 @@ function callLoadDemo()
       unitType = stormTroopers
       rotation = {0, 180, 0}
     end
-    spawner.call('callSpawnUnit', {
-      unitType,
-      position,
-      rotation,
+    spawner.call('spawnUnit', {
+      data = unitType,
+      position = position,
+      rotation = rotation,
     })
   end
 
@@ -102,7 +107,7 @@ function callLoadDemo()
     object.setLock(false)
     object.setScale({1, 1, 1})
     object.setLuaScript(orderToken.getLuaScript())
-    object.setTable('PERSIST', {
+    object.setTable('setupOrderToken', {
       rank = 'Corps',
       color = color,
     })

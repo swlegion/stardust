@@ -1,3 +1,7 @@
+--- Targeting/LOS sub-system
+--
+-- @module Target_Controller
+
 _GUIDS = {
   PLAY_AREA = '9be545'
 }
@@ -36,17 +40,28 @@ function drawTemporaryUI()
   })
 end
 
+--- Toggles silouhettes for all units in the play area.
+--
+-- @local
 function toggleSIL()
   local table = getObjectFromGUID(_GUIDS.PLAY_AREA)
   if not table then
     return
   end
-  local minis = table.call('callGetAllUnitLeaders')
+  local minis = table.call('getAllUnitLeaders')
   for _, mini in ipairs(minis) do
     mini.call('toggleSilouhettes')
   end
 end
 
+--- Does a LOS check for the selected unit leaders.
+--
+-- @param _ Unused
+-- @param color Player color that clicks the button
+--
+-- For every selected object that is a unit leader, LOS is checked.
+--
+-- @local
 function findLOS(_, color)
   local selected = Player[color].getSelectedObjects()
   for _, object in ipairs(selected) do
@@ -61,9 +76,9 @@ end
 
 function _showLOSFrom(leaderMini)
   local table = getObjectFromGUID(_GUIDS.PLAY_AREA)
-  local minis = table.call('callGetAllTargets')
+  local minis = table.call('getAllTargets')
   for _, mini in ipairs(minis) do
-    if not leaderMini.call('callIsPartOfUnit', {mini.guid}) then
+    if not leaderMini.call('isPartOfUnit', {guid = mini.guid}) then
       _showLOSTo(leaderMini, mini)
     end
   end

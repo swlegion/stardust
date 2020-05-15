@@ -1,4 +1,4 @@
-name: Lua CI
+name: Site Generator
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
 
       - name: ldoc
         run: |
-          ldoc -d ldoc mod
+          ldoc --all --dir ldoc mod
 
       - name: Upload LDoc
         uses: actions/upload-artifact@v1
