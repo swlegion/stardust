@@ -3,11 +3,11 @@
     "Name": "Custom_Model",
     "Transform": {
       "posX": 43.5,
-      "posY": 0.0338963568,
+      "posY": 0.033896327,
       "posZ": 16.5,
-      "rotX": 1.14004211e-8,
-      "rotY": -0.000795708562,
-      "rotZ": -6.756872e-7,
+      "rotX": 0.00000189598211,
+      "rotY": -0.000795506639,
+      "rotZ": -4.18418971e-8,
       "scaleX": 0.400000453,
       "scaleY": 0.400000453,
       "scaleZ": 0.400000453
@@ -42,7 +42,7 @@
       "CastShadows": true
     },
     "XmlUI": "",
-    "LuaScript": "",
+    "LuaScript": "#include ./Silouhette.767062.lua",
     "LuaScriptState": "",
     "GUID": "767062"
   },

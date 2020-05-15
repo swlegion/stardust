@@ -11,6 +11,7 @@ _DATA = {
       {
         name = 'Stormtroopers',
         base = 'Small',
+        rank = 'Corps',
         models = {
           {
             mesh = "https://assets.swlegion.dev/units/empire/stormtrooper-1.obj",
@@ -38,6 +39,7 @@ _DATA = {
         {
           name = 'Rebel Troopers',
           base = 'Small',
+          rank = 'Corps',
           models = {
             {
               mesh = "http://localhost:8080/units/rebels/rebel_trooper.1.obj",

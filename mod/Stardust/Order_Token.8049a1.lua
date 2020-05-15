@@ -10,25 +10,30 @@
 --
 -- @module Order_Token
 
+_PERSIST = {
+  color = nil,
+  rank  = nil,
+}
+
 function onLoad(state)
   if state != '' then
-    PERSIST = JSON.decode(state)
+    _PERSIST = JSON.decode(state)
   else
-    PERSIST = self.getTable('setupOrderToken')
+    _PERSIST = self.getTable('setupOrderToken')
   end
-  if PERSIST != nil then
+  if _PERSIST != nil then
     _setObjectDetails()
   end
 end
 
 function onSave(state)
-  if PERSIST != nil then
+  if _PERSIST != nil then
     return JSON.encode(PERSIST)
   end
 end
 
 function _setObjectDetails()
-  if PERSIST.color == 'Blue' then
+  if _PERSIST.color == 'Blue' then
     self.setCustomObject({
       diffuse = 'https://assets.swlegion.dev/tools/orders/empire.corps.jpg'
     })
@@ -37,6 +42,6 @@ function _setObjectDetails()
       diffuse = 'http://localhost:8080/tools/orders/rebels.corps.jpg'
     })
   end
-  self.setName(PERSIST.color .. ' ' .. PERSIST.rank)
+  self.setName(_PERSIST.color .. ' ' .. _PERSIST.rank)
   self.reload()
 end

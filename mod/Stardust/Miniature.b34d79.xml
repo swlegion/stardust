@@ -1,0 +1,31 @@
+<Defaults>
+  <Button fontSize="12" />
+</Defaults>
+
+<!-- TODO: Set height/width based on the width of the mini. -->
+<Panel
+  id="baseButton"
+  height="100"
+  width="100"
+  position="0 0 -20"
+  color="#00000000"
+>
+  <VerticalLayout>
+    <Button onClick="_onSelect" color="#00000000"></Button>
+  </VerticalLayout>
+</Panel>
+
+<Panel
+  id="unitActions"
+  active="false"
+  height="50"
+  width="150"
+  position="0 0 -200"
+  rotation="90 0 180"
+>
+  <HorizontalLayout>
+    <Button onClick="toggleRange">Range</Button>
+    <Button interactable="false">Move</Button>
+    <Button interactable="false">Attack</Button>
+  </HorizontalLayout>
+</Panel>

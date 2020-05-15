@@ -1,4 +1,11 @@
-PERSIST = {}
+--- Represents the active table.
+--
+-- @module Play_Area
+
+_PERSIST = {
+  unscaledBounds = nil,
+  zoneGuid = nil,
+}
 
 function onLoad(saveState)
   -- Make the play area not clickable.
@@ -62,7 +69,7 @@ function resize(size)
   self.setScale(scaleTo)
 
   -- Do we need to create a zone?
-  if PERSIST.zoneGuid == nil then
+  if width > 0 and height > 0 and PERSIST.zoneGuid == nil then
     createZone(size[1], size[2])
   end
 end

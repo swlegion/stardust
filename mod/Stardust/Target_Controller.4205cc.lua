@@ -6,6 +6,10 @@ _GUIDS = {
   PLAY_AREA = '9be545'
 }
 
+_RANGE_FINDERS = {
+  Small = 'https://assets.swlegion.dev/tools/ranges/small.unity3d',
+}
+
 function onLoad()
   drawTemporaryUI()
 end
@@ -52,6 +56,38 @@ function toggleSIL()
   for _, mini in ipairs(minis) do
     mini.call('toggleSilouhettes')
   end
+end
+
+--- Spawns a silouhette at the provided position and rotation.
+--
+-- @param args The `position` and `rotation` to use.
+--
+-- @usage
+-- spawnRangeFinder({
+--   position = {0, 0, 0},
+--   rotation = {0, 0, 0},
+-- })
+--
+-- @return Handle to the spawned range finder.
+function spawnRangeFinder(args)
+  local asset = _RANGE_FINDERS.Small
+  local object = spawnObject({
+    type              = 'Custom_Assetbundle',
+    position          = {
+      x = args.position.x,
+      y = args.position.y + 3,
+      z = args.position.z,
+    },
+    rotation          = args.rotation,
+  })
+  object.setCustomObject({
+    assetbundle = asset,
+  })
+  object.setLock(true)
+  object.interactable = false
+  object.setScale({0, 0, 0})
+  object.setVar('IS_RANGE_FINDER', true)
+  return object
 end
 
 --- Does a LOS check for the selected unit leaders.

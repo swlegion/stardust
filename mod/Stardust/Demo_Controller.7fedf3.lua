@@ -80,12 +80,15 @@ function loadDemo()
   for i, position in ipairs(_DEMO.UNITS) do
     local rotation = {0, 0, 0}
     local unitType = rebelTroopers
+    local color = 'Red'
     if i > halfWay then
       unitType = stormTroopers
+      color = 'Blue'
       rotation = {0, 180, 0}
     end
     spawner.call('spawnUnit', {
       data = unitType,
+      color = color,
       position = position,
       rotation = rotation,
     })
