@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Stardust.html">Stardust</a></li>
+  <li><a href="../modules/Data_Controller.html">Data_Controller</a></li>
+  <li><a href="../modules/Demo_Controller.html">Demo_Controller</a></li>
+  <li><strong>Formation_Controller</strong></li>
+  <li><a href="../modules/Miniature.html">Miniature</a></li>
+  <li><a href="../modules/Move_Unit_Here.html">Move_Unit_Here</a></li>
+  <li><a href="../modules/Movement_Controller.html">Movement_Controller</a></li>
+  <li><a href="../modules/Order_Token.html">Order_Token</a></li>
+  <li><a href="../modules/Spawn_Controller.html">Spawn_Controller</a></li>
+  <li><a href="../modules/Target_Controller.html">Target_Controller</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Formation_Controller</code></h1>
+<p>Functions for computing formations.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#computeFormation">computeFormation (args)</a></td>
+	<td class="summary">Computes a formation for a unit.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#_createDerpyBattleLineFormation">_createDerpyBattleLineFormation (bounds, count, position)</a></td>
+	<td class="summary">Computes a list of positions to achieve a basic formation.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_create2LineFormation">_create2LineFormation (bounds, count, position)</a></td>
+	<td class="summary">Computes a list of positions to achieve a 2-by-2 formation.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "computeFormation"></a>
+    <strong>computeFormation (args)</strong>
+    </dt>
+    <dd>
+    Computes a formation for a unit.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+         The `name`, `bounds`, `count`, and `position` to compute.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A list of positions to use per mini-index.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">computeFormation({
+  <span class="comment">-- Optional. Defaults to `2-line`.
+</span>  name = <span class="string">'2-line'</span>,
+  bounds = {<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>},
+  count = <span class="number">4</span>,
+  position = {<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>},
+})
+</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "_createDerpyBattleLineFormation"></a>
+    <strong>_createDerpyBattleLineFormation (bounds, count, position)</strong>
+    </dt>
+    <dd>
+    Computes a list of positions to achieve a basic formation.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">bounds</span>
+         {x, y, z} size of the unit leader model.
+        </li>
+        <li><span class="parameter">count</span>
+         Number of miniatures total in the unit.
+        </li>
+        <li><span class="parameter">position</span>
+         {x, y, z} position of the unit leader model.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A list of positions/rotations to use per mini index.
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/Formation_Controller.html#computeFormation">Formation_Controller:computeFormation</a>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">For example <span class="keyword">for</span> <span class="number">2</span> miniatures:
+    [U]
+  [L]
+
+For <span class="number">3</span>:
+      [U]
+    [U]
+  [L]
+
+For <span class="number">4</span>:
+        [U]
+      [U]
+    [U]
+  [L]
+</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_create2LineFormation"></a>
+    <strong>_create2LineFormation (bounds, count, position)</strong>
+    </dt>
+    <dd>
+    Computes a list of positions to achieve a 2-by-2 formation.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">bounds</span>
+         {x, y, z} size of the unit leader model.
+        </li>
+        <li><span class="parameter">count</span>
+         Number of miniatures total in the unit.
+        </li>
+        <li><span class="parameter">position</span>
+         {x, y, z} position of the unit leader model.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A list of positions/rotations to use per mini index.
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/Formation_Controller.html#computeFormation">Formation_Controller:computeFormation</a>
+    </ul>
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-05-15 01:16:15 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
