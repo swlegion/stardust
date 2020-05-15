@@ -34,6 +34,7 @@
 <ul>
 <li><a href="#Functions">Functions</a></li>
 <li><a href="#Fields">Fields</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
 </ul>
 
 
@@ -47,6 +48,8 @@
   <li><a href="../modules/Move_Unit_Here.html">Move_Unit_Here</a></li>
   <li><a href="../modules/Movement_Controller.html">Movement_Controller</a></li>
   <li><a href="../modules/Order_Token.html">Order_Token</a></li>
+  <li><a href="../modules/Play_Area.html">Play_Area</a></li>
+  <li><a href="../modules/Stardust.Silouhette.767062.html">Stardust.Silouhette.767062</a></li>
   <li><a href="../modules/Spawn_Controller.html">Spawn_Controller</a></li>
   <li><a href="../modules/Target_Controller.html">Target_Controller</a></li>
 </ul>
@@ -59,7 +62,8 @@
 <p>Represnts a miniature of a unit.</p>
 <p>
 
- Expects the table "spawnWithData" to be set to initialize the miniature.
+ Expects the table "spawnSetup" to be set to initialize the miniature.
+
 </p>
     <h3>See also:</h3>
     <ul>
@@ -67,12 +71,15 @@
     </ul>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">someMini.setTable(&apos;spawnWithData&apos;, {
+        <pre class="example">someMini.setTable(&apos;spawnSetup&apos;, {
   -- Data table.
-  data: { ... },
+  name = &apos;...&apos;,
 
-  -- Whether to be considered a unit leader.
-  isUnitLeader: true,
+  -- Whether to be considered a unit leader. Omit if not a leader.
+  leader: {
+    color = &apos;Red&apos;,
+    rank  = &apos;Corps&apos;,
+  },
 })
 
 </pre>
@@ -81,6 +88,10 @@
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#toggleRange">toggleRange ()</a></td>
+	<td class="summary">Toggle range finder for the unit leader.</td>
+	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#isPartOfUnit">isPartOfUnit (args)</a></td>
 	<td class="summary">Returns whether the `guid` of the provided table is part of the unit.</td>
@@ -104,6 +115,33 @@
 	<td class="name" nowrap><a href="#IS_UNIT_LEADER">IS_UNIT_LEADER</a></td>
 	<td class="summary">Used by various sub-systems to determine what models represent unit leaders.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_SELECTED_BY_COLOR">_SELECTED_BY_COLOR</a></td>
+	<td class="summary">Whether this unit is currently selected by a player (color).</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#initializeAsLeader">initializeAsLeader ()</a></td>
+	<td class="summary">Initialize as a Unit Leader.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_onSelect">_onSelect (player)</a></td>
+	<td class="summary">Select button (i.e.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_disableSelectable">_disableSelectable ()</a></td>
+	<td class="summary">Disables the ability to select this model.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_selectUnit">_selectUnit (color)</a></td>
+	<td class="summary">Toggles selection of the unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_destroyAttachment">_destroyAttachment (checkVar)</a></td>
+	<td class="summary">Destroys any attachments that pass `.getVar(checkVar)`.</td>
+	</tr>
 </table>
 
 <br/>
@@ -113,6 +151,25 @@
     <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
+    <dt>
+    <a name = "toggleRange"></a>
+    <strong>toggleRange ()</strong>
+    </dt>
+    <dd>
+    Toggle range finder for the unit leader.
+
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">unitLeaderMini.call(<span class="string">'toggleRange'</span>)</pre>
+    </ul>
+
+</dd>
     <dt>
     <a name = "isPartOfUnit"></a>
     <strong>isPartOfUnit (args)</strong>
@@ -235,6 +292,131 @@
 
 
 </dd>
+    <dt>
+    <a name = "_SELECTED_BY_COLOR"></a>
+    <strong>_SELECTED_BY_COLOR</strong>
+    </dt>
+    <dd>
+    Whether this unit is currently selected by a player (color).
+
+ This value should always be `nil` for a non-leader miniature.
+
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "initializeAsLeader"></a>
+    <strong>initializeAsLeader ()</strong>
+    </dt>
+    <dd>
+    Initialize as a Unit Leader.
+
+ Assigns @see Miniature:IS_UNIT_LEADER and sets up UI.
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_onSelect"></a>
+    <strong>_onSelect (player)</strong>
+    </dt>
+    <dd>
+    Select button (i.e.  the base) is clicked.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">player</span>
+         Player that selected the miniature.
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/Miniature.html#_selectUnit">Miniature:_selectUnit</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "_disableSelectable"></a>
+    <strong>_disableSelectable ()</strong>
+    </dt>
+    <dd>
+    Disables the ability to select this model.
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_selectUnit"></a>
+    <strong>_selectUnit (color)</strong>
+    </dt>
+    <dd>
+    Toggles selection of the unit.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+         Player color.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_destroyAttachment"></a>
+    <strong>_destroyAttachment (checkVar)</strong>
+    </dt>
+    <dd>
+    Destroys any attachments that pass `.getVar(checkVar)`.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">checkVar</span>
+            <span class="types"><span class="type">TODO</span></span>
+         Implement. Right now it destroys _all_ attachments. Probably we need to clone another asset bundle for range finders?
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">_destroyAttachment(<span class="string">'IS_RANGE_FINDER'</span>)</pre>
+    </ul>
+
+</dd>
 </dl>
 
 
@@ -242,7 +424,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2020-05-15 19:54:57 </i>
+<i style="float:right;">Last updated 2020-05-15 23:33:37 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

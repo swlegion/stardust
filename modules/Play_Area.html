@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Stardust.html">Stardust</a></li>
+  <li><a href="../modules/Data_Controller.html">Data_Controller</a></li>
+  <li><a href="../modules/Demo_Controller.html">Demo_Controller</a></li>
+  <li><a href="../modules/Formation_Controller.html">Formation_Controller</a></li>
+  <li><a href="../modules/Miniature.html">Miniature</a></li>
+  <li><a href="../modules/Move_Unit_Here.html">Move_Unit_Here</a></li>
+  <li><a href="../modules/Movement_Controller.html">Movement_Controller</a></li>
+  <li><a href="../modules/Order_Token.html">Order_Token</a></li>
+  <li><strong>Play_Area</strong></li>
+  <li><a href="../modules/Stardust.Silouhette.767062.html">Stardust.Silouhette.767062</a></li>
+  <li><a href="../modules/Spawn_Controller.html">Spawn_Controller</a></li>
+  <li><a href="../modules/Target_Controller.html">Target_Controller</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Play_Area</code></h1>
+<p>Represents the active table.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#resize">resize (size)</a></td>
+	<td class="summary">Clears and then resizes the table to provided {width, height}.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getAllUnitLeaders">getAllUnitLeaders ()</a></td>
+	<td class="summary">Returns all unit leaders that are currently in the play area.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getAllTargets">getAllTargets ()</a></td>
+	<td class="summary">Returns all targetable units that are currently in the play area.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#clearTable">clearTable ()</a></td>
+	<td class="summary">If there is a visible play area, destroys it.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#createZone">createZone (width, height)</a></td>
+	<td class="summary">Creates a new scripting zone on top of the table to watch for minis.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "resize"></a>
+    <strong>resize (size)</strong>
+    </dt>
+    <dd>
+    Clears and then resizes the table to provided {width, height}.
+
+ If {0, 0} is passed in the table is cleared/destroyed only.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         A table of an X and Y value, in inches.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">playArea.call(<span class="string">'resize'</span>, {<span class="number">36</span>, <span class="number">36</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "getAllUnitLeaders"></a>
+    <strong>getAllUnitLeaders ()</strong>
+    </dt>
+    <dd>
+    Returns all unit leaders that are currently in the play area.
+
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> unitLeaders = playArea.call(<span class="string">'getAllUnitLeaders'</span>)
+<span class="keyword">for</span> _, unitLeader <span class="keyword">in</span> <span class="global">ipairs</span>(unitLeaders) <span class="keyword">do</span>
+  <span class="comment">-- ...
+</span><span class="keyword">end</span>
+</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "getAllTargets"></a>
+    <strong>getAllTargets ()</strong>
+    </dt>
+    <dd>
+    Returns all targetable units that are currently in the play area.
+
+ In practice, this is all unit leaders plus all non-unit leader minis.
+
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> targets = playArea.call(<span class="string">'getAllTargets'</span>)
+<span class="keyword">for</span> _, target <span class="keyword">in</span> <span class="global">ipairs</span>(targets) <span class="keyword">do</span>
+  <span class="comment">-- ...
+</span><span class="keyword">end</span>
+</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "clearTable"></a>
+    <strong>clearTable ()</strong>
+    </dt>
+    <dd>
+    If there is a visible play area, destroys it.
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "createZone"></a>
+    <strong>createZone (width, height)</strong>
+    </dt>
+    <dd>
+    Creates a new scripting zone on top of the table to watch for minis.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+         Width in inches.
+        </li>
+        <li><span class="parameter">height</span>
+         Height in inches.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-05-15 23:33:37 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
