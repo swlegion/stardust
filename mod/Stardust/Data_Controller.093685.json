@@ -32,7 +32,8 @@
     "Hands": false,
     "LuaScript": "#include ./Data_Controller.093685.lua",
     "LuaScriptState": "",
-    "GUID": "093685"
+    "GUID": "093685",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }
