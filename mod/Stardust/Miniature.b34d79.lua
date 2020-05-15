@@ -1,13 +1,17 @@
 --- Represnts a miniature of a unit.
 --
--- Expects the table "spawnWithData" to be set to initialize the miniature.
--- @usage
--- someMini.setTable('spawnWithData', {
---   -- Data table.
---   data: { ... },
+-- Expects the table "spawnSetup" to be set to initialize the miniature.
 --
---   -- Whether to be considered a unit leader.
---   isUnitLeader: true,
+-- @usage
+-- someMini.setTable('spawnSetup', {
+--   -- Data table.
+--   name = '...',
+--
+--   -- Whether to be considered a unit leader. Omit if not a leader.
+--   leader: {
+--     color = 'Red',
+--     rank  = 'Corps',
+--   },
 -- })
 --
 -- @module Miniature
@@ -19,11 +23,10 @@ _GUIDS = {
 }
 
 _PERSIST = {
-  DATA = nil,
   CONNECTED_MINIS = {},
-  IS_UNIT_LEADER = false,
   HAS_ATTACHED_SILOUHETTE = false,
   HAS_ATTACHED_MOVEMENT_TOOL = false,
+  SETUP = nil,
 }
 
 --- Used by the targeting sub-system to determine what models are targetable.
@@ -40,26 +43,28 @@ function onLoad(state)
   -- Keep the previously configured state.
   if state != '' then
     _PERSIST = JSON.decode(state)
-    IS_UNIT_LEADER = _PERSIST.IS_UNIT_LEADER
+    IS_UNIT_LEADER = _PERSIST.LEADER != nil
     return
   end
 
   -- Load the data provided to the model, if any. Otherwise bail out.
-  local spawnWithData = self.getTable('spawnWithData')
-  if spawnWithData == nil then
+  local spawnSetup = self.getTable('spawnSetup')
+  if spawnSetup == nil then
     return
   end
 
   _PERSIST = {
-    DATA = spawnWithData.data,
     CONNECTED_MINIS = {},
-    IS_UNIT_LEADER = spawnWithData.isUnitLeader,
     HAS_ATTACHED_SILOUHETTE = false,
     HAS_ATTACHED_MOVEMENT_TOOL = false,
+    SETUP = {
+      name = spawnSetup.name,
+    }
   }
 
   -- Are we a unit leader?
-  if _PERSIST.IS_UNIT_LEADER then
+  if spawnSetup.leader then
+    _PERSIST.SETUP.leader = spawnSetup.leader
     initializeAsLeader()
   else
     initializeAsFollower()
@@ -71,20 +76,20 @@ function onLoad(state)
 end
 
 function onSave()
-  if _PERSIST.DATA != nil then
+  if _PERSIST.SETUP != nil then
     return JSON.encode(_PERSIST)
   end
 end
 
 -- Initialize as a Unit Leader.
 function initializeAsLeader()
-  self.setName(_PERSIST.DATA.name .. ' (Unit Leader)')
+  self.setName(_PERSIST.SETUP.name .. ' (Unit Leader)')
   IS_UNIT_LEADER = true
 end
 
 -- Initialize as a "Follower" (not a Unit Leader).
 function initializeAsFollower()
-  self.setName(_PERSIST.DATA.name)
+  self.setName(_PERSIST.SETUP.name)
 end
 
 --- Returns whether the `guid` of the provided table is part of the unit.

@@ -16,7 +16,7 @@
     "Description": "",
     "GMNotes": "",
     "ColorDiffuse": {
-      "r": 0.1104297,
+      "r": 0.110429667,
       "g": 0.6901961,
       "b": 0.4969411
     },
@@ -30,10 +30,10 @@
     "GridProjection": false,
     "HideWhenFaceDown": false,
     "Hands": false,
+    "XmlUI": "",
     "LuaScript": "#include ./Target_Controller.4205cc.lua",
     "LuaScriptState": "",
-    "GUID": "4205cc",
-    "XmlUI": ""
+    "GUID": "4205cc"
   },
   "StatesPaths": {}
 }

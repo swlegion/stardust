@@ -25,6 +25,9 @@ _BASE_SIZE_TO_COLLIDER = {
 --   -- Unit data retrieved from the data controller.
 --   data = { },
 --
+--   -- Color the unit belongs to.
+--   color = 'Red',
+--
 --   -- Vector.
 --   position = {0, 0, 0},
 --
@@ -39,6 +42,7 @@ _BASE_SIZE_TO_COLLIDER = {
 function spawnUnit(args)
   return _spawnUnit(
     args.data,
+    args.color,
     args.position,
     args.rotation or {0, 0, 0},
     args.formation
@@ -47,13 +51,17 @@ end
 
 function _spawnUnit(
   unit,
+  color,
   position,
   rotation,
   formation
 )
   -- Spawn unit leader immediately.
   return _spawnUnitModel(
-    true,
+    {
+      color = color,
+      rank = unit.rank,
+    },
     unit,
     unit.models[1].mesh,
     unit.models[1].texture,
@@ -80,7 +88,7 @@ function _spawnUnit(
         for i = 2, count, 1 do
           local texture = unit.models[i].texture or unit.models[1].texture
           local spawned = _spawnUnitModel(
-            false,
+            nil,
             unit,
             unit.models[i].mesh,
             texture,
@@ -101,7 +109,7 @@ function _spawnUnit(
 end
 
 function _spawnUnitModel(
-  isLeader,
+  leader,
   data,
   mesh,
   texture,
@@ -121,9 +129,9 @@ function _spawnUnitModel(
     diffuse = texture,
     collider = _BASE_SIZE_TO_COLLIDER[collider],
   })
-  clone.setTable('spawnWithData', {
-    data = data,
-    isUnitLeader = isLeader,
+  clone.setTable('spawnSetup', {
+    name = data.name,
+    leader = leader,
   })
 end
 
