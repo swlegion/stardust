@@ -32,7 +32,8 @@
     "Hands": false,
     "LuaScript": "#include ./Formation_Controller.53afc7.lua",
     "LuaScriptState": "",
-    "GUID": "53afc7"
+    "GUID": "53afc7",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }

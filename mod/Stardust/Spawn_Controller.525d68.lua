@@ -8,6 +8,14 @@ _GUIDS = {
   SILOUHETTE = '767062',
 }
 
+_BASE_SIZE_TO_COLLIDER = {
+  Small = "https://assets.swlegion.dev/collider/small.obj",
+  Medium = "http://localhost:8080/collider/medium.obj",
+  Large = "http://localhost:8080/collider/large.obj",
+  Huge = "http://localhost:8080/collider/huge.obj",
+  Gigantic = "http://localhost:8080/collider/gigantic.obj",
+}
+
 --- Creates a unit using the provided table.
 --
 -- @param args A table referring to the unit to spawn.
@@ -49,6 +57,7 @@ function _spawnUnit(
     unit,
     unit.models[1].mesh,
     unit.models[1].texture,
+    unit.base,
     position,
     rotation,
     function (miniLeader)
@@ -75,6 +84,7 @@ function _spawnUnit(
             unit,
             unit.models[i].mesh,
             texture,
+            unit.base,
             formation[i],
             rotation,
             function (spawnedMini)
@@ -95,6 +105,7 @@ function _spawnUnitModel(
   data,
   mesh,
   texture,
+  collider,
   position,
   rotation,
   callback
@@ -108,6 +119,7 @@ function _spawnUnitModel(
   clone.setCustomObject({
     mesh = mesh,
     diffuse = texture,
+    collider = _BASE_SIZE_TO_COLLIDER[collider],
   })
   clone.setTable('spawnWithData', {
     data = data,

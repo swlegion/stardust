@@ -52,7 +52,8 @@
     },
     "LuaScript": "#include ./Order_Token.8049a1.lua",
     "LuaScriptState": "",
-    "GUID": "8049a1"
+    "GUID": "8049a1",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }

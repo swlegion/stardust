@@ -34,7 +34,7 @@
       "MeshURL": "https://assets.swlegion.dev/units/empire/stormtrooper.1.obj",
       "DiffuseURL": "",
       "NormalURL": "",
-      "ColliderURL": "https://assets.swlegion.dev/collider/small-base.obj",
+      "ColliderURL": "https://assets.swlegion.dev/collider/small.obj",
       "Convex": true,
       "MaterialIndex": 3,
       "TypeIndex": 1,
@@ -52,7 +52,8 @@
     },
     "LuaScript": "#include ./Miniature.b34d79.lua",
     "LuaScriptState": "",
-    "GUID": "b34d79"
+    "GUID": "b34d79",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }

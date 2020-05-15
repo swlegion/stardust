@@ -32,7 +32,8 @@
     "Hands": false,
     "LuaScript": "#include ./Movement_Controller.0d6e64.lua",
     "LuaScriptState": "",
-    "GUID": "0d6e64"
+    "GUID": "0d6e64",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }
