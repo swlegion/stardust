@@ -25,7 +25,7 @@
 >
   <HorizontalLayout>
     <Button onClick="toggleRange">Range</Button>
-    <Button interactable="false">Move</Button>
+    <Button onClick="toggleMovement">Move</Button>
     <Button interactable="false">Attack</Button>
   </HorizontalLayout>
 </Panel>
