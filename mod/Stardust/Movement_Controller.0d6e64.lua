@@ -12,6 +12,7 @@
 -- _DATA[speedToUse].rings[baseSize] -- '...unity3d'
 --
 -- @local
+-- @field _DATA
 _DATA = {
   -- Speed 1.
   {
