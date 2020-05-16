@@ -20,14 +20,11 @@ GUIDS = {
     Target          = '4205cc',
   },
 
-  clone = {
-    Silouhette      = '767062',
-    Miniature       = 'b34d79',
-  },
-
   objects = {
     Barricade       = '96cf71',
+    Miniature       = 'b34d79',
     Order           = '8049a1',
+    Silouhette      = '767062',
     Table           = '9be545',
   }
 }
