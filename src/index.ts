@@ -14,15 +14,26 @@ const gitHubAssets =
 const canonicalAssets = 'https://assets.swlegion.dev/';
 
 function banNonLocalOrMissingUrls(
-  localAssetsPrefix: string,
+  assetsPrefix: string,
 ): (url: string) => boolean {
   return (url: string): boolean => {
-    if (!url.startsWith(localAssetsPrefix)) {
-      console.error('Do not submit references to non-local assets', url);
+    if (!url.startsWith(assetsPrefix)) {
+      console.error(
+        'Do not submit references to non-local assets',
+        url,
+        `(Required: ${assetsPrefix})`,
+        '\n',
+      );
       return false;
     }
-    const pathToFile = url.substring(localAssets.length);
-    return fs.pathExistsSync(path.join('assets', pathToFile));
+    const pathToFile = path.normalize(
+      path.join(path.resolve('assets'), url.substring(assetsPrefix.length)),
+    );
+    if (!fs.existsSync(pathToFile)) {
+      console.error('Could not resolve asset', pathToFile, '\n');
+      return false;
+    }
+    return true;
   };
 }
 
@@ -44,8 +55,9 @@ export async function buildToDist(
   const assetsDir = options?.useGitHubAsAssetSource
     ? gitHubAssets
     : localAssets;
+  console.warn(assetsDir);
   const splitter = new expander.SplitIO({
-    ban: banNonLocalOrMissingUrls(assetsDir),
+    ban: banNonLocalOrMissingUrls(canonicalAssets),
     from: canonicalAssets,
     to: assetsDir,
   });
@@ -70,7 +82,7 @@ export async function extractToMod(
     ? gitHubAssets
     : localAssets;
   const splitter = new expander.SplitIO({
-    ban: banNonLocalOrMissingUrls(assetsDir),
+    ban: banNonLocalOrMissingUrls(canonicalAssets),
     from: canonicalAssets,
     to: assetsDir,
   });

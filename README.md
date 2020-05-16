@@ -41,7 +41,7 @@ the other users. Currently, you can use _GitHub_ as the source of the truth:
 # `https://raw.githubusercontent.com/swlegion/stardust/master/assets/`
 #
 # ... this does mean that you cannot use in-progress/local-only assets.
-$ npm run build --use-github-for-assets
+$ npm run build -- --use-github-for-assets
 ```
 
 ## Advanced users
