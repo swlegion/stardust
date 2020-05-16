@@ -1,5 +1,9 @@
+import minimist from 'minimist';
 import { buildToDist } from '../src';
 
 (async (): Promise<void> => {
-  await buildToDist();
+  const args = minimist(process.argv.slice(2));
+  await buildToDist({
+    useGitHubAsAssetSource: !!args['use-github-for-assets'],
+  });
 })();

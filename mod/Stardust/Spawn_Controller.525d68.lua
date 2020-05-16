@@ -10,10 +10,10 @@ _GUIDS = {
 
 _BASE_SIZE_TO_COLLIDER = {
   Small = "https://assets.swlegion.dev/collider/small.obj",
-  Medium = "http://localhost:8080/collider/medium.obj",
-  Large = "http://localhost:8080/collider/large.obj",
-  Huge = "http://localhost:8080/collider/huge.obj",
-  Gigantic = "http://localhost:8080/collider/gigantic.obj",
+  Medium = "https://assets.swlegion.dev/collider/medium.obj",
+  Large = "https://assets.swlegion.dev/collider/large.obj",
+  Huge = "https://assets.swlegion.dev/collider/huge.obj",
+  Gigantic = "https://assets.swlegion.dev/collider/gigantic.obj",
 }
 
 --- Creates a unit using the provided table.
