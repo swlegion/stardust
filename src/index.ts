@@ -55,7 +55,6 @@ export async function buildToDist(
   const assetsDir = options?.useGitHubAsAssetSource
     ? gitHubAssets
     : localAssets;
-  console.warn(assetsDir);
   const splitter = new expander.SplitIO({
     ban: banNonLocalOrMissingUrls(canonicalAssets),
     from: canonicalAssets,
