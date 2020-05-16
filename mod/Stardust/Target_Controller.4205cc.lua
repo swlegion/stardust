@@ -2,10 +2,13 @@
 --
 -- @module Target_Controller
 
-_GUIDS = {
-  PLAY_AREA = '9be545'
-}
-
+--- Data for creating the correct range finder projection.
+--
+-- @usage
+-- local baseSize = 'Small'
+-- _RANGE_FINDERS[baseSize]  -- "...unity3d"
+--
+-- @local
 _RANGE_FINDERS = {
   Small = 'https://assets.swlegion.dev/tools/ranges/small.unity3d',
 }
@@ -48,7 +51,9 @@ end
 --
 -- @local
 function toggleSIL()
-  local table = getObjectFromGUID(_GUIDS.PLAY_AREA)
+  local table = getObjectFromGUID(
+    Global.getTable('GUIDS').objects.Table
+  )
   if not table then
     return
   end
@@ -86,7 +91,6 @@ function spawnRangeFinder(args)
   object.setLock(true)
   object.interactable = false
   object.setScale({0, 0, 0})
-  object.setVar('IS_RANGE_FINDER', true)
   return object
 end
 
@@ -111,7 +115,9 @@ function findLOS(_, color)
 end
 
 function _showLOSFrom(leaderMini)
-  local table = getObjectFromGUID(_GUIDS.PLAY_AREA)
+  local table = getObjectFromGUID(
+    Global.getTable('GUIDS').objects.Table
+  )
   local minis = table.call('getAllTargets')
   for _, mini in ipairs(minis) do
     if not leaderMini.call('isPartOfUnit', {guid = mini.guid}) then

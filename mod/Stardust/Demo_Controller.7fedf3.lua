@@ -2,13 +2,6 @@
 --
 -- @module Demo_Controller
 
-_GUIDS = {
-  DATA_DISK = '093685',
-  SPAWN_CONTROLLER = '525d68',
-  DEMO_BARRICADE = '96cf71',
-  ORDER_TOKEN = '8049a1',
-}
-
 _DEMO = {
   BARRICADES = {
     -- Top Right Corner.
@@ -48,8 +41,10 @@ _DEMO = {
 
 --- Loads all of the units and terrain for the demo scenario.
 function loadDemo()
+  local guids = Global.getTable('GUIDS')
+
   -- Spawn terrain.
-  local barricade = getObjectFromGUID(_GUIDS.DEMO_BARRICADE)
+  local barricade = getObjectFromGUID(guids.objects.Barricade)
   local halfWay = #_DEMO.BARRICADES / 2
   for i, position in ipairs(_DEMO.BARRICADES) do
     local rotation = {0, 270, 0}
@@ -64,8 +59,8 @@ function loadDemo()
   end
 
   -- Spawn units.
-  local data = getObjectFromGUID(_GUIDS.DATA_DISK)
-  local spawner = getObjectFromGUID(_GUIDS.SPAWN_CONTROLLER)
+  local data = getObjectFromGUID(guids.controllers.Data)
+  local spawner = getObjectFromGUID(guids.controllers.Spawn)
   local stormTroopers = data.call('findUnit', {
     faction = 'GalacticEmpire',
     rank = 'Corps',
@@ -95,7 +90,7 @@ function loadDemo()
   end
 
   -- Spawn order tokens.
-  local orderToken = getObjectFromGUID(_GUIDS.ORDER_TOKEN)
+  local orderToken = getObjectFromGUID(guids.objects.Order)
   for i, position in ipairs(_DEMO.TOKENS) do
     local rotation = {0, 0, 0}
     local color = 'Red'

@@ -2,32 +2,51 @@
 --
 -- @module Movement_Controller
 
-_GUIDS = {
-  PLACE_MINI_HERE = '592e2c',
-  TOOL = 'd7256f',
-}
-
-_NULL_COLLIDER = 'https://assets.swlegion.dev/collider/null.obj'
-
-_TOOLS = {
-  -- Speed 1
+--- Reference data for movement speed and templates.
+--
+-- @usage
+-- local speedToUse = 2
+-- _DATA[speedToUse].tool            -- {mesh = '...obj', texture = '...jpg'}
+--
+-- local baseSize = 'Small'
+-- _DATA[speedToUse].rings[baseSize] -- '...unity3d'
+--
+-- @local
+_DATA = {
+  -- Speed 1.
   {
-    mesh = 'https://assets.swlegion.dev/tools/rulers/speed.1.obj',
-    diffuse = 'https://assets.swlegion.dev/tools/rulers/speed.1.jpg',
-    tint = {1.0, 1.0, 1.0},
+    tool = {
+      mesh = 'https://assets.swlegion.dev/tools/movement/rulers/speed.1.obj',
+      texture = 'https://assets.swlegion.dev/tools/movement/rulers/speed.1.jpg',
+    },
+
+    rings = {
+      Small = 'http://assets.swlegion.dev/tools/movement/ranges/small.1.unity3d',
+    } 
   },
-  -- Speed 2
+
+  -- Speed 2.
   {
-    mesh = 'https://assets.swlegion.dev/tools/rulers/speed.2.obj',
-    diffuse = 'https://assets.swlegion.dev/tools/rulers/speed.2.jpg',
-    tint = {0.5, 0.5, 0.5}
+    tool = {
+      mesh = 'https://assets.swlegion.dev/tools/movement/rulers/speed.2.obj',
+      texture = 'https://assets.swlegion.dev/tools/movement/rulers/speed.2.jpg',
+    }
+
+    rings = {
+      Small = 'http://assets.swlegion.dev/tools/movement/ranges/small.2.unity3d',
+    }
   },
 
-  -- Speed 3
+  -- Speed 3.
   {
-    mesh = 'https://assets.swlegion.dev/tools/rulers/speed.3.obj',
-    diffuse = 'https://assets.swlegion.dev/tools/rulers/speed.3.jpg',
-    tint = {1.0, 0.2, 0.2}
+    tool = {
+      mesh = 'https://assets.swlegion.dev/tools/movement/rulers/speed.3.obj',
+      texture = 'https://assets.swlegion.dev/tools/movement/rulers/speed.3.jpg',
+    },
+
+    rings = {
+      Small = 'http://assets.swlegion.dev/tools/movement/ranges/small.3.unity3d',
+    }
   },
 }
 

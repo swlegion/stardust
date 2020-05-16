@@ -2,12 +2,9 @@
 --
 -- @module Spawn_Controller
 
-_GUIDS = {
-  MINIATURE = 'b34d79',
-  FORMATIONS = '53afc7',
-  SILOUHETTE = '767062',
-}
-
+--- References what collider to use for various base sizes.
+--
+-- @local
 _BASE_SIZE_TO_COLLIDER = {
   Small = "https://assets.swlegion.dev/collider/small.obj",
   Medium = "https://assets.swlegion.dev/collider/medium.obj",
@@ -74,7 +71,9 @@ function _spawnUnit(
         if count == 1 then
           return
         end
-        local formations = getObjectFromGUID(_GUIDS.FORMATIONS)
+        local formations = getObjectFromGUID(
+          Global.getTable('GUIDS').controllers.Formation
+        )
         local miniSize = miniLeader.getBounds().size
         local formation = formations.call(
           'computeFormation',
@@ -118,7 +117,9 @@ function _spawnUnitModel(
   rotation,
   callback
 )
-  local target = getObjectFromGUID(_GUIDS.MINIATURE)
+  local target = getObjectFromGUID(
+    Global.getTable('GUIDS').objects.Miniature
+  )
   local clone = target.clone({
     position = position,
     rotation = rotation,
@@ -152,7 +153,9 @@ end
 
 -- @local
 function _spawnSilouhette(position, rotation)
-  local clone = getObjectFromGUID(_GUIDS.SILOUHETTE).clone({
+  local clone = getObjectFromGUID(
+    Global.getTable('GUIDS').objects.Silouhette
+  ).clone({
     position = position,
     rotation = rotation,
     scale = {1, 1, 1},

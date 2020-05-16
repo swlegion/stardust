@@ -18,11 +18,6 @@
 --
 -- @see Data_Controller
 
-_GUIDS = {
-  SPAWN_CONTROLLER = '525d68',
-  TARGET_CONTROLLER = '4205cc',
-}
-
 _PERSIST = {
   CONNECTED_MINIS = {},
   ACTIVE_SILOUHETTE = nil,
@@ -194,7 +189,9 @@ function _hideRange()
 end
 
 function _showRange()
-  local controller = getObjectFromGUID(_GUIDS.TARGET_CONTROLLER)
+  local controller = getObjectFromGUID(
+    Global.getTable('GUIDS').controllers.Target
+  )
   local object = controller.call('spawnRangeFinder', {
     position = self.getPosition(),
     rotation = self.getRotation(),
@@ -259,7 +256,9 @@ function _hideSilouhette()
 end
 
 function _showSilouhette()
-  local controller = getObjectFromGUID(_GUIDS.SPAWN_CONTROLLER)
+  local controller = getObjectFromGUID(
+    Global.getTable('GUIDS').controllers.Spawn
+  )
   local silouhette = controller.call('spawnSilouhette', {
     position = self.getPosition(),
     rotation = self.getRotation(),
