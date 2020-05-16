@@ -30,7 +30,6 @@
     "GridProjection": false,
     "HideWhenFaceDown": false,
     "Hands": false,
-    "XmlUI": "",
     "LuaScript": "#include ./Movement_Controller.0d6e64.lua",
     "LuaScriptState": "",
     "GUID": "0d6e64"

@@ -1,8 +1,32 @@
 --- Global module.
 
-_GUIDS = {
-  PLAY_AREA = '9be545',
-  DEMO_GAME = '7fedf3',
+--- Reference of GUIDs, by name, that might be utilized by parts of the mod.
+--
+-- In general, all GUIDS should be only stored and referenced from this table
+-- (assuming the GUID is for a global object). The exception might be objects
+-- that are tightly bound to one-another.
+--
+-- @usage
+-- local guids = Global.getVar('GUIDS')
+-- local data = getObjectFromGUID(guids.controllers.Data)
+-- data.call('...', { ... })
+GUIDS = {
+  controllers = {
+    Data            = '093685',
+    Demo            = '7fedf3',
+    Formation       = '53afc7',
+    Movement        = '0d6e64',
+    Spawn           = '525d68',
+    Target          = '4205cc',
+  },
+
+  objects = {
+    Barricade       = '96cf71',
+    Miniature       = 'b34d79',
+    Order           = '8049a1',
+    Silouhette      = '767062',
+    Table           = '9be545',
+  }
 }
 
 --- Loads a new 3x table and a default army list for all players.
@@ -13,7 +37,7 @@ _GUIDS = {
 function loadListByDemo(player)
   -- TODO: Add a check that the player is seated.
   loadTable(player, '3x3')
-  getObjectFromGUID(_GUIDS.DEMO_GAME).call('loadDemo')
+  getObjectFromGUID(GUIDS.controllers.Demo).call('loadDemo')
 end
 
 --- Opens a list builder for the current player.
@@ -34,7 +58,7 @@ end
 
 --- Clears (destroys) the current table.
 function clearTable()
-  getObjectFromGUID(_GUIDS.PLAY_AREA).call('resize', {0, 0})
+  getObjectFromGUID(GUIDS.objects.Table).call('resize', {0, 0})
 end
 
 --- Loads a new table based on the parameter passed by the UI.
@@ -44,7 +68,7 @@ end
 function loadTable(player, size)
   -- TODO: Assert that size is valid.
   -- "Create" (summon) the play area.
-  getObjectFromGUID(_GUIDS.PLAY_AREA).call('resize', {
+  getObjectFromGUID(GUIDS.objects.Table).call('resize', {
     tonumber(string.sub(size, 1, 1)) * 12,
     tonumber(string.sub(size, 3, 4)) * 12,
   })

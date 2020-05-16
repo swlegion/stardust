@@ -31,8 +31,8 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "https://assets.swlegion.dev/tools/rulers/speed.2.obj",
-      "DiffuseURL": "https://assets.swlegion.dev/tools/rulers/speed.2.jpg",
+      "MeshURL": "https://assets.swlegion.dev/tools/movement/rulers/speed.2.obj",
+      "DiffuseURL": "https://assets.swlegion.dev/tools/movement/rulers/speed.2.jpg",
       "NormalURL": "",
       "ColliderURL": "https://assets.swlegion.dev/collider/null.obj",
       "Convex": true,
