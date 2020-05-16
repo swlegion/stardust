@@ -30,6 +30,20 @@ automatically.
 [2]: https://atom.io/
 [3]: https://atom.io/packages/tabletopsimulator-lua
 
+## Multiplayer sessions
+
+The current workflow is optimized around local (single-player) sessions. To demo
+with someone else, you will need to use an asset server that is reachable for
+the other users. Currently, you can use _GitHub_ as the source of the truth:
+
+```sh
+# Builds dist/Stardust.json, but with assets pointing to:
+# `https://raw.githubusercontent.com/swlegion/stardust/master/assets/`
+#
+# ... this does mean that you cannot use in-progress/local-only assets.
+$ npm run build --use-github-for-assets
+```
+
 ## Advanced users
 
 If you are feeling up to it, or don't develop on Windows:
@@ -45,6 +59,9 @@ $ npm run build
 #   macOS (OS X)	~/Library/Tabletop Simulator/
 #   Linux	~/.local/share/Tabletop Simulator/
 $ npm run link -- "~/path/to/saves/dir"
+
+# Runs the local asset server
+$ npm run serve
 ```
 
 You can now load up Tabletop Simulator manually, and open `TTSDevLink/Stardust`.
