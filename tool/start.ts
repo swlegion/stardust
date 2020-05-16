@@ -1,5 +1,6 @@
 import * as runner from '@matanlurey/tts-runner';
 import * as fs from 'fs-extra';
+import minimist from 'minimist';
 import path from 'path';
 import shelljs from 'shelljs';
 import {
@@ -29,12 +30,17 @@ import {
 
   console.log('Launching...');
   const tts = await runner.launch();
+  const args = minimist(process.argv.slice(2));
 
   tts.process.once('exit', () => {
     console.log('Closing...');
     deleteAutoExec()
       .then(() => destroySymlink())
-      .then(() => extractToMod())
+      .then(() =>
+        extractToMod({
+          useGitHubAsAssetSource: !!args['use-github-for-assets'],
+        }),
+      )
       .then(() => {
         process.kill(server.pid);
         fs.removeSync(path.join('dist', 'edit'));
