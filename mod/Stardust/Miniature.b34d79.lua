@@ -25,8 +25,8 @@ _GUIDS = {
 
 _PERSIST = {
   CONNECTED_MINIS = {},
-  ACTIVE_SILOUHETTE = false,
-  ACTIVE_RANGE_FINDER = false,
+  ACTIVE_SILOUHETTE = nil,
+  ACTIVE_RANGE_FINDER = nil,
   SETUP = nil,
 }
 
@@ -66,7 +66,7 @@ function onLoad(state)
 
   _PERSIST = {
     CONNECTED_MINIS = {},
-    ACTIVE_SILOUHETTE = false,
+    ACTIVE_SILOUHETTE = nil,
     ACTIVE_RANGE_FINDER = false,
     SETUP = {
       name = spawnSetup.name,
@@ -158,15 +158,21 @@ function _selectUnit(color)
   end
 end
 
---- Destroys any attachments that pass `.getVar(checkVar)`.
+--- Destroys any attachments that the provided guid.
+--
+-- @param checkGuid GUID to search for.
 --
 -- @local
 -- @usage
--- _destroyAttachment('IS_RANGE_FINDER')
-function _destroyAttachment(checkVar)
-  -- TODO: Implement. Right now it destroys _all_ attachments.
-  -- Probably we need to clone another asset bundle for range finders?
-  self.destroyAttachments()
+-- _destroyAttachment(rangeFinderGuid)
+function _destroyAttachment(checkGuid)
+  for i, object in ipairs(self.getAttachments()) do
+    if object.guid == checkGuid then
+      local attachment = self.removeAttachment(i - 1)
+      attachment.destruct()
+      return
+    end
+  end
 end
 
 --- Toggle range finder for the unit leader.
@@ -180,11 +186,11 @@ function toggleRange()
   else
     _showRange()
   end
-  _PERSIST.ACTIVE_RANGE_FINDER = not _PERSIST.ACTIVE_RANGE_FINDER
 end
 
 function _hideRange()
-  _destroyAttachment('IS_RANGE_FINDER')
+  _destroyAttachment(_PERSIST.ACTIVE_RANGE_FINDER)
+  _PERSIST.ACTIVE_RANGE_FINDER = nil
 end
 
 function _showRange()
@@ -193,7 +199,12 @@ function _showRange()
     position = self.getPosition(),
     rotation = self.getRotation(),
   })
-  self.addAttachment(object)
+  -- Wait a frame for the range finder to generate a GUID.
+  Wait.frames(function()
+    self.addAttachment(object)
+    assert(object.guid != nil)
+    _PERSIST.ACTIVE_RANGE_FINDER = object.guid
+  end, 1)
 end
 
 --- Returns whether the `guid` of the provided table is part of the unit.
@@ -243,8 +254,8 @@ function toggleSilouhettes()
 end
 
 function _hideSilouhette()
-  _destroyAttachment('IS_SILOUHETTE')
-  _PERSIST.ACTIVE_SILOUHETTE = false
+  _destroyAttachment(_PERSIST.ACTIVE_SILOUHETTE)
+  _PERSIST.ACTIVE_SILOUHETTE = nil
 end
 
 function _showSilouhette()
@@ -254,7 +265,7 @@ function _showSilouhette()
     rotation = self.getRotation(),
   })
   self.addAttachment(silouhette)
-  _PERSIST.ACTIVE_SILOUHETTE = true
+  _PERSIST.ACTIVE_SILOUHETTE = silouhette.guid
 end
 
 --- Associate this model with another minis.
