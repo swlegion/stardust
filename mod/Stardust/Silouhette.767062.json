@@ -41,7 +41,6 @@
       "TypeIndex": 1,
       "CastShadows": true
     },
-    "XmlUI": "",
     "LuaScript": "#include ./Silouhette.767062.lua",
     "LuaScriptState": "",
     "GUID": "767062"

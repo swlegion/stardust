@@ -17,35 +17,35 @@ _DATA = {
   {
     tool = {
       mesh = 'https://assets.swlegion.dev/tools/movement/rulers/speed.1.obj',
-      texture = 'https://assets.swlegion.dev/tools/movement/rulers/speed.1.jpg',
+      texture = 'http://localhost:8080/tools/movement/rulers/speed.1.jpg',
     },
 
     rings = {
-      Small = 'http://assets.swlegion.dev/tools/movement/ranges/small.1.unity3d',
-    } 
+      Small = 'http://localhost:8080/tools/movement/ranges/small.1.unity3d',
+    }
   },
 
   -- Speed 2.
   {
     tool = {
-      mesh = 'https://assets.swlegion.dev/tools/movement/rulers/speed.2.obj',
-      texture = 'https://assets.swlegion.dev/tools/movement/rulers/speed.2.jpg',
-    }
+      mesh = 'http://localhost:8080/tools/movement/rulers/speed.2.obj',
+      texture = 'http://localhost:8080/tools/movement/rulers/speed.2.jpg',
+    },
 
     rings = {
-      Small = 'http://assets.swlegion.dev/tools/movement/ranges/small.2.unity3d',
+      Small = 'http://localhost:8080/tools/movement/ranges/small.2.unity3d',
     }
   },
 
   -- Speed 3.
   {
     tool = {
-      mesh = 'https://assets.swlegion.dev/tools/movement/rulers/speed.3.obj',
-      texture = 'https://assets.swlegion.dev/tools/movement/rulers/speed.3.jpg',
+      mesh = 'http://localhost:8080/tools/movement/rulers/speed.3.obj',
+      texture = 'http://localhost:8080/tools/movement/rulers/speed.3.jpg',
     },
 
     rings = {
-      Small = 'http://assets.swlegion.dev/tools/movement/ranges/small.3.unity3d',
+      Small = 'http://localhost:8080/tools/movement/ranges/small.3.unity3d',
     }
   },
 }

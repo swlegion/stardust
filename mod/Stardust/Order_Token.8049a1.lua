@@ -39,7 +39,7 @@ function _setObjectDetails()
     })
   else
     self.setCustomObject({
-      diffuse = 'https://assets.swlegion.dev/tools/orders/rebels.corps.jpg'
+      diffuse = 'http://localhost:8080/tools/orders/rebels.corps.jpg'
     })
   end
   self.setName(_PERSIST.color .. ' ' .. _PERSIST.rank)
