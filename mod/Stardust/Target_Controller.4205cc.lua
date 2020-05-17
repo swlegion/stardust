@@ -16,6 +16,7 @@ _RANGE_FINDERS = {
 --- Colors used in the range finder for a given range.
 --
 -- @local
+-- @field
 _RANGE_FINDER_COLORS = {
   -- 1
   '#FF0000',
