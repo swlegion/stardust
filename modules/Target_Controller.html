@@ -103,6 +103,34 @@
 	<td class="summary">Toggles silouhettes for all units in the play area.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#_matrix2x1ToRadians">_matrix2x1ToRadians (m)</a></td>
+	<td class="summary">Converts a `2x1` matrix `m` to radians.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_matrix2x1Subtract">_matrix2x1Subtract (a, b)</a></td>
+	<td class="summary">Returns a `2x1` matrix `a` subtracted by `b`.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_matrix2x1Multiply">_matrix2x1Multiply (m, p)</a></td>
+	<td class="summary">Returns a `2x1` matrix `m` multiplied by `p`.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_matrix2x1MultiplyByMatrix">_matrix2x1MultiplyByMatrix (a, b)</a></td>
+	<td class="summary">Returns a `2x1` matrix `a` multiplied by another matrix `b`.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_matrix2x1Divide">_matrix2x1Divide (m, d)</a></td>
+	<td class="summary">Returns a `2x1` matrix `m` divided by `d`.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_matrix2x2x1DotBy2x1">_matrix2x2x1DotBy2x1 (a, b)</a></td>
+	<td class="summary">Returns the dot product of a 2x2x1 matricies `a` by a 2x1 `b`.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_matrix2x1Dot">_matrix2x1Dot (a, b)</a></td>
+	<td class="summary">Returns the dot product of 2x1 matricies `a` and `b`.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#findLOS">findLOS (_, color)</a></td>
 	<td class="summary">Does a LOS check for the selected unit leaders.</td>
 	</tr>
@@ -345,6 +373,200 @@ _RANGE_FINDERS[baseSize]  <span class="comment">-- "...unity3d"</span></pre>
 
 </dd>
     <dt>
+    <a name = "_matrix2x1ToRadians"></a>
+    <strong>_matrix2x1ToRadians (m)</strong>
+    </dt>
+    <dd>
+    Converts a `2x1` matrix `m` to radians.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">m</span>
+         Array with two elements, both numbers.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_matrix2x1Subtract"></a>
+    <strong>_matrix2x1Subtract (a, b)</strong>
+    </dt>
+    <dd>
+    Returns a `2x1` matrix `a` subtracted by `b`.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Array with two elements, both numbers.
+        </li>
+        <li><span class="parameter">b</span>
+         Array with two elements, both numbers.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> result = _matrix2x1Subtract({<span class="number">4</span>, <span class="number">6</span>}, {<span class="number">1</span>, <span class="number">2</span>})
+<span class="global">print</span>(result) <span class="comment">-- {3, 4}</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_matrix2x1Multiply"></a>
+    <strong>_matrix2x1Multiply (m, p)</strong>
+    </dt>
+    <dd>
+    Returns a `2x1` matrix `m` multiplied by `p`.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">m</span>
+         Array with two elements, both numbers.
+        </li>
+        <li><span class="parameter">p</span>
+         Product.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> result = _matrix2x1Multiply({<span class="number">2</span>, <span class="number">3</span>}, <span class="number">2</span>)
+<span class="global">print</span>(result) <span class="comment">-- {4, 6}</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_matrix2x1MultiplyByMatrix"></a>
+    <strong>_matrix2x1MultiplyByMatrix (a, b)</strong>
+    </dt>
+    <dd>
+    Returns a `2x1` matrix `a` multiplied by another matrix `b`.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Array with two elements, both numbers.
+        </li>
+        <li><span class="parameter">b</span>
+         Array with two elements, both numbers.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> result = _matrix2x1MultiplyByMatrix({<span class="number">2</span>, <span class="number">3</span>}, {<span class="number">4</span>, <span class="number">2</span>})
+<span class="global">print</span>(result) <span class="comment">-- {8, 6}</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_matrix2x1Divide"></a>
+    <strong>_matrix2x1Divide (m, d)</strong>
+    </dt>
+    <dd>
+    Returns a `2x1` matrix `m` divided by `d`.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">m</span>
+         Array with two elements, both numbers.
+        </li>
+        <li><span class="parameter">d</span>
+         Dividend.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> result = _matrix2x1Divide({<span class="number">2</span>, <span class="number">4</span>}, <span class="number">2</span>)
+<span class="global">print</span>(result) <span class="comment">-- {1, 2}</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_matrix2x2x1DotBy2x1"></a>
+    <strong>_matrix2x2x1DotBy2x1 (a, b)</strong>
+    </dt>
+    <dd>
+    Returns the dot product of a 2x2x1 matricies `a` by a 2x1 `b`.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Array with two elements, both arrays with two number elements.
+        </li>
+        <li><span class="parameter">b</span>
+         Array with two elements, both numbers.
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/Target_Controller.html#_matrix2x1Dot">_matrix2x1Dot</a>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> result = _matrix2x1Dot({{<span class="number">1</span>, <span class="number">2</span>}, {<span class="number">3</span>, <span class="number">2</span>}}, {<span class="number">2</span>, <span class="number">4</span>})
+<span class="global">print</span>(result) <span class="comment">-- {9, 14} (1 * 2 + 2 * 4, 3 * 2 + 2 * 4)</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "_matrix2x1Dot"></a>
+    <strong>_matrix2x1Dot (a, b)</strong>
+    </dt>
+    <dd>
+    Returns the dot product of 2x1 matricies `a` and `b`.
+<p> The dot product is multiplying matching members, then summing them up.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Array with two elements, both numbers.
+        </li>
+        <li><span class="parameter">b</span>
+         Array with two elements, both numbers.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> result = _matrix2x1Dot({<span class="number">1</span>, <span class="number">2</span>}, {<span class="number">2</span>, <span class="number">4</span>})
+<span class="global">print</span>(result) <span class="comment">-- 9 (1 * 2 + 2 * 4)</span></pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "findLOS"></a>
     <strong>findLOS (_, color)</strong>
     </dt>
@@ -376,7 +598,7 @@ _RANGE_FINDERS[baseSize]  <span class="comment">-- "...unity3d"</span></pre>
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2020-05-17 04:12:37 </i>
+<i style="float:right;">Last updated 2020-05-17 18:44:48 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
