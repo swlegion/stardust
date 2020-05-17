@@ -29,3 +29,21 @@
     <Button interactable="false">Attack</Button>
   </HorizontalLayout>
 </Panel>
+
+<Panel
+  id="floatingNumber"
+  active="false"
+  height="40"
+  width="40"
+  position="0 -10 -200"
+  rotation="270 0 0"
+  color="Red"
+>
+  <Text
+    id="floatingNumberText"
+    resizeTextForBestFit="true"
+    fontStyle="Bold"
+  >
+    5
+  </Text>
+</Panel>

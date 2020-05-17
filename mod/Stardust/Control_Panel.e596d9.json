@@ -16,9 +16,9 @@
     "Description": "",
     "GMNotes": "",
     "ColorDiffuse": {
-      "r": 0.249996722,
-      "g": 0.249996722,
-      "b": 0.249996722
+      "r": 0.249996662,
+      "g": 0.249996662,
+      "b": 0.249996662
     },
     "Locked": true,
     "Grid": false,
@@ -41,6 +41,7 @@
         "Stackable": false
       }
     },
+    "XmlUI": "",
     "LuaScript": "#include ./Control_Panel.e596d9.lua",
     "LuaScriptState": "",
     "GUID": "e596d9"

@@ -3,11 +3,11 @@
     "Name": "Custom_Model",
     "Transform": {
       "posX": 43.5,
-      "posY": 0.0338963568,
+      "posY": 0.033896327,
       "posZ": 16.5,
-      "rotX": 2.749618e-7,
-      "rotY": -0.000795495347,
-      "rotZ": 4.12813478e-7,
+      "rotX": -7.60526348e-7,
+      "rotY": -0.00079545076,
+      "rotZ": 3.713186e-7,
       "scaleX": 0.400000453,
       "scaleY": 0.400000453,
       "scaleZ": 0.400000453
@@ -41,6 +41,7 @@
       "TypeIndex": 1,
       "CastShadows": true
     },
+    "XmlUI": "",
     "LuaScript": "",
     "LuaScriptState": "",
     "GUID": "767062"

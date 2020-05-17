@@ -71,10 +71,10 @@ function onLoad(state)
   -- Are we a unit leader?
   if spawnSetup.leader then
     _PERSIST.SETUP.leader = spawnSetup.leader
-    initializeAsLeader()
+    _initializeAsLeader()
     self.setName(_PERSIST.SETUP.name .. ' (Unit Leader)')
   else
-    initializeAsFollower()
+    _initializeAsFollower()
     self.setName(_PERSIST.SETUP.name)
   end
 
@@ -94,7 +94,7 @@ end
 -- Assigns @see Miniature:IS_UNIT_LEADER and sets up UI.
 --
 -- @local
-function initializeAsLeader()
+function _initializeAsLeader()
   -- Expose to other objects we are a unit leader.
   IS_UNIT_LEADER = true
 end
@@ -114,8 +114,10 @@ function _onSelect(player)
   _selectUnit(color)
 end
 
--- Initialize as a "Follower" (not a Unit Leader).
-function initializeAsFollower()
+--- Initialize as a "Follower" (not a Unit Leader).
+--
+-- @local
+function _initializeAsFollower()
   _disableSelectable()
 end
 
@@ -170,6 +172,25 @@ function _destroyAttachment(checkGuid)
   end
 end
 
+--- Shows a floating number above the miniature's head.
+--
+-- @param args Table: `number` and `color` to show.
+function showFloatingNumber(args)
+  local number = args.number
+  local color = args.color
+  if not color then
+    color = getOwner()
+  end
+  self.UI.setAttribute('floatingNumber', 'color', color)
+  self.UI.setValue('floatingNumberText', tostring(number))
+  self.UI.show('floatingNumber')
+end
+
+--- Hides any visible floating number above the miniature's head.
+function hideFloatingNumber()
+  self.UI.hide('floatingNumber')
+end
+
 --- Toggle range finder for the unit leader.
 --
 -- @usage
@@ -184,8 +205,12 @@ function toggleRange()
 end
 
 function _hideRange()
+  local controller = getObjectFromGUID(
+    Global.getTable('GUIDS').controllers.Target
+  )
   _destroyAttachment(_PERSIST.ACTIVE_RANGE_FINDER)
   _PERSIST.ACTIVE_RANGE_FINDER = nil
+  controller.call('clearFloatingNumbers')
 end
 
 function _showRange()
@@ -202,8 +227,10 @@ function _showRange()
     assert(object.guid != nil)
     _PERSIST.ACTIVE_RANGE_FINDER = object.guid
   end, 1)
+  controller.call('showRangeOfEnemyMinis', {
+    origin = self
+  })
 end
-
 --- Returns whether the `guid` of the provided table is part of the unit.
 --
 -- @param args A table with a 'guid' property.
@@ -289,4 +316,35 @@ function _connectTo(otherMini)
     return
   end
   table.insert(_PERSIST.CONNECTED_MINIS, otherMini.guid)
+end
+
+--- Returns the miniature for this unit that is the unit leader.
+--
+-- @return Miniature
+function getUnitLeader()
+  if IS_UNIT_LEADER then
+    return self
+  elseif #_PERSIST.CONNECTED_MINIS then
+    return getObjectFromGUID(_PERSIST.CONNECTED_MINIS[1])
+  end
+end
+
+--- Returns the owner of the mini.
+--
+-- @return Color, such as "Red" or "Blue".
+function getOwner()
+  return _getLeaderSetup().leader.color
+end
+
+--- Returns the `_PERSIST.SETUP` value for the leader of this unit.
+--
+-- @local
+-- @return table {color, rank}
+-- @usage
+-- local setup = _getLeaderSetup()
+-- print(setup.color, setup.rank)
+function _getLeaderSetup()
+  local leader = getUnitLeader()
+  local persist = leader.getTable('_PERSIST')
+  return persist.SETUP
 end

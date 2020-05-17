@@ -2,7 +2,8 @@
 --
 -- @module Movement_Controller
 
---- Reference data for movement speed and templates.
+-- TODO: Fix LDoc.
+-- Reference data for movement speed and templates.
 --
 -- @usage
 -- local speedToUse = 2
@@ -12,7 +13,6 @@
 -- _DATA[speedToUse].rings[baseSize] -- '...unity3d'
 --
 -- @local
--- @field _DATA
 _DATA = {
   -- Speed 1.
   {

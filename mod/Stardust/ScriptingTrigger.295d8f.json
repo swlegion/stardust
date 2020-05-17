@@ -1,28 +1,29 @@
 {
   "Object": {
-    "Name": "BlockSquare",
+    "Name": "ScriptingTrigger",
     "Transform": {
-      "posX": 41,
+      "posX": 0,
       "posY": 0,
-      "posZ": 16.5,
+      "posZ": 0,
       "rotX": 0,
-      "rotY": 0.00009421054,
-      "rotZ": 5.76708032e-7,
-      "scaleX": 0.400000453,
-      "scaleY": 0.400000453,
-      "scaleZ": 0.400000453
+      "rotY": 0,
+      "rotZ": 0,
+      "scaleX": 36,
+      "scaleY": 1,
+      "scaleZ": 36
     },
-    "Nickname": "Unused",
+    "Nickname": "",
     "Description": "",
     "GMNotes": "",
     "ColorDiffuse": {
-      "r": 0.110429414,
-      "g": 0.6901961,
-      "b": 0.3036843
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 0.509803951
     },
     "Locked": true,
-    "Grid": false,
-    "Snap": false,
+    "Grid": true,
+    "Snap": true,
     "IgnoreFoW": false,
     "Autoraise": true,
     "Sticky": true,
@@ -33,7 +34,7 @@
     "XmlUI": "",
     "LuaScript": "",
     "LuaScriptState": "",
-    "GUID": "d15e58"
+    "GUID": "295d8f"
   },
   "StatesPaths": {}
 }

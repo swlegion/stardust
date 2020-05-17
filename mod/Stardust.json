@@ -4,7 +4,7 @@
     "GameMode": "Stardust",
     "Gravity": 0.5,
     "PlayArea": 0.5,
-    "Date": "5/16/2020 10:55:13 AM",
+    "Date": "5/16/2020 9:01:24 PM",
     "Table": "Table_None",
     "Sky": "Sky_Forest",
     "SkyURL": "https://assets.swlegion.dev/sky.png",
@@ -166,6 +166,7 @@
     "Unused.d15e58.json",
     "Miniature.b34d79.json",
     "Movement_Speed_2_A.d7256f.json",
-    "Move_Unit_Here.592e2c.json"
+    "Move_Unit_Here.592e2c.json",
+    "ScriptingTrigger.295d8f.json"
   ]
 }

@@ -16,8 +16,8 @@
     "Description": "",
     "GMNotes": "",
     "ColorDiffuse": {
-      "r": 0.121565469,
-      "g": 0.311107963,
+      "r": 0.121565409,
+      "g": 0.3111079,
       "b": 0.6901961
     },
     "Locked": true,
@@ -30,6 +30,7 @@
     "GridProjection": false,
     "HideWhenFaceDown": false,
     "Hands": false,
+    "XmlUI": "",
     "LuaScript": "#include ./Spawn_Controller.525d68.lua",
     "LuaScriptState": "",
     "GUID": "525d68"
