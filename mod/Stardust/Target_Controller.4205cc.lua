@@ -37,6 +37,9 @@ _RANGE_FINDER_COLORS = {
   '#808080',
 }
 
+-- Set to `true` to stop using the trig-based distance formula.
+_USE_SIMPLE_2D_DISTANCE = false
+
 function onLoad()
   drawTemporaryUI()
 end
@@ -104,7 +107,10 @@ function spawnRangeFinder(args)
     type              = 'Custom_Assetbundle',
     position          = {
       x = args.position.x,
-      y = args.position.y + 3,
+      -- TODO: We can't place this *EXACTLY* at the origin, so we need to
+      -- spawn it a *tiny bit* off. There is a better way to do this, of course
+      -- but requires more math.
+      y = args.position.y + 0.0001,
       z = args.position.z,
     },
     rotation          = args.rotation,
@@ -197,8 +203,6 @@ function groupAllEnemyMinis(args)
   end
   return results
 end
-
-_USE_SIMPLE_2D_DISTANCE = false
 
 --- Returns the range, in game terms (e.g. 2D horizontal only), in inches.
 --
