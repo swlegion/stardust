@@ -41,7 +41,6 @@
         "Stackable": false
       }
     },
-    "XmlUI": "",
     "LuaScript": "#include ./Control_Panel.e596d9.lua",
     "LuaScriptState": "",
     "GUID": "e596d9"

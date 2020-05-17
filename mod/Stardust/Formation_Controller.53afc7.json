@@ -30,7 +30,6 @@
     "GridProjection": false,
     "HideWhenFaceDown": false,
     "Hands": false,
-    "XmlUI": "",
     "LuaScript": "#include ./Formation_Controller.53afc7.lua",
     "LuaScriptState": "",
     "GUID": "53afc7"
