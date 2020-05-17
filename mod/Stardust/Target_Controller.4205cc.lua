@@ -198,6 +198,8 @@ function groupAllEnemyMinis(args)
   return results
 end
 
+_USE_SIMPLE_2D_DISTANCE = false
+
 --- Returns the range, in game terms (e.g. 2D horizontal only), in inches.
 --
 -- @param args A table with the field `from` and `to`, each with `position`, `rotation`, `bounds`.
@@ -218,21 +220,206 @@ end
 --   }
 -- })
 function computeDistance(args)
-  -- TODO: Implement correctly as a purely horizontal range-check, and make
-  -- sure to use the tip of the base for calculations - this is a basically
-  -- an estimate.
-  return _distance2D(
+  if _USE_SIMPLE_2D_DISTANCE then
+    return _distance2D(
+      args.from.position.x,
+      args.from.position.z,
+      args.to.position.x,
+      args.to.position.z
+    )
+  end
+  return _distanceFlatCenterToCenter(
+    _radiusOfBase(args.from.bounds),
+    _radiusOfBase(args.to.bounds),
     args.from.position.x,
     args.from.position.z,
+    args.from.rotation.x,
+    args.from.rotation.z,
     args.to.position.x,
-    args.to.position.z
+    args.to.position.z,
+    args.to.rotation.x,
+    args.to.rotation.z
   )
+end
+
+function _radiusOfBase(bounds)
+  -- TODO: Accomodate for non-circle-bases (e.g. the Occupier).
+  return bounds.x / 2
 end
 
 function _distance2D(x1, y1, x2, y2)
   local dx = x1 - x2
   local dy = y1 - y2
   return math.sqrt(dx * dx + dy * dy)
+end
+
+-- TODO: Find or add a Lua-based Matrix library.
+function _distanceFlatCenterToCenter(
+  radius1,
+  radius2,
+  x1,
+  z1,
+  rx1,
+  rz1,
+  x2,
+  z2,
+  rx2,
+  rz2
+)
+  -- X and Z Values Only.
+  local posA = {x1, z1}
+  local posB = {x2, z2}
+  local rotA = {rx1, rz1}
+  local rotB = {rx2, rz2}
+
+  -- Convert to radians before doing trig.
+  rotA = _matrix2x1ToRadians(rotA)
+  rotA = {
+    {math.cos(rotA[2]), 0},
+    {0, math.cos(rotA[1])},
+  }
+  rotB = _matrix2x1ToRadians(rotB)
+  rotB = {
+    {math.cos(rotB[2]), 0},
+    {0, math.cos(rotB[1])},
+  }
+
+  -- Vector from point A to point B.
+  local distanceAB = _matrix2x1Subtract(posB, posA)
+  local distanceBA = _matrix2x1Multiply(distanceAB, -1)
+  local distanceAB2 = _matrix2x1MultiplyByMatrix(distanceAB, distanceAB)
+  local distanceFlat = math.sqrt(
+    distanceAB2[1] +
+    distanceAB2[2]
+  )
+
+  -- Divide by length of vector to get just the direction of the vector.
+  local abUnitVector = _matrix2x1Divide(distanceAB, distanceFlat)
+  local baUnitVector = _matrix2x1Multiply(abUnitVector, -1)
+
+  -- Multiply by radius to find the point on the base that is closest to unit B
+  -- NOTE: This will always be the closest point for rotations < 90DEG in X/Z.
+  local baseVectorA = _matrix2x1Multiply(abUnitVector, radius1)
+  local baseVectorB = _matrix2x1Multiply(baUnitVector, radius2)
+
+  -- Rotate the vectors.
+  local rotatedVectorA = _matrix2x2x1DotBy2x1(rotA, baseVectorA)
+  local rotatedVectorB = _matrix2x2x1DotBy2x1(rotB, baseVectorB)
+
+  -- We can then multiply with the unit vector from before and get the portion
+  -- of our new vector that is still in the same direction as our closest path
+  -- to unit B.
+  local projectedA = _matrix2x1Dot(rotatedVectorA, abUnitVector)
+  local projectedB = _matrix2x1Dot(rotatedVectorB, baUnitVector)
+
+  -- Distance "flat" is their center-to-center distance.
+  return distanceFlat - projectedA - projectedB
+end
+
+--- Converts a `2x1` matrix `m` to radians.
+--
+-- @param m Array with two elements, both numbers.
+--
+-- @local
+function _matrix2x1ToRadians(m)
+  return _matrix2x1Multiply(m, math.pi / 180)
+end
+
+--- Returns a `2x1` matrix `a` subtracted by `b`.
+--
+-- @param a Array with two elements, both numbers.
+-- @param b Array with two elements, both numbers.
+--
+-- @local
+-- @usage
+-- local result = _matrix2x1Subtract({4, 6}, {1, 2})
+-- print(result) -- {3, 4}
+function _matrix2x1Subtract(a, b)
+  return {
+    a[1] - b[1],
+    a[2] - b[2],
+  }
+end
+
+--- Returns a `2x1` matrix `m` multiplied by `p`.
+--
+-- @param m Array with two elements, both numbers.
+-- @param p Product.
+--
+-- @local
+-- @usage
+-- local result = _matrix2x1Multiply({2, 3}, 2)
+-- print(result) -- {4, 6}
+function _matrix2x1Multiply(m, p)
+  return {
+    m[1] * p,
+    m[2] * p,
+  }
+end
+
+--- Returns a `2x1` matrix `a` multiplied by another matrix `b`.
+--
+-- @param a Array with two elements, both numbers.
+-- @param b Array with two elements, both numbers.
+--
+-- @local
+-- @usage
+-- local result = _matrix2x1MultiplyByMatrix({2, 3}, {4, 2})
+-- print(result) -- {8, 6}
+function _matrix2x1MultiplyByMatrix(a, b)
+  return {
+    a[1] * b[1],
+    a[2] * b[2],
+  }
+end
+
+--- Returns a `2x1` matrix `m` divided by `d`.
+--
+-- @param m Array with two elements, both numbers.
+-- @param d Dividend.
+--
+-- @local
+-- @usage
+-- local result = _matrix2x1Divide({2, 4}, 2)
+-- print(result) -- {1, 2}
+function _matrix2x1Divide(m, d)
+  return {
+    m[1] / d,
+    m[2] / d,
+  }
+end
+
+--- Returns the dot product of a 2x2x1 matricies `a` by a 2x1 `b`.
+--
+-- @see _matrix2x1Dot
+--
+-- @param a Array with two elements, both arrays with two number elements.
+-- @param b Array with two elements, both numbers.
+--
+-- @local
+-- @usage
+-- local result = _matrix2x1Dot({{1, 2}, {3, 2}}, {2, 4})
+-- print(result) -- {9, 14} (1 * 2 + 2 * 4, 3 * 2 + 2 * 4)
+function _matrix2x2x1DotBy2x1(a, b)
+  return {
+    _matrix2x1Dot(a[1], b),
+    _matrix2x1Dot(a[2], b),
+  }
+end
+
+--- Returns the dot product of 2x1 matricies `a` and `b`.
+--
+-- The dot product is multiplying matching members, then summing them up.
+--
+-- @param a Array with two elements, both numbers.
+-- @param b Array with two elements, both numbers.
+--
+-- @local
+-- @usage
+-- local result = _matrix2x1Dot({1, 2}, {2, 4})
+-- print(result) -- 9 (1 * 2 + 2 * 4)
+function _matrix2x1Dot(a, b)
+  return a[1] * b[1] + a[2] * b[2]
 end
 
 --- Shows all ranges of enemy minis of the provided mini.
