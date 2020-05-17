@@ -13,10 +13,10 @@ _RANGE_FINDERS = {
   Small = 'https://assets.swlegion.dev/tools/ranges/small.unity3d',
 }
 
---- Colors used in the range finder for a given range.
+-- TODO: Re-add.
+-- Colors used in the range finder for a given range.
 --
 -- @local
--- @field
 _RANGE_FINDER_COLORS = {
   -- 1
   '#FF0000',
