@@ -68,6 +68,26 @@
 	<td class="name" nowrap><a href="#spawnRangeFinder">spawnRangeFinder (args)</a></td>
 	<td class="summary">Spawns a silouhette at the provided position and rotation.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clearFloatingNumbers">clearFloatingNumbers ()</a></td>
+	<td class="summary">Clears floating numbers from all miniatures on the table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#findAllEnemyMinis">findAllEnemyMinis (args)</a></td>
+	<td class="summary">Returns all miniatures owned by the opposing team.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#groupAllEnemyMinis">groupAllEnemyMinis (args)</a></td>
+	<td class="summary">Returns all miniatures owned by the opposing team, grouped into units.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#computeDistance">computeDistance (args)</a></td>
+	<td class="summary">Returns the range, in game terms (e.g.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#showRangeOfEnemyMinis">showRangeOfEnemyMinis (args)</a></td>
+	<td class="summary">Shows all ranges of enemy minis of the provided mini.</td>
+	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
@@ -123,6 +143,156 @@
         <pre class="example">spawnRangeFinder({
   position = {<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>},
   rotation = {<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>},
+})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "clearFloatingNumbers"></a>
+    <strong>clearFloatingNumbers ()</strong>
+    </dt>
+    <dd>
+    Clears floating numbers from all miniatures on the table.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "findAllEnemyMinis"></a>
+    <strong>findAllEnemyMinis (args)</strong>
+    </dt>
+    <dd>
+    Returns all miniatures owned by the opposing team.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+         A table with the field `team` making the request.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        List of miniatures.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> allEnemies = target.call(<span class="string">'findAllEnemyMinis'</span>, {
+  team: <span class="string">'Blue'</span>,
+})
+<span class="keyword">for</span> _, mini <span class="keyword">in</span> allEnemies <span class="keyword">do</span>
+  <span class="comment">-- Do something.
+</span><span class="keyword">end</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "groupAllEnemyMinis"></a>
+    <strong>groupAllEnemyMinis (args)</strong>
+    </dt>
+    <dd>
+    Returns all miniatures owned by the opposing team, grouped into units.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+         A table with the field `team` making the request.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        List of list of miniatures.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> allEnemies = target.call(<span class="string">'findAllEnemyMinis'</span>, {
+  team: <span class="string">'Blue'</span>,
+})
+<span class="keyword">for</span> _, unitGroup <span class="keyword">in</span> allEnemies <span class="keyword">do</span>
+  <span class="keyword">local</span> leader = unitGroup[<span class="number">1</span>]
+  <span class="comment">-- Other units are not the leader.
+</span><span class="keyword">end</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "computeDistance"></a>
+    <strong>computeDistance (args)</strong>
+    </dt>
+    <dd>
+    Returns the range, in game terms (e.g.  2D horizontal only), in inches.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+         A table with the field `from` and `to`, each with `position`, `rotation`, `bounds`.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Distance, in inches.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> distance = target.call(<span class="string">'computeDistance'</span>, {
+  from = {
+    position = from.getPosition(),
+    rotation = from.getRotation(),
+    bounds   = from.getBounds().size,
+  },
+  to = {
+    position = to.getPosition(),
+    rotation = to.getRotation(),
+    bounds   = to.getBounds().size,
+  }
+})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "showRangeOfEnemyMinis"></a>
+    <strong>showRangeOfEnemyMinis (args)</strong>
+    </dt>
+    <dd>
+    Shows all ranges of enemy minis of the provided mini.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+         A table with the field `origin`.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">target.call(<span class="string">'showRangeOfEnemyMinis'</span>, {
+  origin = myMini,
 })</pre>
     </ul>
 
@@ -206,7 +376,7 @@ _RANGE_FINDERS[baseSize]  <span class="comment">-- "...unity3d"</span></pre>
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2020-05-16 22:50:55 </i>
+<i style="float:right;">Last updated 2020-05-17 04:12:37 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
