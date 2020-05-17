@@ -8,9 +8,9 @@
       "rotX": 0,
       "rotY": 0,
       "rotZ": 0,
-      "scaleX": 0,
+      "scaleX": 7.861751,
       "scaleY": 1,
-      "scaleZ": 0
+      "scaleZ": 11.7985353
     },
     "Nickname": "Play Area",
     "Description": "",
@@ -41,8 +41,9 @@
         "Stackable": false
       }
     },
+    "XmlUI": "",
     "LuaScript": "#include ./Play_Area.9be545.lua",
-    "LuaScriptState": "{\"unscaledBounds\":{\"x\":4.57913255691528,\"y\":0.200000002980232,\"z\":3.0512261390686}}",
+    "LuaScriptState": "{\"unscaledBounds\":{\"x\":4.57913255691528,\"y\":0.200000002980232,\"z\":3.0512261390686},\"zoneGuid\":\"295d8f\"}",
     "GUID": "9be545"
   },
   "StatesPaths": {}

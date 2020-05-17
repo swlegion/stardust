@@ -16,8 +16,8 @@
     "Description": "",
     "GMNotes": "",
     "ColorDiffuse": {
-      "r": 0.121565439,
-      "g": 0.311107934,
+      "r": 0.121565379,
+      "g": 0.311107874,
       "b": 0.6901961
     },
     "Locked": true,
@@ -30,6 +30,7 @@
     "GridProjection": false,
     "HideWhenFaceDown": false,
     "Hands": false,
+    "XmlUI": "",
     "LuaScript": "#include ./Formation_Controller.53afc7.lua",
     "LuaScriptState": "",
     "GUID": "53afc7"
