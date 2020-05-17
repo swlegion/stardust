@@ -191,11 +191,11 @@ function hideFloatingNumber()
   self.UI.hide('floatingNumber')
 end
 
---- Toggle range finder for the unit leader.
+--- Toggle threats-mode for the unit leader.
 --
 -- @usage
--- unitLeaderMini.call('toggleRange')
-function toggleRange()
+-- unitLeaderMini.call('toggleThreats')
+function toggleThreats()
   assert(IS_UNIT_LEADER)
   if _PERSIST.ACTIVE_RANGE_FINDER then
     _hideRange()
@@ -210,6 +210,9 @@ function _hideRange()
   )
   _destroyAttachment(_PERSIST.ACTIVE_RANGE_FINDER)
   _PERSIST.ACTIVE_RANGE_FINDER = nil
+  -- TODO: This could accidentally clear other numbers. We probably want to
+  -- automatically turn off "threat-mode" (?) when another unit is interacted
+  -- with, to some extent.
   controller.call('clearFloatingNumbers')
 end
 
