@@ -198,7 +198,7 @@ function groupAllEnemyMinis(args)
     end
   end
   local results = {}
-  for _, group in ipairs(groups) do
+  for _, group in pairs(groups) do
     table.insert(results, group)
   end
   return results
@@ -435,38 +435,70 @@ end
 --   origin = myMini,
 -- })
 function showRangeOfEnemyMinis(args)
-  local origin = args.origin
-  local target = getObjectFromGUID(
-    Global.getTable('GUIDS').controllers.Target
-  )
-  local allEnemyMinis = target.call('findAllEnemyMinis', {
+  return _showRangeOfEnemyMinisWithExtraMinisFilteredOut(args.origin)
+end
+
+function _showRangeOfEnemyMinisWithExtraMinisFilteredOut(origin)
+  local allEnemyUnits = groupAllEnemyMinis({
     team = origin.call('getOwner')
   })
-  local position = origin.getPosition()
-  local rotation = origin.getRotation()
-  local bounds = origin.getBounds().size
-  for _, enemy in ipairs(allEnemyMinis) do
-    local distance = target.call('computeDistance', {
-      from = {
-        position = position,
-        rotation = rotation,
-        bounds = bounds,
-      },
+  local fromOrigin = {
+    position = origin.getPosition(),
+    rotation = origin.getRotation(),
+    bounds = origin.getBounds().size,
+  }
+  for _, unit in ipairs(allEnemyUnits) do
+    local unitLeader = unit[1]
+    local toEnemy = {
+      position = unitLeader.getPosition(),
+      rotation = unitLeader.getRotation(),
+      bounds = unitLeader.getBounds().size,
+    }
+    local minDistance = computeDistance({
+      from = fromOrigin,
+      to = toEnemy,
+    })
 
-      to = {
-        position = enemy.getPosition(),
-        rotation = enemy.getRotation(),
-        bounds = enemy.getBounds().size,
+    -- Translate to in-game ranges and display.
+    minDistance = _toInGameRange(minDistance)
+    unitLeader.call('showFloatingNumber', {
+      number = minDistance,
+      color = _RANGE_FINDER_COLORS[minDistance],
+    })
+
+    -- Find the closest other mini (IF ANY), and also render a number.
+    local showMini = nil
+    local showDistance = minDistance
+    for i = 2, #unit, 1 do
+      local otherMini = unit[i]
+      local toEnemy = {
+        position = otherMini.getPosition(),
+        rotation = otherMini.getRotation(),
+        bounds = otherMini.getBounds().size,
       }
-    })
+      local distance = computeDistance({
+        from = fromOrigin,
+        to = toEnemy
+      })
+      distance = _toInGameRange(distance)
+      if distance < showDistance then
+        showDistance = distance
+        showMini = unit[i]
+      end
+    end
 
-    -- Translate to in-game ranges.
-    distance = math.min(6, math.ceil(distance / 6))
-    enemy.call('showFloatingNumber', {
-      number = distance,
-      color = _RANGE_FINDER_COLORS[distance],
-    })
+    if showMini != nil then
+      showMini.call('showFloatingNumber', {
+        number = showDistance,
+        color = _RANGE_FINDER_COLORS[showDistance],
+      })
+    end
   end
+end
+
+function _toInGameRange(rawDistance)
+  -- TODO: Consider showing ranges > 6.
+  return math.min(6, math.ceil(rawDistance / 6))
 end
 
 --- Does a LOS check for the selected unit leaders.

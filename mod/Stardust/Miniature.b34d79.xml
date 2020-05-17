@@ -24,7 +24,7 @@
   rotation="90 0 180"
 >
   <HorizontalLayout>
-    <Button onClick="toggleRange">Range</Button>
+    <Button onClick="toggleThreats">Threat</Button>
     <Button onClick="toggleMovement">Move</Button>
     <Button interactable="false">Attack</Button>
   </HorizontalLayout>
