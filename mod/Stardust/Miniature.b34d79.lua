@@ -20,6 +20,7 @@
 
 _PERSIST = {
   CONNECTED_MINIS = {},
+  ACTIVE_MOVEMENT = nil,
   ACTIVE_SILOUHETTE = nil,
   ACTIVE_RANGE_FINDER = nil,
   SETUP = nil,
@@ -62,7 +63,8 @@ function onLoad(state)
   _PERSIST = {
     CONNECTED_MINIS = {},
     ACTIVE_SILOUHETTE = nil,
-    ACTIVE_RANGE_FINDER = false,
+    ACTIVE_MOVEMENT = nil,
+    ACTIVE_RANGE_FINDER = nil,
     SETUP = {
       name = spawnSetup.name,
     }
@@ -221,6 +223,7 @@ function _showRange()
     Global.getTable('GUIDS').controllers.Target
   )
   local object = controller.call('spawnRangeFinder', {
+    -- TODO: Pass in base size.
     position = self.getPosition(),
     rotation = self.getRotation(),
   })
@@ -234,6 +237,75 @@ function _showRange()
     origin = self
   })
 end
+
+function toggleMovement()
+  assert(IS_UNIT_LEADER)
+  if _PERSIST.ACTIVE_MOVEMENT != nil then
+    _hideMovement()
+  else
+    _showMovement()
+  end
+end
+
+function _moveDone()
+  _hideMovement()
+end
+
+function _moveCancelBack()
+  self.setPositionSmooth(_PERSIST.ACTIVE_MOVEMENT.origin, false, true)
+  _hideMovement()
+end
+
+function _moveChangeSpeed()
+  local speed = _PERSIST.ACTIVE_MOVEMENT.speed
+  speed = speed + 1
+  if speed > 3 then
+    speed = 1
+  end
+  local controller = getObjectFromGUID(
+    Global.getTable('GUIDS').controllers.Movement
+  )
+  controller.call('setProjectedMovementSpeed', {
+    finder = getObjectFromGUID(_PERSIST.ACTIVE_MOVEMENT.finder),
+    speed = speed,
+  })
+  -- TODO: Update radius for coroutine locking.
+  _PERSIST.ACTIVE_MOVEMENT.speed = speed
+  self.UI.setValue('activeSpeed', 'Speed ' .. tostring(speed))
+end
+
+function _hideMovement()
+  getObjectFromGUID(_PERSIST.ACTIVE_MOVEMENT.finder).destruct()
+  _PERSIST.ACTIVE_MOVEMENT = nil
+  self.UI.hide('moveActions')
+end
+
+function _showMovement()
+  local controller = getObjectFromGUID(
+    Global.getTable('GUIDS').controllers.Movement
+  )
+  local objects = controller.call('spawnMoveFinder', {
+    -- TODO: Pass in base size.
+    initialSpeed = 2,
+    origin = self,
+  })
+  -- Wait a frames for the returned objects to generate a GUID.
+  Wait.frames(function()
+    assert(objects.finder.guid != nil)
+    _PERSIST.ACTIVE_MOVEMENT = {
+      origin = self.getPosition(),
+      speed = 2,
+      finder = objects.finder.guid,
+    }
+  end, 1)
+  self.UI.setValue('activeSpeed', 'Speed 2')
+  self.UI.show('moveActions')
+  -- TODO: Also show locked tool for cohesion range.
+  -- TODO: Start coroutine to prevent the leader from moving out of bounds.
+  -- TODO: Unlock once all minis are forced locked.
+  -- TODO: Disable all other minis in unit/ghost them.
+end
+
 --- Returns whether the `guid` of the provided table is part of the unit.
 --
 -- @param args A table with a 'guid' property.
