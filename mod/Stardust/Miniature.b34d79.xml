@@ -47,3 +47,20 @@
     5
   </Text>
 </Panel>
+
+<Panel
+  id="moveActions"
+  active="false"
+  height="50"
+  width="200"
+  position="0 0 -250"
+  rotation="90 0 180"
+>
+  <HorizontalLayout>
+    <Button onClick="_moveDone">Done</Button>
+    <Button onClick="_moveCancelBack">Cancel</Button>
+    <Button onClick="_moveChangeSpeed">
+      <Text id="activeSpeed">Speed 2</Text>
+    </Button>
+  </HorizontalLayout>
+</Panel>
