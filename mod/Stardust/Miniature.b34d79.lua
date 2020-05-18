@@ -47,7 +47,7 @@ function onLoad(state)
   if state != '' then
     _PERSIST = JSON.decode(state)
     if _PERSIST.SETUP.leader then
-      initializeAsLeader()
+      _initializeAsLeader()
     end
     return
   end
