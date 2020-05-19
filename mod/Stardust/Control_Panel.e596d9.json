@@ -43,7 +43,8 @@
     },
     "LuaScript": "#include ./Control_Panel.e596d9.lua",
     "LuaScriptState": "",
-    "GUID": "e596d9"
+    "GUID": "e596d9",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }

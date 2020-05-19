@@ -32,7 +32,8 @@
     "Hands": false,
     "LuaScript": "#include ./Target_Controller.4205cc.lua",
     "LuaScriptState": "",
-    "GUID": "4205cc"
+    "GUID": "4205cc",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }
