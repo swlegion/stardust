@@ -75,7 +75,7 @@ export async function extractToMod(
 ): Promise<void> {
   const source = path.join('dist', 'Stardust.json');
   const target = 'mod';
-  await fs.remove(target);
+  await fs.remove('Stardust*');
   await fs.mkdirp(target);
   const assetsDir = options?.useGitHubAsAssetSource
     ? gitHubAssets
