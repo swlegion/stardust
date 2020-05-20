@@ -24,6 +24,8 @@
     "Grid": false,
     "Snap": false,
     "IgnoreFoW": false,
+    "MeasureMovement": false,
+    "DragSelectable": true,
     "Autoraise": false,
     "Sticky": false,
     "Tooltip": true,
@@ -31,7 +33,7 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "https://assets.swlegion.dev/units/empire/stormtrooper.1.obj",
+      "MeshURL": "https://assets.swlegion.dev/units/empire/stormtroopers.1.obj",
       "DiffuseURL": "",
       "NormalURL": "",
       "ColliderURL": "https://assets.swlegion.dev/collider/small.obj",
@@ -50,9 +52,9 @@
       },
       "CastShadows": true
     },
-    "XmlUI": "#include ./Miniature.b34d79.xml",
     "LuaScript": "#include ./Miniature.b34d79.lua",
     "LuaScriptState": "",
+    "XmlUI": "#include ./Miniature.b34d79.xml",
     "GUID": "b34d79"
   },
   "StatesPaths": {}

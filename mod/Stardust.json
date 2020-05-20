@@ -2,17 +2,17 @@
   "Save": {
     "SaveName": "Stardust",
     "GameMode": "Stardust",
+    "Date": "5/16/2020 9:01:24 PM",
     "Gravity": 0.5,
     "PlayArea": 0.5,
-    "Date": "5/16/2020 9:01:24 PM",
+    "GameType": "",
+    "GameComplexity": "",
+    "Tags": [],
     "Table": "Table_None",
     "Sky": "Sky_Forest",
     "SkyURL": "https://assets.swlegion.dev/sky.png",
     "Note": "",
     "Rules": "",
-    "XmlUI": "#include ./Stardust.xml",
-    "LuaScript": "#include ./Stardust.lua",
-    "LuaScriptState": "",
     "MusicPlayer": {
       "RepeatSong": false,
       "PlaylistEntry": -1,
@@ -85,8 +85,6 @@
       "PassTurns": true,
       "TurnColor": ""
     },
-    "ObjectStates": [],
-    "DecalPallet": [],
     "TabStates": {
       "0": {
         "title": "Notes",
@@ -148,6 +146,11 @@
       null,
       null
     ],
+    "DecalPallet": [],
+    "ObjectStates": [],
+    "LuaScript": "#include ./Stardust.lua",
+    "LuaScriptState": "",
+    "XmlUI": "#include ./Stardust.xml",
     "VersionNumber": "v12.3.5"
   },
   "ObjectPaths": [

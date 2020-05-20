@@ -25,6 +25,8 @@
     "Grid": false,
     "Snap": false,
     "IgnoreFoW": false,
+    "MeasureMovement": false,
+    "DragSelectable": true,
     "Autoraise": false,
     "Sticky": false,
     "Tooltip": false,
@@ -41,9 +43,9 @@
       "TypeIndex": 1,
       "CastShadows": true
     },
-    "XmlUI": "",
     "LuaScript": "",
     "LuaScriptState": "",
+    "XmlUI": "",
     "GUID": "767062"
   },
   "StatesPaths": {}

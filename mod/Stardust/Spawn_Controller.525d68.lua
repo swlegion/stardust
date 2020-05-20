@@ -20,7 +20,10 @@ _BASE_SIZE_TO_COLLIDER = {
 -- @usage
 -- spawnUnit({
 --   -- Unit data retrieved from the data controller.
---   data = { },
+--   unit = { },
+--
+--   -- Upgrade data received from the data controller.
+--   upgrades = { ... },
 --
 --   -- Color the unit belongs to.
 --   color = 'Red',
@@ -38,7 +41,8 @@ _BASE_SIZE_TO_COLLIDER = {
 -- @return Handle to the spawned unit leader
 function spawnUnit(args)
   return _spawnUnit(
-    args.data,
+    args.unit,
+    args.upgrades or {},
     args.color,
     args.position,
     args.rotation or {0, 0, 0},
@@ -48,6 +52,7 @@ end
 
 function _spawnUnit(
   unit,
+  upgrades,
   color,
   position,
   rotation,
@@ -68,6 +73,11 @@ function _spawnUnit(
     function (miniLeader)
       Wait.frames(function()
         local count = #unit.models
+        for _, u in ipairs(upgrades) do
+          if u.model then
+            count = count + 1
+          end
+        end
         if count == 1 then
           return
         end
@@ -84,9 +94,9 @@ function _spawnUnit(
             count = count,
           }
         )
-        for i = 2, count, 1 do
+        for i = 2, #unit.models, 1 do
           local texture = unit.models[i].texture or unit.models[1].texture
-          local spawned = _spawnUnitModel(
+          _spawnUnitModel(
             nil,
             unit,
             unit.models[i].mesh,
@@ -101,6 +111,27 @@ function _spawnUnit(
               end, 1)
             end
           )
+        end
+        i = #unit.models
+        for _, u in ipairs(upgrades) do
+          i = i + 1
+          if u.model then
+            _spawnUnitModel(
+              nil,
+              unit,
+              u.model.mesh,
+              u.model.texture,
+              unit.base,
+              formation[i],
+              rotation,
+              function (spawnedMini)
+                Wait.frames(function()
+                  miniLeader.call('connectTo', {spawnedMini})
+                  spawnedMini.call('connectTo', {miniLeader})
+                end, 1)
+              end
+            )
+          end
         end
       end, 1)
     end
