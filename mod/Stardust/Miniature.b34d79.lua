@@ -42,7 +42,27 @@ IS_UNIT_LEADER = false
 -- @local
 _SELECTED_BY_COLOR = nil
 
+-- Used by the local UI to track the tokens this unit owns.
+local tokenNames = {
+  aim = { state = false, quantity = 0},
+  dodge = { state = false, quantity = 0},
+  surge = { state = false, quantity = 0},
+  suppression = { state = false, quantity = 0}
+}
+
 function onLoad(state)
+  -- Define UI assets
+  local uiAssets = {
+    { name = 'surge', url = 'https://assets.swlegion.dev/ui/surge.png' },
+    { name = 'aim', url = 'https://assets.swlegion.dev/ui/aim.png' },
+    { name = 'dodge', url = 'https://assets.swlegion.dev/ui/dodge.png' },
+    { name = 'suppression', url = 'https://assets.swlegion.dev/ui/suppression.png' },
+    { name = 'activate', url = 'https://assets.swlegion.dev/ui/activate.png' },
+    { name = 'threat', url = 'https://assets.swlegion.dev/ui/threat.png' }
+  }
+
+  Global.UI.setCustomAssets(uiAssets)
+
   -- Keep the previously configured state.
   if state != '' then
     _PERSIST = JSON.decode(state)
@@ -347,4 +367,63 @@ function _getLeaderSetup()
   local leader = getUnitLeader()
   local persist = leader.getTable('_PERSIST')
   return persist.SETUP
+end
+
+function onCollisionEnter(collision_info)
+  local obj = collision_info.collision_object
+  local newTokenName = obj.getName()
+  if tokenNames[newTokenName] != nil then
+    addToken(newTokenName)
+    if IS_UNIT_LEADER then
+      obj.destruct()
+    end
+  end
+end
+
+-- Event handler for clicking tokens in the unit's UI
+function _onTokenClick(player, value, id)
+  removeToken(id)
+end
+
+-- Adds a token to the unit leader's UI
+--
+-- @param tokenName A string specifying the token to add
+-- @usage
+-- object.call('addToken', 'aim')
+function addToken(tokenName)
+  if tokenNames[tokenName] != nil and IS_UNIT_LEADER then
+    tokenNames[tokenName].state = true
+    tokenNames[tokenName].quantity = tokenNames[tokenName].quantity + 1
+    Wait.frames(function() _updateTokenDisplay(tokenName) end, 1)
+  end
+end
+
+-- Removes a token from the unit leader's UI
+--
+-- @param tokenName A string specifying the token to remove
+-- @usage
+-- object.call('removeToken', 'aim')
+function removeToken(tokenName)
+  tokenNames[tokenName].quantity = tokenNames[tokenName].quantity - 1
+  _updateTokenDisplay(tokenName)
+end
+
+-- Updates the unit's UI to display the current token count
+--
+-- @local
+-- @param tokenName A string specifying the name of the token
+--
+-- If the count falls below 1, it hides the associated UI element
+function _updateTokenDisplay(tokenName)
+  local count = tokenNames[tokenName].quantity
+  if count <= 0 then
+    tokenNames[tokenName].state = false
+    self.UI.setAttribute(tokenName, 'active', false)
+    self.UI.setAttribute(tokenName .. '_label', 'active', false)
+  else
+    tokenNames[tokenName].state = true
+    self.UI.setAttribute(tokenName, 'active', true)
+    self.UI.setAttribute(tokenName .. '_label', 'active', true)
+    self.UI.setAttribute(tokenName .. '_label', 'text', tokenNames[tokenName].quantity)
+  end
 end
