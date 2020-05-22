@@ -65,7 +65,7 @@
 
   <Panel id="unitActions" height="100" width="250" offsetXY="0 -45" active="false">
     <HorizontalLayout>
-      <Button onClick="toggleRange" color="#00000000"><Image image="threat" preserveAspect="true"></Image></Button>
+      <Button onClick="toggleThreats" color="#00000000"><Image image="threat" preserveAspect="true"></Image></Button>
       <Button onClick="toggleMovement">Move</Button>
       <Button interactable="false">Attack</Button>
     </HorizontalLayout>
