@@ -369,7 +369,9 @@ function _getLeaderSetup()
   return persist.SETUP
 end
 
---- Event handler for dropping tokens on this unit's leader
+--- Event handler for dropping tokens on this unit's leader.
+-- If the token is allowed and this is the unit leader,
+-- add the token and then destroy it
 function onCollisionEnter(collision_info)
   local obj = collision_info.collision_object
   local newTokenName = obj.getName()
@@ -381,12 +383,13 @@ function onCollisionEnter(collision_info)
   end
 end
 
--- Event handler for clicking tokens in the unit's UI
+--- Event handler for clicking tokens in the unit's UI.
+-- Reduces the count of the clicked token
 function _onTokenClick(player, value, id)
   removeToken(id)
 end
 
---- Adds a token to the unit leader's UI
+--- Adds a token to the unit leader's UI.
 --
 -- @param tokenName A string specifying the token to add
 -- @usage
@@ -399,7 +402,7 @@ function addToken(tokenName)
   end
 end
 
---- Removes a token from the unit leader's UI
+--- Removes a token from the unit leader's UI.
 --
 -- @param tokenName A string specifying the token to remove
 -- @usage
@@ -409,12 +412,13 @@ function removeToken(tokenName)
   _updateTokenDisplay(tokenName)
 end
 
---- Updates the unit's UI to display the current token count
+--- Updates the unit's UI to display the current token count.
+-- If the count falls below 1, it hides the associated UI element.
 --
 -- @local
 -- @param tokenName A string specifying the name of the token
---
--- If the count falls below 1, it hides the associated UI element
+-- TODO: set the width of the 'tokenPanel' based on the number
+-- of visible token icons
 function _updateTokenDisplay(tokenName)
   local count = allowableTokens[tokenName].quantity
   if count <= 0 then
