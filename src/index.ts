@@ -4,15 +4,62 @@ import * as fs from 'fs-extra';
 import os from 'os';
 import path from 'path';
 
+// Changes the default behavior of unhandled promises.
+require('make-promises-safe');
+
 const outputFile = 'Stardust.json';
+const localAssets = 'http://localhost:8080/';
+const gitHubAssets =
+  'https://raw.githubusercontent.com/swlegion/stardust/master/assets/';
+const canonicalAssets = 'https://assets.swlegion.dev/';
+
+function banNonLocalOrMissingUrls(
+  assetsPrefix: string,
+): (url: string) => boolean {
+  return (url: string): boolean => {
+    if (!url.startsWith(assetsPrefix)) {
+      console.error(
+        'Do not submit references to non-local assets',
+        url,
+        `(Required: ${assetsPrefix})`,
+        '\n',
+      );
+      return false;
+    }
+    const pathToFile = path.normalize(
+      path.join(path.resolve('assets'), url.substring(assetsPrefix.length)),
+    );
+    if (!fs.existsSync(pathToFile)) {
+      console.error('Could not resolve asset', pathToFile, '\n');
+      return false;
+    }
+    return true;
+  };
+}
 
 /**
  * Builds the mod from `mod/` to `dist/`, returning the tree.
+ *
+ * If `options.useGitHubAsAssetSource`, then assets must be uploaded and available to
+ * `https://raw.githubusercontent.com/swlegion/stardust/master/assets/`
  */
-export async function buildToDist(): Promise<expander.SplitSaveState> {
+export async function buildToDist(
+  options: {
+    useGitHubAsAssetSource?: boolean;
+  } = {},
+): Promise<expander.SplitSaveState> {
+  await fs.remove('dist');
+  await fs.mkdirp('dist');
   const source = path.join('mod', outputFile);
   const target = path.join('dist', outputFile);
-  const splitter = new expander.SplitIO();
+  const assetsDir = options?.useGitHubAsAssetSource
+    ? gitHubAssets
+    : localAssets;
+  const splitter = new expander.SplitIO({
+    ban: banNonLocalOrMissingUrls(canonicalAssets),
+    from: canonicalAssets,
+    to: assetsDir,
+  });
   const saveFile = await splitter.readAndCollapse(source);
   await fs.writeFile(target, JSON.stringify(saveFile, undefined, '  '));
   return expander.splitSave(saveFile);
@@ -21,10 +68,23 @@ export async function buildToDist(): Promise<expander.SplitSaveState> {
 /**
  * Builds the source tree from `dist/` to `mod`/.
  */
-export async function extractToMod(): Promise<void> {
+export async function extractToMod(
+  options: {
+    useGitHubAsAssetSource?: boolean;
+  } = {},
+): Promise<void> {
   const source = path.join('dist', 'Stardust.json');
   const target = 'mod';
-  const splitter = new expander.SplitIO();
+  await fs.remove('Stardust*');
+  await fs.mkdirp(target);
+  const assetsDir = options?.useGitHubAsAssetSource
+    ? gitHubAssets
+    : localAssets;
+  const splitter = new expander.SplitIO({
+    ban: banNonLocalOrMissingUrls(canonicalAssets),
+    from: canonicalAssets,
+    to: assetsDir,
+  });
   const modTree = await splitter.readSaveAndSplit(source);
   await splitter.writeSplit(target, modTree);
 }

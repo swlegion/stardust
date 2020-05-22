@@ -3,11 +3,11 @@
     "Name": "Custom_Model",
     "Transform": {
       "posX": 43.5,
-      "posY": 0.0338962972,
+      "posY": 0.033896327,
       "posZ": 16.5,
-      "rotX": -3.07422965e-7,
-      "rotY": -0.0007966153,
-      "rotZ": 1.53108616e-7,
+      "rotX": -7.60526348e-7,
+      "rotY": -0.00079545076,
+      "rotZ": 3.713186e-7,
       "scaleX": 0.400000453,
       "scaleY": 0.400000453,
       "scaleZ": 0.400000453
@@ -32,8 +32,8 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/1002556771691273590/F435C238FB9E1E49963B2AA00E09DF9C711DA4A0/",
-      "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/1003681898505462981/13937CB26573918BDCBDE2A13CCDEF3C966172D7/",
+      "MeshURL": "https://assets.swlegion.dev/tools/silouhette.obj",
+      "DiffuseURL": "https://assets.swlegion.dev/tools/silouhette.jpg",
       "NormalURL": "",
       "ColliderURL": "",
       "Convex": true,

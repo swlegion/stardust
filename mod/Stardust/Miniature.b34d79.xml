@@ -1,0 +1,108 @@
+<Defaults>
+  <!-- <Button fontSize="12" /> -->
+  <Button class="tokenBtn" onClick="_onTokenClick" textColor="#FFFFFF" color="#00000000" />
+  <Text fontSize="80" fontStyle="Normal" color="#000000"/>
+  <Text class="tokenLabel" fontSize="60" fontStyle="Normal" color="#000000"/>
+</Defaults>
+
+<!-- TODO: Set height/width based on the width of the mini. -->
+<Panel
+  id="baseButton"
+  height="100"
+  width="100"
+  position="0 0 -20"
+  color="#00000000"
+>
+  <VerticalLayout>
+    <Button onClick="_onSelect" color="#00000000"></Button>
+  </VerticalLayout>
+</Panel>
+
+<Panel
+  id="unitUI"
+  active="true"
+  position="0 0 -200"
+  rotation="0 0 180"
+  scale="0.5 0.5"
+>
+  <Panel id="hpPanel" offsetXY="0 -100" active="false">
+    <ProgressBar
+      id="hpBar"
+      active="true"
+      height="100"
+      width="600"
+      showPercentageText="false"
+      color="#FFFFFFE0"
+      percentage="100"
+      fillImageColor="#5080C1"
+    ></ProgressBar>
+    <Text id="hpLabel" active="true">2/2</Text>
+  </Panel>
+
+  <Panel id="tokenPanel" height="100" width="500" offsetXY="0 55">
+    <VerticalLayout>
+      <HorizontalLayout spacing="5">
+        <Button class="tokenBtn" id="surge" active="false"><Image image="surge" preserveAspect="true"></Image></Button>
+        <Button class="tokenBtn" id="aim" active="false"><Image image="aim" preserveAspect="true"></Image></Button>
+        <Button class="tokenBtn" id="dodge" active="false"><Image image="dodge" preserveAspect="true"></Image></Button>
+        <Button class="tokenBtn" id="suppression" active="false"><Image image="suppression" preserveAspect="true"></Image></Button>
+        <Button class="tokenBtn" id="immobilize" active="false"><Image image="immobilize_label" preserveAspect="true"></Image></Button>
+        <Button class="tokenBtn" id="ion" active="false"><Image image="ion" preserveAspect="true"></Image></Button>
+      </HorizontalLayout>
+    </VerticalLayout>
+
+    <Panel width="500" offsetXY="0 0">
+      <HorizontalLayout spacing="5">
+        <Text class="tokenLabel" id="surge_label" active="false">5</Text>
+        <Text class="tokenLabel" id="aim_label" active="false">5</Text>
+        <Text class="tokenLabel" id="dodge_label" active="false">5</Text>
+        <Text class="tokenLabel" id="suppression_label" active="false">5</Text>
+        <Text class="tokenLabel" id="immobilize_label" active="false">5</Text>
+        <Text class="tokenLabel" id="ion_label" active="false">5</Text>
+      </HorizontalLayout>
+    </Panel>
+  </Panel>
+
+  <Panel id="unitActions" height="100" width="250" offsetXY="0 -45" active="false">
+    <HorizontalLayout>
+      <Button onClick="toggleThreats" color="#00000000"><Image image="threat" preserveAspect="true"></Image></Button>
+      <Button onClick="toggleMovement">Move</Button>
+      <Button interactable="false">Attack</Button>
+    </HorizontalLayout>
+  </Panel>
+</Panel>
+
+<Panel
+  id="floatingNumber"
+  active="false"
+  height="40"
+  width="40"
+  position="0 -10 -200"
+  rotation="270 0 0"
+  color="Red"
+>
+  <Text
+    id="floatingNumberText"
+    resizeTextForBestFit="true"
+    fontStyle="Bold"
+  >
+    5
+  </Text>
+</Panel>
+
+<Panel
+  id="moveActions"
+  active="false"
+  height="50"
+  width="200"
+  position="0 0 -250"
+  rotation="90 0 180"
+>
+  <HorizontalLayout>
+    <Button onClick="_moveDone">Done</Button>
+    <Button onClick="_moveCancelBack">Cancel</Button>
+    <Button onClick="_moveChangeSpeed">
+      <Text id="activeSpeed">Speed 2</Text>
+    </Button>
+  </HorizontalLayout>
+</Panel>

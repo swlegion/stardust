@@ -1,0 +1,51 @@
+name: Site Generator
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: leafo/gh-actions-lua@v5
+      - uses: leafo/gh-actions-luarocks@v2
+
+      - name: build
+        run: |
+          luarocks install ldoc
+
+      - name: ldoc
+        run: |
+          ldoc --all --dir ldoc mod
+
+      - name: Upload LDoc
+        uses: actions/upload-artifact@v1
+        with:
+          name: ldoc
+          path: ldoc
+
+  deploy:
+    if: github.event_name == 'push'
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download LDoc
+        uses: actions/download-artifact@v1
+        with:
+          name: ldoc
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ldoc

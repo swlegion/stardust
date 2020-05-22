@@ -1,25 +1,68 @@
-_GUIDS = {
-  MINIATURE = 'b34d79',
-  FORMATIONS = '53afc7',
-  SILOUHETTE = '767062',
+--- Funtions for spawning miniatures.
+--
+-- @module Spawn_Controller
+
+--- References what collider to use for various base sizes.
+--
+-- @local
+_BASE_SIZE_TO_COLLIDER = {
+  Small = "https://assets.swlegion.dev/collider/small.obj",
+  Medium = "https://assets.swlegion.dev/collider/medium.obj",
+  Large = "https://assets.swlegion.dev/collider/large.obj",
+  Huge = "https://assets.swlegion.dev/collider/huge.obj",
+  Gigantic = "https://assets.swlegion.dev/collider/gigantic.obj",
 }
 
-function callSpawnUnit(args)
-  _spawnUnit(args[1], args[2], args[3] or {0, 0, 0})
+--- Creates a unit using the provided table.
+--
+-- @param args A table referring to the unit to spawn.
+--
+-- @usage
+-- spawnUnit({
+--   -- Unit data retrieved from the data controller.
+--   data = { },
+--
+--   -- Color the unit belongs to.
+--   color = 'Red',
+--
+--   -- Vector.
+--   position = {0, 0, 0},
+--
+--   -- Vector. Optional, defaults to {0, 0, 0}.
+--   rotation = {0, 0, 0},
+--
+--   -- Formation. Optional, defaults to '2-line'.
+--   formation = '2-line',
+-- })
+--
+-- @return Handle to the spawned unit leader
+function spawnUnit(args)
+  return _spawnUnit(
+    args.data,
+    args.color,
+    args.position,
+    args.rotation or {0, 0, 0},
+    args.formation
+  )
 end
 
 function _spawnUnit(
   unit,
+  color,
   position,
   rotation,
   formation
 )
   -- Spawn unit leader immediately.
-  _spawnUnitModel(
-    true,
+  return _spawnUnitModel(
+    {
+      color = color,
+      rank = unit.rank,
+    },
     unit,
     unit.models[1].mesh,
     unit.models[1].texture,
+    unit.base,
     position,
     rotation,
     function (miniLeader)
@@ -28,30 +71,33 @@ function _spawnUnit(
         if count == 1 then
           return
         end
-        local formations = getObjectFromGUID(_GUIDS.FORMATIONS)
+        local formations = getObjectFromGUID(
+          Global.getTable('GUIDS').controllers.Formation
+        )
         local miniSize = miniLeader.getBounds().size
         local formation = formations.call(
-          'callComputeFormation',
+          'computeFormation',
           {
-            formation,
-            miniLeader.getBounds().size,
-            count,
-            position,
+            name = formation,
+            bounds = miniLeader.getBounds().size,
+            position = position,
+            count = count,
           }
         )
         for i = 2, count, 1 do
           local texture = unit.models[i].texture or unit.models[1].texture
           local spawned = _spawnUnitModel(
-            false,
+            nil,
             unit,
             unit.models[i].mesh,
             texture,
+            unit.base,
             formation[i],
             rotation,
             function (spawnedMini)
               Wait.frames(function()
-                miniLeader.call('callConnectTo', {spawnedMini})
-                spawnedMini.call('callConnectTo', {miniLeader})
+                miniLeader.call('connectTo', {spawnedMini})
+                spawnedMini.call('connectTo', {miniLeader})
               end, 1)
             end
           )
@@ -62,15 +108,18 @@ function _spawnUnit(
 end
 
 function _spawnUnitModel(
-  isLeader,
+  leader,
   data,
   mesh,
   texture,
+  collider,
   position,
   rotation,
   callback
 )
-  local target = getObjectFromGUID(_GUIDS.MINIATURE)
+  local target = getObjectFromGUID(
+    Global.getTable('GUIDS').objects.Miniature
+  )
   local clone = target.clone({
     position = position,
     rotation = rotation,
@@ -79,17 +128,34 @@ function _spawnUnitModel(
   clone.setCustomObject({
     mesh = mesh,
     diffuse = texture,
+    collider = _BASE_SIZE_TO_COLLIDER[collider],
   })
-  clone.setVar('is_unit_leader', isLeader)
-  clone.setTable('data', data)
+  clone.setTable('spawnSetup', {
+    name = data.name,
+    leader = leader,
+  })
 end
 
-function callSpawnSilouhette(args)
-  return _spawnSilouhette(args[1], args[2], args[3])
+--- Spawns a silouhette at the provided position and rotation.
+--
+-- @param args The `position` and `rotation` to use.
+--
+-- @usage
+-- spawnSilouhette({
+--   position = {0, 0, 0},
+--   rotation = {0, 0, 0},
+-- })
+--
+-- @return Handle to the spawned silouhette.
+function spawnSilouhette(args)
+  return _spawnSilouhette(args.position, args.rotation)
 end
 
+-- @local
 function _spawnSilouhette(position, rotation)
-  local clone = getObjectFromGUID(_GUIDS.SILOUHETTE).clone({
+  local clone = getObjectFromGUID(
+    Global.getTable('GUIDS').objects.Silouhette
+  ).clone({
     position = position,
     rotation = rotation,
     scale = {1, 1, 1},

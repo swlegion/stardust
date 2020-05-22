@@ -1,4 +1,11 @@
-PERSIST = {}
+--- Represents the active table.
+--
+-- @module Play_Area
+
+_PERSIST = {
+  unscaledBounds = nil,
+  zoneGuid = nil,
+}
 
 function onLoad(saveState)
   -- Make the play area not clickable.
@@ -26,9 +33,14 @@ function onSave()
     return JSON.encode(PERSIST);
 end
 
--- Clears and then resizes the table to provided {width, height}.
+--- Clears and then resizes the table to provided {width, height}.
 --
 -- If {0, 0} is passed in the table is cleared/destroyed only.
+--
+-- @param size A table of an X and Y value, in inches.
+--
+-- @usage
+-- playArea.call('resize', {36, 36})
 function resize(size)
   -- Read size arguments.
   local width = size[1] / 6
@@ -57,17 +69,14 @@ function resize(size)
   self.setScale(scaleTo)
 
   -- Do we need to create a zone?
-  if PERSIST.zoneGuid == nil then
+  if width > 0 and height > 0 and PERSIST.zoneGuid == nil then
     createZone(size[1], size[2])
   end
 end
 
--- Returns whether there is a visible table/play area.
-function isReady()
-  return self.getScale().x > 0
-end
-
--- If there is a visible play area, destroys it.
+--- If there is a visible play area, destroys it.
+--
+-- @local
 function clearTable()
   if PERSIST.zoneGuid == nil then
     return
@@ -83,7 +92,12 @@ function clearTable()
   PERSIST.zoneGuid = nil
 end
 
--- Creates a new scripting zone on top of the table to watch for minis.
+--- Creates a new scripting zone on top of the table to watch for minis.
+--
+-- @param width Width in inches.
+-- @param height Height in inches.
+--
+-- @local
 function createZone(width, height)
   local zone = {
     position = self.getPosition(),
@@ -100,12 +114,19 @@ function onZoneCreated(zone)
   PERSIST.zoneGuid = zone.guid
 end
 
-function callGetAllUnitLeaders()
+--- Returns all unit leaders that are currently in the play area.
+--
+-- @usage
+-- local unitLeaders = playArea.call('getAllUnitLeaders')
+-- for _, unitLeader in ipairs(unitLeaders) do
+--   -- ...
+-- end
+function getAllUnitLeaders()
   local results = {}
   local zoneCheck = getObjectFromGUID(PERSIST.zoneGuid)
   if zoneCheck != nil then
     for _, object in ipairs(zoneCheck.getObjects()) do
-      if object.getVar('_IS_UNIT_LEADER') then
+      if object.getVar('IS_UNIT_LEADER') then
         table.insert(results, object)
       end
     end
@@ -113,12 +134,21 @@ function callGetAllUnitLeaders()
   return results
 end
 
-function callGetAllTargets()
+--- Returns all targetable units that are currently in the play area.
+--
+-- In practice, this is all unit leaders plus all non-unit leader minis.
+--
+-- @usage
+-- local targets = playArea.call('getAllTargets')
+-- for _, target in ipairs(targets) do
+--   -- ...
+-- end
+function getAllTargets()
   local results = {}
   local zoneCheck = getObjectFromGUID(PERSIST.zoneGuid)
   if zoneCheck != nil then
     for _, object in ipairs(zoneCheck.getObjects()) do
-      if object.getVar('_IS_TARGETABLE') then
+      if object.getVar('IS_TARGETABLE') then
         table.insert(results, object)
       end
     end

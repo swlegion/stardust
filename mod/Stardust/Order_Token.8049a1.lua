@@ -1,30 +1,47 @@
+--- Order Tokens.
+--
+-- Expects a table of properties to provided via the field 'setupOrderToken`:
+--
+-- @usage
+-- token.setTable('setupOrderToken', {
+--   color = 'Blue',
+--   rank  = 'Corps',
+-- })
+--
+-- @module Order_Token
+
+_PERSIST = {
+  color = nil,
+  rank  = nil,
+}
+
 function onLoad(state)
   if state != '' then
-    PERSIST = JSON.decode(state)
+    _PERSIST = JSON.decode(state)
   else
-    PERSIST = self.getTable('PERSIST')
+    _PERSIST = self.getTable('setupOrderToken')
   end
-  if PERSIST != nil then
+  if _PERSIST != nil then
     _setObjectDetails()
   end
 end
 
 function onSave(state)
-  if PERSIST != nil then
+  if _PERSIST != nil then
     return JSON.encode(PERSIST)
   end
 end
 
 function _setObjectDetails()
-  if PERSIST.color == 'Blue' then
+  if _PERSIST.color == 'Blue' then
     self.setCustomObject({
-      diffuse = 'http://cloud-3.steamusercontent.com/ugc/1018319581181469578/56191D081421C02B875AC944DCEFE2063F1D7FC1/'
+      diffuse = 'https://assets.swlegion.dev/tools/orders/empire.corps.jpg'
     })
   else
     self.setCustomObject({
-      diffuse = 'http://cloud-3.steamusercontent.com/ugc/1018319581181607230/299FF1E61697FFCBB40A74AAC189D11B4EAFBA3B/'
+      diffuse = 'https://assets.swlegion.dev/tools/orders/rebels.corps.jpg'
     })
   end
-  self.setName(PERSIST.color .. ' ' .. PERSIST.rank)
+  self.setName(_PERSIST.color .. ' ' .. _PERSIST.rank)
   self.reload()
 end

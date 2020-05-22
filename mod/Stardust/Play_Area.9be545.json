@@ -31,7 +31,7 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomImage": {
-      "ImageURL": "http://cloud-3.steamusercontent.com/ugc/930433772025605177/DACE2F546514344E9AB0069079EFC72D1E04FE49/",
+      "ImageURL": "https://assets.swlegion.dev/table.jpg",
       "ImageSecondaryURL": "",
       "ImageScalar": 1,
       "WidthScale": 0,
@@ -41,10 +41,10 @@
         "Stackable": false
       }
     },
-    "XmlUI": "",
     "LuaScript": "#include ./Play_Area.9be545.lua",
-    "LuaScriptState": "",
-    "GUID": "9be545"
+    "LuaScriptState": "{\"unscaledBounds\":{\"x\":4.57913255691528,\"y\":0.200000002980232,\"z\":3.0512261390686},\"zoneGuid\":\"295d8f\"}",
+    "GUID": "9be545",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }

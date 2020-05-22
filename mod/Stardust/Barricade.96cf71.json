@@ -31,8 +31,8 @@
     "HideWhenFaceDown": false,
     "Hands": false,
     "CustomMesh": {
-      "MeshURL": "http://cloud-3.steamusercontent.com/ugc/785234540542429589/F10F499F8D061EFA2C4C696641235D706E4C0974/",
-      "DiffuseURL": "http://cloud-3.steamusercontent.com/ugc/785234540542379040/149A4BEBD1F20D82737DB21773B93C52BC30DF78/",
+      "MeshURL": "https://assets.swlegion.dev/terrain/barricade.obj",
+      "DiffuseURL": "https://assets.swlegion.dev/terrain/barricade.jpg",
       "NormalURL": "",
       "ColliderURL": "",
       "Convex": true,

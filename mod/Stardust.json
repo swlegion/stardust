@@ -4,10 +4,10 @@
     "GameMode": "Stardust",
     "Gravity": 0.5,
     "PlayArea": 0.5,
-    "Date": "5/12/2020 12:57:38 PM",
+    "Date": "5/16/2020 9:01:24 PM",
     "Table": "Table_None",
-    "Sky": "Sky_Sunset",
-    "SkyURL": "http://cloud-3.steamusercontent.com/ugc/861734447427622808/DB9EEA3B7977B0D4912A0C4C3A76E36FC3A6062E/",
+    "Sky": "Sky_Forest",
+    "SkyURL": "https://assets.swlegion.dev/sky.png",
     "Note": "",
     "Rules": "",
     "XmlUI": "#include ./Stardust.xml",
@@ -16,8 +16,8 @@
     "MusicPlayer": {
       "RepeatSong": false,
       "PlaylistEntry": -1,
-      "CurrentAudioTitle": "Typhons Children - Mission Briefing",
-      "CurrentAudioURL": "http://cloud-3.steamusercontent.com/ugc/781859262304608199/3E220047A4B3A0CE8ED3435C5D9FDDE1133CBCC8/",
+      "CurrentAudioTitle": "",
+      "CurrentAudioURL": "https://assets.swlegion.dev/sound/1-second-of-silence.mp3",
       "AudioLibrary": []
     },
     "Grid": {
@@ -103,21 +103,21 @@
     "CameraStates": [
       {
         "Position": {
-          "x": 0.107262976,
+          "x": -0.566054642,
           "y": -2.5,
-          "z": 1.67516088
+          "z": -0.721841156
         },
         "Rotation": {
-          "x": 85.13675,
-          "y": 0.249900669,
+          "x": 74.90637,
+          "y": 0.0606420748,
           "z": 0
         },
-        "Distance": 39.18901,
+        "Distance": 41.0646858,
         "Zoomed": false,
         "AbsolutePosition": {
-          "x": 0.0927721038,
-          "y": 36.547924,
-          "z": -1.64719963
+          "x": -0.577372432,
+          "y": 37.1480255,
+          "z": -11.4149694
         }
       },
       null,
@@ -164,6 +164,7 @@
     "Silouhette.767062.json",
     "Target_Controller.4205cc.json",
     "Unused.d15e58.json",
-    "Miniature.b34d79.json"
+    "Miniature.b34d79.json",
+    "ScriptingTrigger.295d8f.json"
   ]
 }
