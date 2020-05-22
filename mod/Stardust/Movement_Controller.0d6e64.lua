@@ -51,70 +51,53 @@ _DATA = {
   },
 }
 
-function onLoad()
-  drawTemporaryUI()
-end
-
-function drawTemporaryUI()
-  self.createButton({
-    click_function = 'spawnMOV',
-    function_owner = self,
-    label = 'Move',
-    position = {0, 0.25, -1.0},
-    rotation = {0, 180, 0},
-    width = 600,
-    height = 250,
-    font_size = 100,
-    color = 'Grey',
-    font_color = 'White',
-    tooltip = 'Spawn Movement Options',
-  })
-end
-
---- Spawns movement options for the selected unit leaders.
+--- Spawns a move finder and ghost at the provided object.
 --
--- @local
+-- @param args The `origin` object to use.
 --
--- @param _ Unused.
--- @param color Player color that clicks the button.
-function spawnMOV(_, color)
-  local selected = Player[color].getSelectedObjects()
-  for _, object in ipairs(selected) do
-    if object.getVar('IS_UNIT_LEADER') then
-      _spawnMovementTool(object, 2)
-    end
-  end
-end
-
-function _copyMiniAsGhost(mini, position, rotation)
-  if not position then
-    position = mini.getPosition()
-  end
-  if not rotation then
-    rotation = mini.getRotation()
-  end
-  mini.setScale({0, 0, 0})
-  local ghost = getObjectFromGUID(_GUIDS.PLACE_MINI_HERE).clone({
-    position = position,
+-- @usage
+-- local objects = spawnRangeFinder({
+--   origin = someObject,
+-- })
+-- -- objects.finder
+-- -- objects.ghost
+--
+-- @return table Handle to the spawned range finder and ghost mini.
+function spawnMoveFinder(args)
+  local initialSpeed = args.initialSpeed or 2
+  local origin = args.origin
+  local position = origin.getPosition()
+  local rotation = origin.getRotation()
+  local asset = _DATA[2].rings.Small
+  local object = spawnObject({
+    type              = 'Custom_Assetbundle',
+    position          = {
+      x = position.x,
+      -- TODO: We can't place this *EXACTLY* at the origin, so we need to
+      -- spawn it a *tiny bit* off. There is a better way to do this, of course
+      -- but requires more math.
+      y = position.y + 0.0001,
+      z = position.z,
+    },
     rotation = rotation,
-    callback_function = function()
-      Wait.time(function()
-        mini.setScale({1, 1, 1})
-      end, 1)
-    end
   })
-  local custom = mini.getCustomObject()
-  ghost.setCustomObject({
-    diffuse = custom.diffuse,
-    mesh = custom.mesh,
-    collider = _NULL_COLLIDER,
+  object.setCustomObject({
+    assetbundle = asset,
   })
-  ghost.setVar('setupUnitProxy', mini.guid)
-  ghost.setScale({1, 1, 1})
-  ghost.setLock(false)
-  return ghost
+  object.setLock(true)
+  object.interactable = false
+  object.setScale({0, 0, 0})
+  return {
+    finder = object,
+  }
 end
 
-function _spawnMovementTool(mini, speed)
-  _copyMiniAsGhost(mini)
+function setProjectedMovementSpeed(args)
+  local finder = args.finder
+  local speed = args.speed
+  local asset = _DATA[speed].rings.Small
+  finder.setCustomObject({
+    assetbundle = asset,
+  })
+  finder.reload()
 end

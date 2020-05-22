@@ -1,0 +1,28 @@
+--- Reference of GUIDs, by name, that might be utilized by parts of the mod.
+--
+-- In general, all GUIDS should be only stored and referenced from this table
+-- (assuming the GUID is for a global object). The exception might be objects
+-- that are tightly bound to one-another.
+--
+-- @usage
+-- local guids = Global.getVar('GUIDS')
+-- local data = getObjectFromGUID(guids.controllers.Data)
+-- data.call('...', { ... })
+GUIDS = {
+  controllers = {
+    Data            = '093685',
+    Demo            = '7fedf3',
+    Formation       = '53afc7',
+    Movement        = '0d6e64',
+    Spawn           = '525d68',
+    Target          = '4205cc',
+  },
+
+  objects = {
+    Barricade       = '96cf71',
+    Miniature       = 'b34d79',
+    Order           = '8049a1',
+    Silouhette      = '767062',
+    Table           = '9be545',
+  }
+}

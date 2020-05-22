@@ -32,7 +32,8 @@
     "Hands": false,
     "LuaScript": "#include ./Demo_Controller.7fedf3.lua",
     "LuaScriptState": "",
-    "GUID": "7fedf3"
+    "GUID": "7fedf3",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }

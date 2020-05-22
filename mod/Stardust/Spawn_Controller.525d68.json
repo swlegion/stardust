@@ -32,7 +32,8 @@
     "Hands": false,
     "LuaScript": "#include ./Spawn_Controller.525d68.lua",
     "LuaScriptState": "",
-    "GUID": "525d68"
+    "GUID": "525d68",
+    "XmlUI": ""
   },
   "StatesPaths": {}
 }
