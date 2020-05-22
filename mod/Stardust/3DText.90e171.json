@@ -24,6 +24,8 @@
     "Grid": true,
     "Snap": true,
     "IgnoreFoW": false,
+    "MeasureMovement": false,
+    "DragSelectable": true,
     "Autoraise": true,
     "Sticky": true,
     "Tooltip": true,
@@ -39,9 +41,9 @@
       },
       "fontSize": 24
     },
-    "XmlUI": "",
     "LuaScript": "",
     "LuaScriptState": "",
+    "XmlUI": "",
     "GUID": "90e171"
   },
   "StatesPaths": {}

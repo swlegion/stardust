@@ -31,11 +31,11 @@ _DEMO = {
   },
 
   TOKENS = {
-    {-3, 0, 12},
-    {3, 0, 12},
+    {-3, 0, 11},
+    {3, 0, 11},
     -- TODO: Move to Z=-12 once the formation is corrected.
-    {-3, 0, -11},
-    {3, 0, -11},
+    {-3, 0, -10},
+    {3, 0, -10},
   },
 }
 
@@ -64,25 +64,40 @@ function loadDemo()
   local stormTroopers = data.call('findUnit', {
     faction = 'GalacticEmpire',
     rank = 'Corps',
-    name = 'Stormtroopers'
+    name = 'Stormtroopers',
+  })
+  local dlt19Stormtrooper = data.call('findUpgrade', {
+    faction = 'GalacticEmpire',
+    slot = 'HeavyWeapon',
+    name = 'DLT-19 Stormtrooper',
   })
   local rebelTroopers = data.call('findUnit', {
     faction = 'RebelAlliance',
     rank = 'Corps',
-    name = 'Rebel Troopers'
+    name = 'Rebel Troopers',
+  })
+  local z6Trooper = data.call('findUpgrade', {
+    faction = 'RebelAlliance',
+    slot = 'HeavyWeapon',
+    name = 'Z-6 Trooper',
   })
   local halfWay = #_DEMO.UNITS / 2
   for i, position in ipairs(_DEMO.UNITS) do
     local rotation = {0, 0, 0}
     local unitType = rebelTroopers
+    local upgradeType = z6Trooper
     local color = 'Red'
     if i > halfWay then
       unitType = stormTroopers
+      upgradeType = dlt19Stormtrooper
       color = 'Blue'
       rotation = {0, 180, 0}
     end
     spawner.call('spawnUnit', {
-      data = unitType,
+      unit = unitType,
+      upgrades = {
+        upgradeType,
+      },
       color = color,
       position = position,
       rotation = rotation,

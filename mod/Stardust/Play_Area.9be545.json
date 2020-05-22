@@ -24,6 +24,8 @@
     "Grid": true,
     "Snap": false,
     "IgnoreFoW": false,
+    "MeasureMovement": false,
+    "DragSelectable": true,
     "Autoraise": false,
     "Sticky": false,
     "Tooltip": true,
@@ -38,6 +40,7 @@
       "CustomToken": {
         "Thickness": 0.2,
         "MergeDistancePixels": 15,
+        "StandUp": false,
         "Stackable": false
       }
     },

@@ -24,15 +24,17 @@
     "Grid": false,
     "Snap": false,
     "IgnoreFoW": false,
+    "MeasureMovement": false,
+    "DragSelectable": true,
     "Autoraise": true,
     "Sticky": true,
     "Tooltip": true,
     "GridProjection": false,
     "HideWhenFaceDown": false,
     "Hands": false,
-    "XmlUI": "",
     "LuaScript": "",
     "LuaScriptState": "",
+    "XmlUI": "",
     "GUID": "d15e58"
   },
   "StatesPaths": {}
