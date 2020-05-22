@@ -432,3 +432,17 @@ function _updateTokenDisplay(tokenName)
     self.UI.setAttribute(tokenName .. '_label', 'text', allowableTokens[tokenName].quantity)
   end
 end
+
+--- Returns the number of visible token icons in the unit's UI
+--
+-- @return number
+function _getNumVisibleTokens()
+  local count = 0
+  for k,v in pairs(allowableTokens) do
+    if v.state == true then
+      count = count +1
+    end
+  end
+
+  return count
+end
